@@ -235,7 +235,9 @@ animations = [{
 radius = 5.0
 height = 24.0
 
-[node name="Dark" type="CharacterBody2D"]
+[node name="Dark" type="CharacterBody2D" groups=["dark"]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_886jb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

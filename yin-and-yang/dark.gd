@@ -13,7 +13,8 @@ var is_attacking : bool = false
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
-
+func _ready():
+	sprite.visible = false
 func _physics_process(delta):
 
 	 # Apply gravity
@@ -90,3 +91,8 @@ func _on_AnimatedSprite2D_animation_finished():
 
 	if sprite.animation == "attack":
 		is_attacking = false
+
+func show_dark():
+	$AnimatedSprite2D.visible = true
+func hide_dark():
+	$AnimatedSprite2D.visible = false

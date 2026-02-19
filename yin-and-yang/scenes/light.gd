@@ -37,6 +37,7 @@ func _physics_process(delta):
 
 	 # Flip sprite
 	if direction != 0:
+		$Torch.scale.x = sign(direction)
 		sprite.flip_h = direction < 0
 
 	 # Jump
@@ -90,3 +91,15 @@ func _on_AnimatedSprite2D_animation_finished():
 
 	if sprite.animation == "attack":
 		is_attacking = false
+
+
+func _on_torch_body_entered(body: Node2D) -> void:
+	if body.is_in_group("dark"):
+		body.show_dark()
+
+
+func _on_torch_body_exited(body: Node2D) -> void:
+	if body.is_in_group("dark"):
+		body.hide_dark()
+	
+	

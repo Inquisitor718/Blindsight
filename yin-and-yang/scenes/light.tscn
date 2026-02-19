@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cxhip0snd0lah"]
+[gd_scene load_steps=25 format=3 uid="uid://cxhip0snd0lah"]
 
 [ext_resource type="Script" uid="uid://cf402biw13kgc" path="res://scenes/light.gd" id="1_0yxxj"]
 [ext_resource type="Texture2D" uid="uid://ccnhe6ejnj5ph" path="res://assets/Sprites/01-King Human/Dead (78x58).png" id="1_esukd"]
@@ -150,16 +150,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_oaxgo"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0yxxj"]
-gradient = SubResource("Gradient_oaxgo")
-width = 1024
-height = 1024
-use_hdr = true
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaxgo"]
+size = Vector2(145, 20)
 
 [node name="Light" type="CharacterBody2D"]
 script = ExtResource("1_0yxxj")
@@ -173,13 +165,13 @@ sprite_frames = SubResource("SpriteFrames_nmyap")
 animation = &"jump"
 autoplay = "idle"
 
-[node name="Torch" type="Node2D" parent="."]
+[node name="Torch" type="Area2D" parent="." groups=["light"]]
+collision_layer = 2
+collision_mask = 4
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch"]
-position = Vector2(-4, 0)
-color = Color(0, 0.9382303, 0.34446698, 1)
-energy = 2.0
-range_z_max = 3024
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_0yxxj")
-texture_scale = 4.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torch"]
+position = Vector2(67.5, 0)
+shape = SubResource("RectangleShape2D_oaxgo")
+
+[connection signal="body_entered" from="Torch" to="." method="_on_torch_body_entered"]
+[connection signal="body_exited" from="Torch" to="." method="_on_torch_body_exited"]

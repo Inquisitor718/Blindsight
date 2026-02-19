@@ -547,4 +547,4 @@ target_b = NodePath("../Dark")
 max_zoom = 4.0
 
 [node name="Dark" parent="." instance=ExtResource("4_nimo0")]
-position = Vector2(271, 590)
+position = Vector2(364, 585)
