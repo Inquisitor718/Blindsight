@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkgut80lmud0e"]
+[gd_scene load_steps=16 format=3 uid="uid://bkgut80lmud0e"]
 
 [ext_resource type="Script" uid="uid://c1skra4oswqqy" path="res://scenes/level_prototype.gd" id="1_bar0e"]
 [ext_resource type="Texture2D" uid="uid://ygmv8rdrn15h" path="res://assets/Sprites/14-TileSets/Terrain (32x32).png" id="1_u0od5"]
@@ -522,6 +522,28 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_g7twh")
 sources/1 = SubResource("TileSetAtlasSource_2ma5v")
 
+[sub_resource type="Curve" id="Curve_lipkd"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xjrck"]
+curve = SubResource("Curve_lipkd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lipkd"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1200, 100, 100)
+angle_min = 30.000011
+angle_max = 60.00001
+gravity = Vector3(10, 10, 0)
+scale_min = 2.0
+scale_max = 3.0
+color = Color(1, 1, 0.13725491, 1)
+anim_speed_max = 10.0
+anim_speed_curve = SubResource("CurveTexture_xjrck")
+anim_offset_max = 0.50589997
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_bar0e")
 
@@ -548,3 +570,10 @@ max_zoom = 4.0
 
 [node name="Dark" parent="." instance=ExtResource("4_nimo0")]
 position = Vector2(272, 591)
+
+[node name="Node2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 0.1882353, 1)
+position = Vector2(592, 69)
+amount = 50
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_lipkd")
