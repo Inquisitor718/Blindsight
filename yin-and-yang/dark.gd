@@ -4,11 +4,14 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
+@onready var hit_box: Area2D = $HitBox
+#@onready var collision_shape_2d: CollisionShape2D = $HitBox/CollisionShape2D
 
 var is_attacking : bool = false
 
 @onready var sprite = $AnimatedSprite2D
 
+signal light_hit
 
 # -----------------------
 # == PHYSICS PROCESS ==
@@ -37,6 +40,7 @@ func _physics_process(delta):
 	 # Flip sprite
 	if direction != 0:
 		sprite.flip_h = -direction < 0
+		hit_box.rotation = PI
 
 	 # Jump
 	if Input.is_action_just_pressed("jump2") and is_on_floor():
@@ -51,6 +55,7 @@ func _physics_process(delta):
 
 	 # Animations
 	handle_animations(direction)
+	
 
 
 # -----------------------
@@ -59,6 +64,7 @@ func _physics_process(delta):
 
 func attack():
 	is_attacking = true
+	hit_box.add_to_group("attack")
 	sprite.play("attack")
 	await get_tree().create_timer(0.4).timeout
 	is_attacking = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://tbnfs5pc1coo"]
+[gd_scene load_steps=38 format=3 uid="uid://tbnfs5pc1coo"]
 
 [ext_resource type="Script" uid="uid://bw5eof4dg88wf" path="res://dark.gd" id="1_886jb"]
 [ext_resource type="Texture2D" uid="uid://cwir63rwo0myb" path="res://assets/Sprites/02-King Pig/Dead (38x28).png" id="2_886jb"]
@@ -235,6 +235,9 @@ animations = [{
 radius = 5.0
 height = 24.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_886jb"]
+size = Vector2(17.5, 38.999996)
+
 [node name="Dark" type="CharacterBody2D"]
 script = ExtResource("1_886jb")
 
@@ -242,9 +245,16 @@ script = ExtResource("1_886jb")
 position = Vector2(-1, -3)
 scale = Vector2(1.3348405, 1.3348405)
 sprite_frames = SubResource("SpriteFrames_8fjgn")
-animation = &"jump"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_s5alm")
+
+[node name="HitBox" type="Area2D" parent="." groups=["attack"]]
+rotation = -6.2831855
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-17.25, 0.49999794)
+shape = SubResource("RectangleShape2D_886jb")

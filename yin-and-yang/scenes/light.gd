@@ -4,12 +4,12 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
+var health = 3;
 
 var is_attacking : bool = false
 
 @onready var sprite = $AnimatedSprite2D
 @onready var light: CharacterBody2D = $"."
-
 
 # -----------------------
 # == PHYSICS PROCESS ==
@@ -52,6 +52,7 @@ func _physics_process(delta):
 
 	 # Animations
 	handle_animations(direction)
+	
 
 
 # -----------------------
@@ -90,3 +91,15 @@ func _on_AnimatedSprite2D_animation_finished():
 
 	if sprite.animation == "attack":
 		is_attacking = false
+
+
+func take_damage() -> void:
+	health-=1;
+	print(health)
+	if(health<=0):
+		queue_free()
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("attack"):
+		take_damage()
