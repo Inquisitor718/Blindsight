@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pwe3w")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dead",
 "speed": 5.0
 }, {
@@ -162,7 +162,7 @@ radius = 19.0
 height = 38.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkgnj"]
-radius = 5.0
+radius = 13.0
 height = 26.0
 
 [node name="Light" type="CharacterBody2D"]
@@ -170,10 +170,10 @@ script = ExtResource("1_0yxxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nmyap")
-animation = &"Dead"
+animation = &"run"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.80850506
+frame = 6
+frame_progress = 0.76045495
 
 [node name="Torch" type="Node2D" parent="."]
 
@@ -193,7 +193,7 @@ position = Vector2(-11, 1)
 shape = SubResource("CapsuleShape2D_oaxgo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 2)
+position = Vector2(-8, 1)
 shape = SubResource("CapsuleShape2D_tkgnj")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

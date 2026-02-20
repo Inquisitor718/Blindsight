@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
-var health = 25;
+var health = 20;
 
 var is_attacking : bool = false
 var is_hittable: bool = false
@@ -98,9 +98,9 @@ func _on_AnimatedSprite2D_animation_finished():
 
 func take_damage() -> void:
 	health-=1;
-	print(health)
+	#print(health)
 	if(health<=0):
-		queue_free()
+		sprite.play("Dead")
 
 
 func _on_hurt_box_area_entered(_area: Area2D) -> void:

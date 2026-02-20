@@ -232,8 +232,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s5alm"]
-radius = 14.0
-height = 28.0
+radius = 5.0
+height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_886jb"]
 size = Vector2(11.999999, 26.999996)
@@ -249,7 +249,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_s5alm")
 
 [node name="HitBox" type="Area2D" parent="." groups=["attack"]]
@@ -263,4 +263,9 @@ shape = SubResource("RectangleShape2D_886jb")
 one_shot = true
 autostart = true
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
