@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cxhip0snd0lah"]
+[gd_scene load_steps=28 format=3 uid="uid://cxhip0snd0lah"]
 
 [ext_resource type="Script" uid="uid://cf402biw13kgc" path="res://scenes/light.gd" id="1_0yxxj"]
 [ext_resource type="Texture2D" uid="uid://ccnhe6ejnj5ph" path="res://assets/Sprites/01-King Human/Dead (78x58).png" id="1_esukd"]
@@ -161,32 +161,32 @@ polygon = PackedVector2Array(1, 0, 94, 27, -5, 25, -6, -32, 93, -34)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0yxxj"]
 gradient = SubResource("Gradient_oaxgo")
 
-[node name="Light" type="CharacterBody2D" unique_id=1841562411]
+[node name="Light" type="CharacterBody2D"]
 script = ExtResource("1_0yxxj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944148366]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_tkgnj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=406490967]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_nmyap")
 animation = &"jump"
 autoplay = "idle"
 
-[node name="Torch" type="Area2D" parent="." unique_id=237439898 groups=["light"]]
+[node name="Torch" type="Area2D" parent="." groups=["light"]]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Torch" unique_id=5235395]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torch"]
 shape = SubResource("ConvexPolygonShape2D_oaxgo")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Torch/CollisionShape2D" unique_id=1241518639]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Torch/CollisionShape2D"]
 position = Vector2(0, 2.9802322e-08)
 scale = Vector2(0.99999994, 0.99999994)
 occluder = SubResource("OccluderPolygon2D_oaxgo")
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch" unique_id=668512909]
+[node name="PointLight2D" type="PointLight2D" parent="Torch"]
 position = Vector2(45.10386, -3.1109004)
 scale = Vector2(-1.5737393, 0.8734977)
 texture = SubResource("GradientTexture2D_0yxxj")
