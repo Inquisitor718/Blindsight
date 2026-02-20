@@ -236,7 +236,7 @@ radius = 5.0
 height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_886jb"]
-size = Vector2(17.5, 38.999996)
+size = Vector2(11.999999, 26.999996)
 
 [node name="Dark" type="CharacterBody2D"]
 script = ExtResource("1_886jb")
@@ -245,7 +245,7 @@ script = ExtResource("1_886jb")
 position = Vector2(-1, -3)
 scale = Vector2(1.3348405, 1.3348405)
 sprite_frames = SubResource("SpriteFrames_8fjgn")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -256,5 +256,5 @@ shape = SubResource("CapsuleShape2D_s5alm")
 rotation = -6.2831855
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-17.25, 0.49999794)
+position = Vector2(-18.999998, -5.500002)
 shape = SubResource("RectangleShape2D_886jb")

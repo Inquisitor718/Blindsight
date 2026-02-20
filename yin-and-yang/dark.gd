@@ -11,8 +11,6 @@ var is_attacking : bool = false
 
 @onready var sprite = $AnimatedSprite2D
 
-signal light_hit
-
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
@@ -40,7 +38,7 @@ func _physics_process(delta):
 	 # Flip sprite
 	if direction != 0:
 		sprite.flip_h = -direction < 0
-		hit_box.rotation = PI
+		hit_box.position.x = 19.0 if -direction<0 else -19.0
 
 	 # Jump
 	if Input.is_action_just_pressed("jump2") and is_on_floor():
@@ -56,7 +54,15 @@ func _physics_process(delta):
 	 # Animations
 	handle_animations(direction)
 	
-
+	if sprite.animation=="attack" && (sprite.frame == 1) && is_attacking:
+		hit_box.monitoring = true
+		DarkGlobals.hit_box_monitoring = true
+	else:
+		hit_box.monitoring = false
+		DarkGlobals.hit_box_monitoring = false
+	
+	#if DarkGlobals.hit_box_monitoring && hit_box.visible:
+		#print("Yes")
 
 # -----------------------
 # == ATTACK FUNCTION ==

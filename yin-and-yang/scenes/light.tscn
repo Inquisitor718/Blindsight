@@ -158,6 +158,8 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oaxgo"]
+radius = 19.0
+height = 38.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkgnj"]
 radius = 5.0
@@ -168,8 +170,10 @@ script = ExtResource("1_0yxxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nmyap")
-animation = &"jump"
+animation = &"Dead"
 autoplay = "idle"
+frame = 2
+frame_progress = 0.80850506
 
 [node name="Torch" type="Node2D" parent="."]
 
@@ -185,7 +189,7 @@ texture_scale = 4.0
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-7, 1)
+position = Vector2(-11, 1)
 shape = SubResource("CapsuleShape2D_oaxgo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -193,3 +197,4 @@ position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_tkgnj")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]

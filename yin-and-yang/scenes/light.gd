@@ -4,9 +4,10 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
-var health = 3;
+var health = 25;
 
 var is_attacking : bool = false
+var is_hittable: bool = false
 
 @onready var sprite = $AnimatedSprite2D
 @onready var light: CharacterBody2D = $"."
@@ -53,7 +54,9 @@ func _physics_process(delta):
 	 # Animations
 	handle_animations(direction)
 	
-
+	# Take Damage
+	if is_hittable && DarkGlobals.hit_box_monitoring:
+		take_damage()
 
 # -----------------------
 # == ATTACK FUNCTION ==
@@ -100,6 +103,9 @@ func take_damage() -> void:
 		queue_free()
 
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	if area.is_in_group("attack"):
-		take_damage()
+func _on_hurt_box_area_entered(_area: Area2D) -> void:
+	is_hittable = true
+
+
+func _on_hurt_box_area_exited(_area: Area2D) -> void:
+	is_hittable = false
