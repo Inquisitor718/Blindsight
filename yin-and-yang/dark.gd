@@ -13,7 +13,8 @@ var is_attacking : bool = false
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
-
+#func _ready():
+	#sprite.visible = false
 func _physics_process(delta):
 
 	 # Apply gravity
@@ -27,7 +28,9 @@ func _physics_process(delta):
 		direction -= 1
 	if Input.is_action_pressed("p1_right"):
 		direction += 1
+	
 
+	
 	 # Apply horizontal movement
 	if not is_attacking:
 		velocity.x = direction * speed
@@ -87,6 +90,12 @@ func handle_animations(direction):
 # -----------------------
 
 func _on_AnimatedSprite2D_animation_finished():
-
 	if sprite.animation == "attack":
 		is_attacking = false
+
+func show_dark():
+	#$AnimatedSprite2D.visible = true
+	pass
+func hide_dark():
+	#$AnimatedSprite2D.visible = false
+	pass
