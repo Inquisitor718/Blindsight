@@ -22,24 +22,19 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	 # Movement input
-	var direction = 0
-
-	if Input.is_action_pressed("ui_left"):
-		direction -= 1
-	if Input.is_action_pressed("ui_right"):
-		direction += 1
-
+	var input_dir = Vector2.ZERO
+	input_dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_dir.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_dir = input_dir.normalized()
 	 # Apply horizontal movement
 	if not is_attacking:
-		velocity.x = direction * speed
+		velocity.x = input_dir.x * speed
 	else:
 		velocity.x = 0   # Stop while attacking
 
-	 # Flip sprite
-	if direction != 0:
-		$Torch.scale.x = sign(direction)
-		sprite.flip_h = direction < 0
-
+	if input_dir != Vector2.ZERO:
+		$Torch.rotation = input_dir.angle()
+		sprite.flip_h = input_dir.x < 0
 	 # Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_force
@@ -52,7 +47,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 	 # Animations
-	handle_animations(direction)
+	handle_animations(input_dir.x)
 
 
 # -----------------------
