@@ -161,7 +161,7 @@ use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Light" type="CharacterBody2D"]
+[node name="Light" type="CharacterBody2D" groups=["PLAYER"]]
 script = ExtResource("1_0yxxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
