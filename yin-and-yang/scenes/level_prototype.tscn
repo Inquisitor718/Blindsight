@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1skra4oswqqy" path="res://scenes/level_prototype.gd" id="1_bar0e"]
 [ext_resource type="Texture2D" uid="uid://ygmv8rdrn15h" path="res://assets/Sprites/14-TileSets/Terrain (32x32).png" id="1_u0od5"]
 [ext_resource type="Texture2D" uid="uid://c5xh7lg3irr8a" path="res://assets/Sprites/14-TileSets/Decorations (32x32).png" id="2_nimo0"]
-[ext_resource type="PackedScene" uid="uid://cxhip0snd0lah" path="res://scenes/light.tscn" id="3_bar0e"]
+[ext_resource type="PackedScene" path="res://scenes/projectile.tscn" id="3_bar0e"]
 [ext_resource type="PackedScene" uid="uid://tbnfs5pc1coo" path="res://dark.tscn" id="4_nimo0"]
 [ext_resource type="Script" uid="uid://b286240m5jmil" path="res://scenes/camera_2d.gd" id="5_lipkd"]
 [ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="7_xjrck"]
@@ -603,9 +603,6 @@ target_b = NodePath("../Dark")
 max_zoom = 4.0
 
 [node name="Dark" parent="." instance=ExtResource("4_nimo0")]
-<<<<<<< Updated upstream
-position = Vector2(271, 590)
-=======
 modulate = Color(0.11372549, 0.101960786, 0.1882353, 1)
 position = Vector2(364, 585)
 
@@ -622,4 +619,3 @@ environment = SubResource("Environment_xjrck")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-149, 76)
->>>>>>> Stashed changes

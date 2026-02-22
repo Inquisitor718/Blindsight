@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://cvcbai5g17d2r"]
 
 [ext_resource type="Texture2D" uid="uid://jc7q6uxy167g" path="res://Group 1 (1).png" id="1_0cy04"]
-[ext_resource type="PackedScene" uid="uid://cxhip0snd0lah" path="res://scenes/light.tscn" id="2_0cy04"]
+[ext_resource type="PackedScene" uid="uid://gmt7dm0r2xto" path="res://scenes/projectile.tscn" id="2_0cy04"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0cy04"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -51,7 +51,6 @@ color = Color(0.5251013, 0.5251013, 0.5251013, 1)
 [node name="Light" parent="." instance=ExtResource("2_0cy04")]
 modulate = Color(0.54509807, 0.54509807, 0.54509807, 1)
 position = Vector2(-127, 107)
-controls = false
 
 [node name="Light2" parent="." instance=ExtResource("2_0cy04")]
 modulate = Color(0.54509807, 0.54509807, 0.54509807, 1)
