@@ -6,12 +6,17 @@ extends CharacterBody2D
 @export var gravity : float = 900.0
 @onready var sprite = $AnimatedSprite2D
 @onready var light: CharacterBody2D = $"."
+@export var projectile_scene = preload("uid://gmt7dm0r2xto")
 
+
+var holding_light: bool
+var controls: bool
 var health = 20;
 var is_attacking : bool = false
 var is_hittable: bool = false
-
-
+var can_shoot: bool
+var last_direction
+var fire_rate: float = 1.0
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
@@ -20,6 +25,7 @@ func _ready() -> void:
 	holding_light = true
 	$PointLight2D2.shadow_enabled = false
 	await get_tree().create_timer(.5).timeout
+	
 	if controls == false:
 		holding_light = false
 	$PointLight2D2.shadow_enabled = true
@@ -133,7 +139,7 @@ func _on_hurt_box_area_entered(_area: Area2D) -> void:
 
 func _on_hurt_box_area_exited(_area: Area2D) -> void:
 	is_hittable = false
-		can_shoot = true
+	can_shoot = true
 
 
 func _on_torch_body_entered(body: Node2D) -> void:

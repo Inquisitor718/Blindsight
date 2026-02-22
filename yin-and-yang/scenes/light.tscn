@@ -2,16 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cf402biw13kgc" path="res://scenes/light.gd" id="1_0yxxj"]
 [ext_resource type="Texture2D" uid="uid://ccnhe6ejnj5ph" path="res://assets/Sprites/01-King Human/Dead (78x58).png" id="1_esukd"]
-[ext_resource type="PackedScene" uid="uid://gmt7dm0r2xto" path="res://scenes/projectile.tscn" id="2_8b7g8"]
 [ext_resource type="Texture2D" uid="uid://bw4qbuaep6mhu" path="res://assets/Sprites/01-King Human/Attack (78x58).png" id="2_flval"]
 [ext_resource type="Texture2D" uid="uid://be55u2e2at675" path="res://assets/Sprites/01-King Human/Jump (78x58).png" id="4_qbk6j"]
 [ext_resource type="Texture2D" uid="uid://dvjkngnhli3wf" path="res://assets/Sprites/01-King Human/Run (78x58).png" id="5_xd7xi"]
+[ext_resource type="Texture2D" uid="uid://bimp3xgsutntc" path="res://scenes/Polygon 1 (1).png" id="7_afbga"]
 [ext_resource type="Texture2D" uid="uid://kxigob5s5hxb" path="res://scenes/Polygon 2.png" id="7_qy67f"]
-[ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="8_qy67f"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkgnj"]
-radius = 7.0
-height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0kjl"]
 atlas = ExtResource("1_esukd")
@@ -169,11 +164,6 @@ height = 26.0
 
 [node name="Light" type="CharacterBody2D"]
 script = ExtResource("1_0yxxj")
-projectile_scene = ExtResource("2_8b7g8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_tkgnj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 light_mask = 0
@@ -193,11 +183,13 @@ autoplay = "idle"
 frame = 6
 frame_progress = 0.76045495
 
-[node name="Torch" type="Node2D" parent="."]
+[node name="Torch2" type="Node2D" parent="."]
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torch2"]
 position = Vector2(-63, 2)
 color = Color(0, 0.9382303, 0.34446698, 1)
+texture = ExtResource("7_afbga")
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(101, -5)
@@ -225,8 +217,12 @@ position = Vector2(4, 0)
 energy = 2.0
 range_item_cull_mask = 3
 shadow_enabled = true
-texture = SubResource("GradientTexture2D_0yxxj")
-texture_scale = 4.0
+texture = ExtResource("7_afbga")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D2"]
+visible = false
+position = Vector2(-18, -4)
+occluder = SubResource("OccluderPolygon2D_qy67f")
 
 [node name="HurtBox" type="Area2D" parent="."]
 
@@ -238,15 +234,7 @@ shape = SubResource("CapsuleShape2D_oaxgo")
 position = Vector2(-8, 1)
 shape = SubResource("CapsuleShape2D_tkgnj")
 
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
-texture = ExtResource("8_qy67f")
-texture_scale = 3.0
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D2"]
-visible = false
-position = Vector2(-18, -4)
-occluder = SubResource("OccluderPolygon2D_qy67f")
-
 [connection signal="body_entered" from="Torch" to="." method="_on_torch_body_entered"]
 [connection signal="body_exited" from="Torch" to="." method="_on_torch_body_exited"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
