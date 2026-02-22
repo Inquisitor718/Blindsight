@@ -257,6 +257,7 @@ offset_top = -16.481369
 offset_right = 21.271172
 offset_bottom = 23.518631
 mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -272,5 +273,15 @@ shape = SubResource("RectangleShape2D_886jb")
 [node name="DashCooldown" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+light_mask = 0
+offset_left = -11.0
+offset_top = -19.0
+offset_right = 10.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

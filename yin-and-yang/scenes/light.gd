@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 
 var holding_light: bool
-var controls: bool
+var controls: bool = true
 var health = 20;
 var is_attacking : bool = false
 var is_hittable: bool = false
@@ -45,24 +45,24 @@ func _physics_process(delta):
 			direction = 1
 	
 	# Jump
-		if Input.is_action_just_pressed("jump") and is_on_floor():
+		if Input.is_action_just_pressed("p2_jump") and is_on_floor():
 			velocity.y = jump_force
 
 	 # Attack
-		if Input.is_action_just_pressed("attack") and can_shoot:
+		if Input.is_action_just_pressed("p2_attack") and can_shoot:
 			shoot()
 	
 	else :
-		if Input.is_action_pressed("p1_left"):
+		if Input.is_action_pressed("p2_left"):
 			direction = -1
-		if Input.is_action_pressed("p1_right"):
+		if Input.is_action_pressed("p2_right"):
 			direction = 1
 	 
-		if Input.is_action_just_pressed("jump2") and is_on_floor():
+		if Input.is_action_just_pressed("p2_jump") and is_on_floor():
 			velocity.y = jump_force
 
 		 # Attack
-		if Input.is_action_just_pressed("attack") and can_shoot:
+		if Input.is_action_just_pressed("p2_attack") and can_shoot:
 			shoot()
 
 	
@@ -76,6 +76,7 @@ func _physics_process(delta):
 	if direction != 0:
 		$PointLight2D2.scale.x = sign(direction)
 		sprite.flip_h = direction < 0
+		$Torch2.scale.x = sign(direction)
 
 
 	
@@ -151,13 +152,14 @@ func _on_torch_body_exited(body: Node2D) -> void:
 	if body.is_in_group("dark"):
 		body.hide_dark()
 	
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	var input_dir = Vector2(Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), Input.get_action_strength("jump") - Input.get_action_strength("down"))
+	var input_dir = Vector2(Input.get_action_strength("p2_right") - Input.get_action_strength("p2_left"), Input.get_action_strength("p2_jump") - Input.get_action_strength("p2_down"))
 	
 	if input_dir!=Vector2(0,0):
 		last_direction = input_dir.normalized()
 		
-	if Input.is_action_just_pressed("atk2") and can_shoot:
+	if Input.is_action_just_pressed("p2_attack") and can_shoot:
 		shoot()
 			
 func shoot():

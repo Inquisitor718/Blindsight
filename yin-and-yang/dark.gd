@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
 @onready var hit_box: Area2D = $HitBox
-@onready var dash_timer: Timer = $DashTimer
+
 @onready var dash_cooldown: Timer = $DashCooldown
 
 # Attack vars
@@ -35,7 +35,7 @@ func _physics_process(delta):
 		direction = -1
 	if Input.is_action_pressed("p1_right"):
 		direction = 1
-	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
+	if Input.is_action_just_pressed("p1_dash") and not is_dashing and can_dash:
 		start_dash()
 		dash_cooldown.start()
 		can_dash = false
@@ -54,11 +54,11 @@ func _physics_process(delta):
 		hit_box.position.x = 19.0 if -direction<0 else -19.0
 
 	 # Jump
-	if Input.is_action_just_pressed("jump2") and is_on_floor():
+	if Input.is_action_just_pressed("p1_jump") and is_on_floor():
 		velocity.y = jump_force
 
 	 # Attack
-	if Input.is_action_just_pressed("atk2") and not is_attacking:
+	if Input.is_action_just_pressed("p1_attack") and not is_attacking:
 		attack()
 
 	 # Animations
@@ -111,8 +111,7 @@ func _on_AnimatedSprite2D_animation_finished():
 	if sprite.animation == "attack":
 		is_attacking = false
 
-func _on_dash_timer_timeout() -> void:
-	is_dashing = false
+
  
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true

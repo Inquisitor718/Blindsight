@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cxhip0snd0lah"]
+[gd_scene load_steps=28 format=3 uid="uid://cxhip0snd0lah"]
 
 [ext_resource type="Script" uid="uid://cf402biw13kgc" path="res://scenes/light.gd" id="1_0yxxj"]
 [ext_resource type="Texture2D" uid="uid://ccnhe6ejnj5ph" path="res://assets/Sprites/01-King Human/Dead (78x58).png" id="1_esukd"]
@@ -148,9 +148,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qy67f"]
-points = PackedVector2Array(3, 4, 429, 658, -469, 665, -475, -779, 567, -786)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qy67f"]
 polygon = PackedVector2Array(3, 4, 429, 658, -469, 665, -475, -779, 567, -786)
 
@@ -186,9 +183,11 @@ frame_progress = 0.76045495
 [node name="Torch2" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="Torch2"]
-position = Vector2(-63, 2)
+position = Vector2(1, -2)
 color = Color(0, 0.9382303, 0.34446698, 1)
+shadow_enabled = true
 texture = ExtResource("7_afbga")
+offset = Vector2(105, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -199,25 +198,14 @@ range_item_cull_mask = 2
 texture = ExtResource("7_qy67f")
 texture_scale = 2.5
 
-[node name="Torch" type="Area2D" parent="." groups=["light"]]
-collision_layer = 2
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Torch"]
-visible = false
-shape = SubResource("ConvexPolygonShape2D_qy67f")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Torch/CollisionShape2D"]
-position = Vector2(0, 2.9802322e-08)
-scale = Vector2(0.99999994, 0.99999994)
-occluder = SubResource("OccluderPolygon2D_qy67f")
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(4, 0)
+visible = false
+position = Vector2(11, 1)
 energy = 2.0
 range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("7_afbga")
+offset = Vector2(50, 0)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D2"]
 visible = false
@@ -234,7 +222,5 @@ shape = SubResource("CapsuleShape2D_oaxgo")
 position = Vector2(-8, 1)
 shape = SubResource("CapsuleShape2D_tkgnj")
 
-[connection signal="body_entered" from="Torch" to="." method="_on_torch_body_entered"]
-[connection signal="body_exited" from="Torch" to="." method="_on_torch_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
