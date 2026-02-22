@@ -1,12 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://bkgut80lmud0e"]
+[gd_scene load_steps=22 format=3 uid="uid://bkgut80lmud0e"]
 
 [ext_resource type="Script" uid="uid://c1skra4oswqqy" path="res://scenes/level_prototype.gd" id="1_bar0e"]
 [ext_resource type="Texture2D" uid="uid://ygmv8rdrn15h" path="res://assets/Sprites/14-TileSets/Terrain (32x32).png" id="1_u0od5"]
 [ext_resource type="Texture2D" uid="uid://c5xh7lg3irr8a" path="res://assets/Sprites/14-TileSets/Decorations (32x32).png" id="2_nimo0"]
-[ext_resource type="PackedScene" path="res://scenes/projectile.tscn" id="3_bar0e"]
+[ext_resource type="PackedScene" uid="uid://gmt7dm0r2xto" path="res://scenes/projectile.tscn" id="3_bar0e"]
 [ext_resource type="PackedScene" uid="uid://tbnfs5pc1coo" path="res://dark.tscn" id="4_nimo0"]
 [ext_resource type="Script" uid="uid://b286240m5jmil" path="res://scenes/camera_2d.gd" id="5_lipkd"]
 [ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="7_xjrck"]
+[ext_resource type="PackedScene" uid="uid://cxhip0snd0lah" path="res://scenes/light.tscn" id="8_15h6a"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lipkd"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -619,3 +620,6 @@ environment = SubResource("Environment_xjrck")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-149, 76)
+
+[node name="Light2" parent="." instance=ExtResource("8_15h6a")]
+position = Vector2(192, 532)
