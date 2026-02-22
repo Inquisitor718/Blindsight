@@ -4,23 +4,12 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
-@export var projectile_scene:PackedScene
-@export var fire_rate = 0.4
-
-var holding_light := true:
-	set(value):
-		$PointLight2D2.visible = value
-		holding_light = value
-
-@export var controls := true
-
-var can_shoot = true
-var last_direction = Vector2.RIGHT
-
-#var is_attacking : bool = false
-
 @onready var sprite = $AnimatedSprite2D
 @onready var light: CharacterBody2D = $"."
+
+var health = 20;
+var is_attacking : bool = false
+var is_hittable: bool = false
 
 
 # -----------------------
@@ -36,7 +25,6 @@ func _ready() -> void:
 	$PointLight2D2.shadow_enabled = true
 
 func _physics_process(delta):
-
 	 # Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -92,7 +80,10 @@ func _physics_process(delta):
 
 	 # Animations
 	handle_animations(direction)
-
+	
+	# Take Damage
+	if is_hittable && DarkGlobals.hit_box_monitoring:
+		take_damage()
 
 # -----------------------
 # == ATTACK FUNCTION ==
@@ -109,8 +100,7 @@ func _physics_process(delta):
 # -----------------------
 
 func handle_animations(direction):
-
-	if not can_shoot:
+	if is_attacking:
 		return
 	if not is_on_floor():
 		sprite.play("jump")
@@ -121,14 +111,28 @@ func handle_animations(direction):
 	else:
 		sprite.play("idle")
 
-
 # -----------------------
 # == ANIMATION FINISHED ==
 # -----------------------
 
 func _on_AnimatedSprite2D_animation_finished():
-
 	if sprite.animation == "attack":
+		is_attacking = false
+
+
+func take_damage() -> void:
+	health-=1;
+	#print(health)
+	if(health<=0):
+		sprite.play("Dead")
+
+
+func _on_hurt_box_area_entered(_area: Area2D) -> void:
+	is_hittable = true
+
+
+func _on_hurt_box_area_exited(_area: Area2D) -> void:
+	is_hittable = false
 		can_shoot = true
 
 

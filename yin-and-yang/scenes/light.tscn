@@ -92,7 +92,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pwe3w")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dead",
 "speed": 5.0
 }, {
@@ -159,6 +159,14 @@ points = PackedVector2Array(3, 4, 429, 658, -469, 665, -475, -779, 567, -786)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qy67f"]
 polygon = PackedVector2Array(3, 4, 429, 658, -469, 665, -475, -779, 567, -786)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oaxgo"]
+radius = 19.0
+height = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkgnj"]
+radius = 13.0
+height = 26.0
+
 [node name="Light" type="CharacterBody2D"]
 script = ExtResource("1_0yxxj")
 projectile_scene = ExtResource("2_8b7g8")
@@ -182,7 +190,14 @@ position = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_nmyap")
 animation = &"run"
 autoplay = "idle"
+frame = 6
+frame_progress = 0.76045495
 
+[node name="Torch" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch"]
+position = Vector2(-63, 2)
+color = Color(0, 0.9382303, 0.34446698, 1)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(101, -5)
@@ -210,6 +225,21 @@ position = Vector2(4, 0)
 energy = 2.0
 range_item_cull_mask = 3
 shadow_enabled = true
+texture = SubResource("GradientTexture2D_0yxxj")
+texture_scale = 4.0
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-11, 1)
+shape = SubResource("CapsuleShape2D_oaxgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 1)
+shape = SubResource("CapsuleShape2D_tkgnj")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
 texture = ExtResource("8_qy67f")
 texture_scale = 3.0
 
