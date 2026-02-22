@@ -16,36 +16,64 @@ var is_hittable: bool = false
 # == PHYSICS PROCESS ==
 # -----------------------
 
+func _ready() -> void:
+	holding_light = true
+	$PointLight2D2.shadow_enabled = false
+	await get_tree().create_timer(.5).timeout
+	if controls == false:
+		holding_light = false
+	$PointLight2D2.shadow_enabled = true
+
 func _physics_process(delta):
 	 # Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	 # Movement input
-	var direction = 0
 
-	if Input.is_action_pressed("ui_left"):
-		direction -= 1
-	if Input.is_action_pressed("ui_right"):
-		direction += 1
+	var direction : int
+	if controls == true:
+		if Input.is_action_pressed("p2_left"):
+			direction = -1
+		if Input.is_action_pressed("p2_right"):
+			direction = 1
+	
+	# Jump
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jump_force
 
-	 # Apply horizontal movement
-	if not is_attacking:
+	 # Attack
+		if Input.is_action_just_pressed("attack") and can_shoot:
+			shoot()
+	
+	else :
+		if Input.is_action_pressed("p1_left"):
+			direction = -1
+		if Input.is_action_pressed("p1_right"):
+			direction = 1
+	 
+		if Input.is_action_just_pressed("jump2") and is_on_floor():
+			velocity.y = jump_force
+
+		 # Attack
+		if Input.is_action_just_pressed("attack") and can_shoot:
+			shoot()
+
+	
+	# Apply horizontal movement
+	if can_shoot:
 		velocity.x = direction * speed
 	else:
 		velocity.x = 0   # Stop while attacking
 
 	 # Flip sprite
 	if direction != 0:
+		$PointLight2D2.scale.x = sign(direction)
 		sprite.flip_h = direction < 0
 
-	 # Jump
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_force
 
-	 # Attack
-	if Input.is_action_just_pressed("attack") and not is_attacking:
-		attack()
+	
+
 
 	 # Move character
 	move_and_slide()
@@ -61,11 +89,11 @@ func _physics_process(delta):
 # == ATTACK FUNCTION ==
 # -----------------------
 
-func attack():
-	is_attacking = true
-	sprite.play("attack")
-	await get_tree().create_timer(0.4).timeout
-	is_attacking = false
+#func attack():
+	#is_attacking = true
+	#sprite.play("attack")
+	#await get_tree().create_timer(0.4).timeout
+	#is_attacking = false
 
 # -----------------------
 # == ANIMATION HANDLER ==
@@ -105,3 +133,36 @@ func _on_hurt_box_area_entered(_area: Area2D) -> void:
 
 func _on_hurt_box_area_exited(_area: Area2D) -> void:
 	is_hittable = false
+		can_shoot = true
+
+
+func _on_torch_body_entered(body: Node2D) -> void:
+	if body.is_in_group("dark"):
+		body.show_dark()
+
+
+func _on_torch_body_exited(body: Node2D) -> void:
+	if body.is_in_group("dark"):
+		body.hide_dark()
+	
+func _process(delta: float) -> void:
+	var input_dir = Vector2(Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), Input.get_action_strength("jump") - Input.get_action_strength("down"))
+	
+	if input_dir!=Vector2(0,0):
+		last_direction = input_dir.normalized()
+		
+	if Input.is_action_just_pressed("atk2") and can_shoot:
+		shoot()
+			
+func shoot():
+	can_shoot = false
+	
+	var projectile = projectile_scene.instantiate()
+	projectile.position = global_position
+	projectile.direction = last_direction
+	
+	get_parent().add_child(projectile)
+	
+	await get_tree().create_timer(fire_rate).timeout
+	can_shoot = true
+	

@@ -242,11 +242,21 @@ size = Vector2(11.999999, 26.999996)
 script = ExtResource("1_886jb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+clip_children = 1
+light_mask = 0
 position = Vector2(-1, -3)
 scale = Vector2(1.3348405, 1.3348405)
 sprite_frames = SubResource("SpriteFrames_8fjgn")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+light_mask = 0
+offset_left = -18.728828
+offset_top = -16.481369
+offset_right = 21.271172
+offset_bottom = 23.518631
+mouse_filter = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

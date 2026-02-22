@@ -21,7 +21,8 @@ var is_dashing : bool = false
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
-
+#func _ready():
+	#sprite.visible = false
 func _physics_process(delta):
 	var direction = 0
 	
