@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkgut80lmud0e"]
+[gd_scene load_steps=14 format=3 uid="uid://bkgut80lmud0e"]
 
 [ext_resource type="Script" uid="uid://c1skra4oswqqy" path="res://scenes/level_prototype.gd" id="1_bar0e"]
 [ext_resource type="Texture2D" uid="uid://ygmv8rdrn15h" path="res://assets/Sprites/14-TileSets/Terrain (32x32).png" id="1_u0od5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxhip0snd0lah" path="res://scenes/light.tscn" id="3_bar0e"]
 [ext_resource type="PackedScene" uid="uid://tbnfs5pc1coo" path="res://dark.tscn" id="4_nimo0"]
 [ext_resource type="Script" uid="uid://b286240m5jmil" path="res://scenes/camera_2d.gd" id="5_lipkd"]
+[ext_resource type="PackedScene" uid="uid://cqn5f6m35ke04" path="res://scenes/interactive_windchime.tscn" id="7_xjrck"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lipkd"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -548,3 +549,19 @@ max_zoom = 4.0
 
 [node name="Dark" parent="." instance=ExtResource("4_nimo0")]
 position = Vector2(271, 590)
+
+[node name="InteractiveWindchime" parent="." instance=ExtResource("7_xjrck")]
+position = Vector2(346.00003, 567)
+scale = Vector2(0.3677644, 0.44776443)
+
+[node name="InteractiveWindchime2" parent="." instance=ExtResource("7_xjrck")]
+position = Vector2(350.00003, 567.00006)
+scale = Vector2(0.3677644, 0.44776443)
+
+[node name="InteractiveWindchime3" parent="." instance=ExtResource("7_xjrck")]
+position = Vector2(354.00003, 567.00006)
+scale = Vector2(0.3677644, 0.44776443)
+
+[node name="InteractiveWindchime4" parent="." instance=ExtResource("7_xjrck")]
+position = Vector2(358, 567.00006)
+scale = Vector2(0.3677644, 0.44776443)

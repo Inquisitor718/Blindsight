@@ -14,6 +14,9 @@ var is_attacking : bool = false
 # == PHYSICS PROCESS ==
 # -----------------------
 
+func _ready() -> void:
+	add_to_group("player")
+
 func _physics_process(delta):
 
 	 # Apply gravity
