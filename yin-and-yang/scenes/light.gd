@@ -5,12 +5,18 @@ extends CharacterBody2D
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
 
+var width: float = 0.0
+
 var is_attacking : bool = false
 
 @onready var sprite = $AnimatedSprite2D
 @onready var light: CharacterBody2D = $"."
+@onready var collision: CollisionShape2D = $CollisionShape2D
 
+var player: CharacterBody2D
 
+var facing_right: bool
+var facing_left: bool
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
@@ -29,8 +35,12 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("ui_left"):
 		direction -= 1
+		facing_left = true
+		facing_right = false
 	if Input.is_action_pressed("ui_right"):
 		direction += 1
+		facing_left = false
+		facing_right = true
 
 	 # Apply horizontal movement
 	if not is_attacking:
@@ -84,6 +94,12 @@ func handle_animations(direction):
 	else:
 		sprite.play("idle")
 
+
+func update_spawn_width():
+	
+	var shape = collision.shape as CapsuleShape2D
+	
+	width = shape.radius * collision.scale.x	
 
 # -----------------------
 # == ANIMATION FINISHED ==
