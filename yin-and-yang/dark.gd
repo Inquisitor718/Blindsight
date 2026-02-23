@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
+@export var health = 30;
 @onready var hit_box: Area2D = $HitBox
 
 @onready var dash_cooldown: Timer = $DashCooldown
@@ -115,3 +116,24 @@ func _on_AnimatedSprite2D_animation_finished():
  
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
+
+
+
+
+func take_damage() -> void:
+	health-=10;
+	#print(health)
+	if(health<=0):
+		sprite.play("Dead")
+		Global_score.white_score += 1
+		
+		Global_score.round_end = true
+		Global_score.round_concluded()
+
+
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("projectile"):
+		#print("goli lagi")
+		take_damage()

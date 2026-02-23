@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var light: CharacterBody2D = $"."
 @export var projectile_scene = preload("uid://gmt7dm0r2xto")
+@export var current_level = preload("uid://cvcbai5g17d2r")
 
 
 var holding_light: bool
@@ -14,8 +15,8 @@ var controls: bool = true
 var health = 20;
 var is_attacking : bool = false
 var is_hittable: bool = false
-var can_shoot: bool
-var last_direction
+var can_shoot: bool = true
+var last_direction := 1
 var fire_rate: float = 1.0
 # -----------------------
 # == PHYSICS PROCESS ==
@@ -38,25 +39,22 @@ func _physics_process(delta):
 	 # Movement input
 
 	var direction : int
-	if controls == true:
-		if Input.is_action_pressed("p2_left"):
-			direction = -1
-		if Input.is_action_pressed("p2_right"):
-			direction = 1
 	
 	# Jump
-		if Input.is_action_just_pressed("p2_jump") and is_on_floor():
-			velocity.y = jump_force
+	if Input.is_action_just_pressed("p2_jump") and is_on_floor():
+		velocity.y = jump_force
 
 	 # Attack
-		if Input.is_action_just_pressed("p2_attack") and can_shoot:
-			shoot()
+	if Input.is_action_just_pressed("p2_attack") and can_shoot:
+		shoot()
 	
 	else :
 		if Input.is_action_pressed("p2_left"):
 			direction = -1
 		if Input.is_action_pressed("p2_right"):
 			direction = 1
+		if direction != 0:
+			last_direction = direction
 	 
 		if Input.is_action_just_pressed("p2_jump") and is_on_floor():
 			velocity.y = jump_force
@@ -70,16 +68,13 @@ func _physics_process(delta):
 	if can_shoot:
 		velocity.x = direction * speed
 	else:
-		velocity.x = 0   # Stop while attacking
+		velocity.x = 0.0  # Stop while attacking
 
 	 # Flip sprite
 	if direction != 0:
 		$PointLight2D2.scale.x = sign(direction)
 		sprite.flip_h = direction < 0
 		$Torch2.scale.x = sign(direction)
-
-
-	
 
 
 	 # Move character
@@ -132,6 +127,13 @@ func take_damage() -> void:
 	#print(health)
 	if(health<=0):
 		sprite.play("Dead")
+		Global_score.black_score += 1
+		
+		Global_score.round_end = true
+		Global_score.round_concluded()
+		
+		
+		
 
 
 func _on_hurt_box_area_entered(_area: Area2D) -> void:
@@ -154,11 +156,7 @@ func _on_torch_body_exited(body: Node2D) -> void:
 	
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	var input_dir = Vector2(Input.get_action_strength("p2_right") - Input.get_action_strength("p2_left"), Input.get_action_strength("p2_jump") - Input.get_action_strength("p2_down"))
-	
-	if input_dir!=Vector2(0,0):
-		last_direction = input_dir.normalized()
-		
+
 	if Input.is_action_just_pressed("p2_attack") and can_shoot:
 		shoot()
 			
@@ -167,7 +165,7 @@ func shoot():
 	
 	var projectile = projectile_scene.instantiate()
 	projectile.position = global_position
-	projectile.direction = last_direction
+	projectile.direction.x = last_direction
 	
 	get_parent().add_child(projectile)
 	

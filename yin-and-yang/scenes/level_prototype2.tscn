@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://cvcbai5g17d2r"]
+[gd_scene load_steps=9 format=4 uid="uid://cvcbai5g17d2r"]
 
 [ext_resource type="Texture2D" uid="uid://jc7q6uxy167g" path="res://Group 1 (1).png" id="1_0cy04"]
+[ext_resource type="PackedScene" uid="uid://cliatpbh6hdjr" path="res://ui.tscn" id="1_v07hq"]
 [ext_resource type="PackedScene" uid="uid://cxhip0snd0lah" path="res://scenes/light.tscn" id="2_0cy04"]
 [ext_resource type="PackedScene" uid="uid://tbnfs5pc1coo" path="res://dark.tscn" id="3_kyn6u"]
 
@@ -33,6 +34,8 @@ adjustment_contrast = 1.17
 adjustment_saturation = 2.19
 
 [node name="level" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_v07hq")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(26, -12)

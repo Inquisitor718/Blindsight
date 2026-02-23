@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://cjp7fxndop0ko" path="res://assets/Sprites/10-Cannon/Cannon Ball.png" id="2_softn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q2a6"]
-radius = 3.0
+radius = 4.5
 
-[node name="Area2D" type="Area2D"]
-position = Vector2(-7, -4)
+[node name="Area2D" type="Area2D" groups=["projectile"]]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_q3m7n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 4)
-shape = SubResource("CircleShape2D_6q2a6")
-
 [node name="CannonBall" type="Sprite2D" parent="."]
-position = Vector2(3, 0.9999995)
+position = Vector2(-3.5, -3.0000002)
 scale = Vector2(0.5681818, 0.64285713)
 texture = ExtResource("2_softn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["projectile"]]
+position = Vector2(0.5, 0)
+shape = SubResource("CircleShape2D_6q2a6")

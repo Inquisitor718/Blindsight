@@ -18,6 +18,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 DarkGlobals="*res://dark_globals.gd"
+Global_score="*res://global_score.gd"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=720
+
+[global_group]
+
+projectile=""
 
 [input]
 
