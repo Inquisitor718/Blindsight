@@ -159,15 +159,15 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("p2_attack") and can_shoot:
 		shoot()
-			
+		
+
 func shoot():
 	can_shoot = false
+
 	var projectile = projectile_scene.instantiate()
 	projectile.position = global_position
 	projectile.direction.x = last_direction
-	
 	get_parent().add_child(projectile)
-	
+
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
-	

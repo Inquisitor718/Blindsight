@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxhip0snd0lah"]
+[gd_scene load_steps=28 format=3 uid="uid://cxhip0snd0lah"]
 
 [ext_resource type="Script" uid="uid://cf402biw13kgc" path="res://scenes/light.gd" id="1_0yxxj"]
 [ext_resource type="Texture2D" uid="uid://ccnhe6ejnj5ph" path="res://assets/Sprites/01-King Human/Dead (78x58).png" id="1_esukd"]
@@ -148,15 +148,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_a8wu4"]
-colors = PackedColorArray(0.99215686, 1, 0.7294118, 0.59607846, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2c6lq"]
-gradient = SubResource("Gradient_a8wu4")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8666667, 0.16060606)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qy67f"]
 polygon = PackedVector2Array(3, 4, 429, 658, -469, 665, -475, -779, 567, -786)
 
@@ -196,8 +187,8 @@ position = Vector2(2, -2)
 color = Color(0, 0.9382303, 0.34446698, 1)
 shadow_enabled = true
 shadow_filter = 2
-texture = SubResource("GradientTexture2D_2c6lq")
-texture_scale = 4.0
+texture = ExtResource("7_afbga")
+offset = Vector2(100, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
