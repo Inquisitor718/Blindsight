@@ -17,7 +17,7 @@ var is_attacking : bool = false
 var is_hittable: bool = false
 var can_shoot: bool = true
 var last_direction := 1
-@export var fire_rate: float = 5.0
+@export var fire_rate: float = 2.0
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
@@ -44,9 +44,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("p2_jump") and is_on_floor():
 		velocity.y = jump_force
 
-	 # Attack
-	if Input.is_action_just_pressed("p2_attack") and can_shoot:
-		shoot()
 	
 	else :
 		if Input.is_action_pressed("p2_left"):
@@ -58,10 +55,6 @@ func _physics_process(delta):
 	 
 		if Input.is_action_just_pressed("p2_jump") and is_on_floor():
 			velocity.y = jump_force
-
-		 # Attack
-		if Input.is_action_just_pressed("p2_attack") and can_shoot:
-			shoot()
 
 	
 	# Apply horizontal movement
@@ -142,7 +135,6 @@ func _on_hurt_box_area_entered(_area: Area2D) -> void:
 
 func _on_hurt_box_area_exited(_area: Area2D) -> void:
 	is_hittable = false
-	can_shoot = true
 
 
 func _on_torch_body_entered(body: Node2D) -> void:
@@ -157,17 +149,20 @@ func _on_torch_body_exited(body: Node2D) -> void:
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 
-	if Input.is_action_just_pressed("p2_attack") and can_shoot:
+	if Input.is_action_just_pressed("p2_attack"):
 		shoot()
-		
 
 func shoot():
+	if !can_shoot:
+		return
+	
 	can_shoot = false
-
+	
 	var projectile = projectile_scene.instantiate()
 	projectile.position = global_position
 	projectile.direction.x = last_direction
 	get_parent().add_child(projectile)
 
 	await get_tree().create_timer(fire_rate).timeout
+
 	can_shoot = true
