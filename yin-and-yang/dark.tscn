@@ -238,7 +238,7 @@ radius = 14.0
 radius = 15.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_886jb"]
-size = Vector2(48.000004, 26)
+size = Vector2(48.000004, 40)
 
 [node name="Dark" type="CharacterBody2D" groups=["PLAYER"]]
 script = ExtResource("1_886jb")
@@ -268,6 +268,8 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_s5alm")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-3.496911e-07, 2)

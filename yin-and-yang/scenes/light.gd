@@ -17,7 +17,7 @@ var is_attacking : bool = false
 var is_hittable: bool = false
 var can_shoot: bool = true
 var last_direction := 1
-var fire_rate: float = 1.0
+@export var fire_rate: float = 5.0
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
@@ -162,7 +162,6 @@ func _process(delta: float) -> void:
 			
 func shoot():
 	can_shoot = false
-	
 	var projectile = projectile_scene.instantiate()
 	projectile.position = global_position
 	projectile.direction.x = last_direction

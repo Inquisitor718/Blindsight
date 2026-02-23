@@ -5,3 +5,7 @@ var direction = Vector2(0,0)
 
 func _physics_process(delta):
 	position += direction*speed*delta
+
+
+func _on_body_entered(body: Node2D) -> void:
+	queue_free() # Replace with function body.
