@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var gravity : float = 900.0
 @export var health = 30;
 @onready var hit_box: Area2D = $HitBox
+@onready var color_rect: ColorRect = $AnimatedSprite2D/ColorRect
 
 @onready var dash_cooldown: Timer = $DashCooldown
 
@@ -18,12 +19,11 @@ var dash_speed = 900
 var is_dashing : bool = false
 
 @onready var sprite = $AnimatedSprite2D
-
+@onready var mat = color_rect.material as ShaderMaterial
 # -----------------------
 # == PHYSICS PROCESS ==
 # -----------------------
-#func _ready():
-	#sprite.visible = false
+
 func _physics_process(delta):
 	var direction = 0
 	
@@ -37,6 +37,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("p1_right"):
 		direction = 1
 	if Input.is_action_just_pressed("p1_dash") and not is_dashing and can_dash:
+		
 		start_dash()
 		dash_cooldown.start()
 		can_dash = false
@@ -84,6 +85,7 @@ func attack():
 	sprite.play("attack")
 	await get_tree().create_timer(0.4).timeout
 	is_attacking = false
+	
 	
 func start_dash():
 	is_dashing = true

@@ -159,7 +159,7 @@ height = 50.0
 radius = 9.0
 height = 32.0
 
-[node name="Light" type="CharacterBody2D"]
+[node name="Light" type="CharacterBody2D" groups=["PLAYER"]]
 script = ExtResource("1_0yxxj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -186,6 +186,7 @@ frame_progress = 0.76045495
 position = Vector2(1, -2)
 color = Color(0, 0.9382303, 0.34446698, 1)
 shadow_enabled = true
+shadow_filter = 2
 texture = ExtResource("7_afbga")
 offset = Vector2(105, 0)
 

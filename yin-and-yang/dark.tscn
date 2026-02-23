@@ -233,15 +233,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s5alm"]
 radius = 14.0
-height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_886jb"]
 radius = 15.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_886jb"]
-size = Vector2(48.000004, 32)
+size = Vector2(48.000004, 26)
 
-[node name="Dark" type="CharacterBody2D"]
+[node name="Dark" type="CharacterBody2D" groups=["PLAYER"]]
 script = ExtResource("1_886jb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -252,6 +251,8 @@ scale = Vector2(1.3348405, 1.3348405)
 sprite_frames = SubResource("SpriteFrames_8fjgn")
 animation = &"idle"
 autoplay = "idle"
+frame = 10
+frame_progress = 0.105589256
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
 light_mask = 0
