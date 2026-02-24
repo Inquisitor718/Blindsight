@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cvcbai5g17d2r"]
+[gd_scene load_steps=15 format=4 uid="uid://cvcbai5g17d2r"]
 
 [ext_resource type="Texture2D" uid="uid://jc7q6uxy167g" path="res://Group 1 (1).png" id="1_0cy04"]
 [ext_resource type="Script" uid="uid://cdsbcevha616s" path="res://scenes/level_prototype_2.gd" id="1_bbffe"]
@@ -9,12 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://dmj2xna2pk52d" path="res://scenes/interactive_platform.tscn" id="5_n5iku"]
 [ext_resource type="PackedScene" uid="uid://3y54q02qn7ui" path="res://scenes/fireflies.tscn" id="6_elabq"]
 [ext_resource type="PackedScene" uid="uid://boc5g7j8kwy0m" path="res://lantern.tscn" id="9_3upfd"]
-[ext_resource type="PackedScene" uid="uid://uo0q5q40mmt6" path="res://interactiveplatform_2.tscn" id="10_fv0ad"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fv0ad"]
 shader = ExtResource("3_3upfd")
 shader_parameter/glow_size = 2.0
-shader_parameter/glow_color = Color(0.2627451, 0.6745098, 0.015686275, 1)
+shader_parameter/glow_color = Color(0.5, 1, 1, 1)
 shader_parameter/glow_strength = 1.5
 shader_parameter/glow_time = 0.0
 
@@ -104,8 +103,5 @@ visible = false
 position = Vector2(-117, -68)
 
 [node name="LightningTimer" type="Timer" parent="."]
-
-[node name="Interactiveplatform2" parent="." instance=ExtResource("10_fv0ad")]
-position = Vector2(123, 124)
 
 [connection signal="timeout" from="LightningTimer" to="." method="_on_lightning_timer_timeout"]

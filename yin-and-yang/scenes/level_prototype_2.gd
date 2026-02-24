@@ -1,23 +1,28 @@
 extends Node2D
 @onready var mat: ShaderMaterial = $TileMapLayer.material
-@export var flash_duration = 2.0
+@export var flash_duration = 1.0
 @onready var lightning_timer: Timer = $LightningTimer
 var rng = RandomNumberGenerator.new()
 @export var min_lightning_time = 5.0
 @export var max_lightning_time = 10.0
 
 func _ready():
-	trigger_glow()
+	lightning()
 	set_random_wait_time()
 	lightning_timer.start()
 	
+func lightning():
+	await trigger_glow(0.4, 10)
+	await trigger_glow(0.08, 5)
+	await trigger_glow(0.6, 3)
 
-func trigger_glow():
+func trigger_glow(time, intensity):
 	var t = 0.0
 	
-	while t < flash_duration:
+	while t < time:
 		t += get_process_delta_time()
-		mat.set_shader_parameter("glow_time", flash_duration - t)
+		mat.set_shader_parameter("glow_time", time - t)
+		mat.set_shader_parameter("glow_strength", intensity)
 		if get_tree() == null:
 			return
 		else:
@@ -32,7 +37,7 @@ func set_random_wait_time() -> void:
 	print(random_time)
 
 func _on_lightning_timer_timeout() -> void:
-	trigger_glow()
+	lightning()
 	set_random_wait_time()
 	lightning_timer.start()
 	
