@@ -13,7 +13,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fv0ad"]
 shader = ExtResource("3_3upfd")
 shader_parameter/glow_size = 2.0
-shader_parameter/glow_color = Color(0.2627451, 0.6745098, 0.015686275, 1)
+shader_parameter/glow_color = Color(0.5, 1, 1, 1)
 shader_parameter/glow_strength = 1.5
 shader_parameter/glow_time = 0.0
 
