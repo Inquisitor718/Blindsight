@@ -34,7 +34,7 @@ func set_random_wait_time() -> void:
 	rng.randomize()
 	var random_time = rng.randf_range(min_lightning_time, max_lightning_time)
 	lightning_timer.set_wait_time(random_time)
-	print(random_time)
+	#print(random_time)
 
 func _on_lightning_timer_timeout() -> void:
 	lightning()

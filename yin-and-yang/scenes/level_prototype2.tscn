@@ -34,8 +34,8 @@ texture = ExtResource("1_0cy04")
 
 [sub_resource type="TileSet" id="TileSet_v07hq"]
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 3
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_layer = 131
+physics_layer_0/collision_mask = 131
 sources/0 = SubResource("TileSetAtlasSource_kyn6u")
 
 [sub_resource type="Environment" id="Environment_0cy04"]
@@ -66,6 +66,7 @@ tile_set = SubResource("TileSet_v07hq")
 environment = SubResource("Environment_0cy04")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2(-149, 76)
 color = Color(0.5251013, 0.5251013, 0.5251013, 1)
 
