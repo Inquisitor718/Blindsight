@@ -22,6 +22,11 @@ func _physics_process(delta: float) -> void:
 	delta
 	)
 
+func drop_ability():
+	var new_clone = preload("res://scenes/characters/shadow_clone.tscn").instantiate()
+	add_sibling(new_clone)
+	new_clone.global_position = global_position
+
 func attack_ability():
 	if current_attack_cooldown > 0.:
 		return
@@ -32,14 +37,14 @@ func attack_ability():
 	var query := PhysicsRayQueryParameters2D.create(\
 	global_position,\
 	global_position + Vector2(float(direction) * attack_range, 0.),\
-	2 ** 0 || 2 ** 1 || 2 ** 2,\
+	2 ** 1 + 2 ** 2,\
 	)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	var result := space_state.intersect_ray(query)
 	if not result:
 		return
-	print(result)
+
 	var hit_obj: Node2D = result.collider
 	if hit_obj is Hurtbox:
 		if not hit_obj.get_parent() is ShadowPlayer:
