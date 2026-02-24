@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://btukqyso1bmmr"]
+
+[ext_resource type="Script" uid="uid://dhldnvl0gkphe" path="res://scenes/characters/light_player.gd" id="1_23emd"]
+[ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_1dlao"]
+[ext_resource type="Texture2D" uid="uid://blyr8xesasfnl" path="res://assets/Sprites/Random/gradient_circle.png" id="2_eqgl4"]
+[ext_resource type="PackedScene" uid="uid://c1rnhjswaoytv" path="res://scenes/characters/hurtbox.tscn" id="4_kgxcr"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eqgl4"]
+polygon = PackedVector2Array(-46, -3, 64, -32, 64, -128, -64, -128, -64, 128, 64, 128, 64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23emd"]
+size = Vector2(128, 232)
+
+[node name="LightPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_23emd")
+sprite = NodePath("ColorRect")
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+light_mask = 0
+texture = ExtResource("2_1dlao")
+
+[node name="PointLight2D" type="PointLight2D" parent="ColorRect"]
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("2_eqgl4")
+texture_scale = 5.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ColorRect"]
+visibility_layer = 0
+occluder = SubResource("OccluderPolygon2D_eqgl4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_23emd")
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_kgxcr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_23emd")
+
+[connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

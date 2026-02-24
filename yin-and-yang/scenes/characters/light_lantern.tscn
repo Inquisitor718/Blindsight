@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://g03n37rh63st"]
+
+[ext_resource type="Script" uid="uid://qp4wq50wsk0u" path="res://scenes/characters/light_lantern.gd" id="1_mk86g"]
+[ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_13o3r"]
+[ext_resource type="Texture2D" uid="uid://blyr8xesasfnl" path="res://assets/Sprites/Random/gradient_circle.png" id="3_13o3r"]
+[ext_resource type="Script" uid="uid://4r7dc5je2iwv" path="res://scenes/characters/hurtbox.gd" id="4_hpumw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13o3r"]
+size = Vector2(128, 128)
+
+[node name="LightLantern" type="Node2D"]
+script = ExtResource("1_mk86g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.722046e-06, 3.8146973e-06)
+scale = Vector2(1, 0.5565218)
+texture = ExtResource("2_13o3r")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
+texture = ExtResource("3_13o3r")
+texture_scale = 2.5
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_hpumw")
+metadata/_custom_type_script = "uid://4r7dc5je2iwv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_13o3r")
+
+[connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

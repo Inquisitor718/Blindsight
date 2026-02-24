@@ -7,7 +7,7 @@ var round = 1
 
 
 
-func _process(float):
+func _process(_delta: float):
 	if round > 7:
 		black_score = 0
 		white_score = 0
