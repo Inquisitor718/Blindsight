@@ -123,16 +123,13 @@ func _on_dash_cooldown_timeout() -> void:
 
 
 func take_damage() -> void:
-	health-=10;
-	#print(health)
+	health -= 10
 	if(health<=0):
 		sprite.play("Dead")
 		Global_score.white_score += 1
 		
 		Global_score.round_end = true
 		Global_score.round_concluded()
-
-
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

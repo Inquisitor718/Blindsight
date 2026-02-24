@@ -6,7 +6,6 @@ func _ready():
 	trigger_glow()
 
 func trigger_glow():
-	print("trigger kiya")
 	var t = 0.0
 	
 	while t < flash_duration:
