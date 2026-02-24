@@ -13,9 +13,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fv0ad"]
 shader = ExtResource("3_3upfd")
 shader_parameter/glow_size = 2.0
-shader_parameter/glow_color = Color(0.2627451, 0.6745098, 0.015686275, 1)
+shader_parameter/glow_color = Color(0.5, 1, 1, 1)
 shader_parameter/glow_strength = 1.5
-shader_parameter/glow_time = 5.0
+shader_parameter/glow_time = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0cy04"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -101,3 +101,7 @@ position = Vector2(64, -23)
 [node name="Node2D4" parent="." instance=ExtResource("9_3upfd")]
 visible = false
 position = Vector2(-117, -68)
+
+[node name="LightningTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LightningTimer" to="." method="_on_lightning_timer_timeout"]

@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var health = 30;
 @onready var hit_box: Area2D = $HitBox
 @onready var color_rect: ColorRect = $AnimatedSprite2D/ColorRect
-
+@onready var light: CharacterBody2D = $"../Light"
 @onready var dash_cooldown: Timer = $DashCooldown
 
 # Attack vars
@@ -26,7 +26,6 @@ var is_dashing : bool = false
 
 func _physics_process(delta):
 	var direction = 0
-	
 	 # Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -72,6 +71,9 @@ func _physics_process(delta):
 	else:
 		hit_box.monitoring = false
 		DarkGlobals.hit_box_monitoring = false
+	
+	if(is_dashing):
+		pass
 		
 	move_and_slide()
 
