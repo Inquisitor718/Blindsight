@@ -14,6 +14,7 @@ var direction: int = 1
 @export_category("Base dependencies")
 @export var walk_particles: GPUParticles2D
 @export var jump_particles: GPUParticles2D
+@export var death_particles: GPUParticles2D
 
 func move(dir: int, jump: bool, drop: bool, attack: bool, delta: float):
 	if dir != 0: direction = dir
@@ -37,4 +38,7 @@ func drop_ability():
 	pass
 
 func attack_ability():
+	pass
+
+func die():
 	pass

@@ -4,7 +4,9 @@ class_name ShadowPlayer
 @export_category("Shadow Player Variables")
 @export var attack_range := 220.
 @export var attack_cooldown := 0.3
+@export var shadow_clone_limit := 6
 var current_attack_cooldown := 0.
+var clones: Array[ShadowClone]
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -15,6 +17,7 @@ func _process(delta: float) -> void:
 	sprite.scale.x = direction if direction != 0 else 1
 
 func _physics_process(delta: float) -> void:
+	if hp <= 0: return 
 	move(\
 	int(Input.get_axis("p2_left", "p2_right")),\
 	is_on_floor() and Input.is_action_just_pressed("p2_jump"),\
@@ -30,10 +33,13 @@ func handle_visuals():
 
 
 func drop_ability():
+	if clones.size() > shadow_clone_limit:
+		return
 	var new_clone: ShadowClone = preload("res://scenes/characters/shadow_clone.tscn").instantiate()
 	add_sibling(new_clone)
 	new_clone.global_position = global_position
 	new_clone.direction = direction
+	clones.append(new_clone)
 
 func attack_ability():
 	if current_attack_cooldown > 0.:
@@ -71,6 +77,19 @@ func attack_ability():
 		hit_obj.take_damage(1, global_position.direction_to(hit_obj.global_position))
 	
 func take_damage(dmg: int, dir: Vector2):
+	if hp <= 0:
+		return
 	hp -= dmg
-	velocity.x = sign(dir.x) * knockback_strength
+	velocity = Vector2(sign(dir.x) * knockback_strength, -knockback_strength/3.)
 	prints("shadow takes damage", dmg, "current hp:", hp)
+	if hp <= 0:
+		die()
+
+func die():
+	if death_particles: death_particles.emitting = true
+	var death_tween = create_tween()
+	death_tween.tween_property(self, "scale", Vector2.ZERO, .8)
+	death_tween.set_parallel(true).tween_property(self, "rotation", rotation + 2*PI, .8)
+	death_tween.set_parallel(false).tween_callback(func():
+		queue_free())
+		

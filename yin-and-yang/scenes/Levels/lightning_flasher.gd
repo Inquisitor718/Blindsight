@@ -36,7 +36,7 @@ func trigger_glow(time, intensity):
 		t += get_process_delta_time()
 		mat.set_shader_parameter("glow_time", time - t)
 		mat.set_shader_parameter("glow_strength", intensity)
-		if get_tree() == null:
+		if get_tree() == null: 
 			return
 		else:
 			await get_tree().process_frame

@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://btukqyso1bmmr"]
+[gd_scene load_steps=11 format=3 uid="uid://btukqyso1bmmr"]
 
 [ext_resource type="Script" uid="uid://dhldnvl0gkphe" path="res://scenes/characters/light_player.gd" id="1_23emd"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_1dlao"]
 [ext_resource type="Texture2D" uid="uid://blyr8xesasfnl" path="res://assets/Sprites/Random/gradient_circle.png" id="2_eqgl4"]
 [ext_resource type="PackedScene" uid="uid://c1rnhjswaoytv" path="res://scenes/characters/hurtbox.tscn" id="4_kgxcr"]
 [ext_resource type="Material" uid="uid://io11fj685dic" path="res://assets/Resources/player_particles.tres" id="4_shd2n"]
+[ext_resource type="Material" uid="uid://6bi7kbt65rbu" path="res://assets/Resources/jump_particles.tres" id="5_8uquj"]
+[ext_resource type="Material" uid="uid://cstrnjbkwbmwm" path="res://assets/Resources/death_particles.tres" id="6_2g08n"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eqgl4"]
 polygon = PackedVector2Array(-46, -3, 64, -32, 64, -128, -64, -128, -64, 128, 64, 128, 64, 32)
@@ -12,34 +14,16 @@ polygon = PackedVector2Array(-46, -3, 64, -32, 64, -128, -64, -128, -64, 128, 64
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23emd"]
 size = Vector2(128, 232)
 
-[sub_resource type="Curve" id="Curve_bu806"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), -0.026484603, -0.026484603, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_shd2n"]
-curve = SubResource("Curve_bu806")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_shd2n"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(64, 1, 1)
-direction = Vector3(0, -1, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 200.0
-gravity = Vector3(0, 98, 0)
-scale_min = 5.0
-scale_max = 10.0
-scale_curve = SubResource("CurveTexture_shd2n")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgxcr"]
 size = Vector2(128, 232)
 
-[node name="LightPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "walk_particles", "jump_particles")]
+[node name="LightPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "walk_particles", "jump_particles", "death_particles")]
 collision_layer = 2
 script = ExtResource("1_23emd")
 sprite = NodePath("ColorRect")
 walk_particles = NodePath("walk_particles")
 jump_particles = NodePath("jump_particles")
+death_particles = NodePath("death_particles")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 light_mask = 2
@@ -75,7 +59,15 @@ amount = 10
 lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_shd2n")
+process_material = ExtResource("5_8uquj")
+
+[node name="death_particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("6_2g08n")
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_kgxcr")]
 collision_layer = 2

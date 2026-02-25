@@ -7,11 +7,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmb1q"]
 radius = 64.49806
 
-[node name="LightProjectile" type="Area2D" node_paths=PackedStringArray("explosion_light")]
+[node name="LightProjectile" type="Area2D" node_paths=PackedStringArray("projectile_sprite", "explosion_light")]
 light_mask = 0
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_ap1b5")
+projectile_sprite = NodePath("ColorRect")
 explosion_light = NodePath("explosion_light")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
@@ -19,12 +20,13 @@ scale = Vector2(1, 0.5565217)
 texture = ExtResource("2_ax34t")
 metadata/_edit_use_anchors_ = true
 
+[node name="projectile_light" type="PointLight2D" parent="ColorRect"]
+scale = Vector2(1.375, 2.4707038)
+texture = ExtResource("2_i3lby")
+texture_scale = 0.25
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hmb1q")
-
-[node name="projectile_light" type="PointLight2D" parent="."]
-scale = Vector2(0.3125, 0.3125)
-texture = ExtResource("2_i3lby")
 
 [node name="explosion_light" type="PointLight2D" parent="."]
 visible = false

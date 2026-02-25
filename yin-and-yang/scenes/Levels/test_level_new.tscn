@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://cdwqgupjj0wcf"]
+[gd_scene load_steps=7 format=4 uid="uid://cdwqgupjj0wcf"]
 
 [ext_resource type="TileSet" uid="uid://brwvtowhvx648" path="res://assets/Resources/test_tilemap_resource.tres" id="1_x1jpd"]
 [ext_resource type="PackedScene" uid="uid://bvewxacnb18fc" path="res://scenes/characters/shadow_player.tscn" id="2_mxhpf"]
 [ext_resource type="PackedScene" uid="uid://btukqyso1bmmr" path="res://scenes/characters/light_player.tscn" id="3_piwon"]
 [ext_resource type="PackedScene" uid="uid://cjjya58jjprns" path="res://scenes/Levels/lightning_flasher.tscn" id="4_6erab"]
+[ext_resource type="PackedScene" uid="uid://cweemv11jodfq" path="res://scenes/Levels/level_manager.tscn" id="5_hewni"]
 
 [sub_resource type="Environment" id="Environment_6erab"]
 background_mode = 3
@@ -40,3 +41,5 @@ tilemap = NodePath("../TileMapLayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6erab")
+
+[node name="LevelManager" parent="." instance=ExtResource("5_hewni")]

@@ -4,6 +4,7 @@ class_name ShadowClone
 @export var speed:= 700.0
 @export var acceleration:= 5000.
 @export var gravity:= 3500.0
+@export var knockback_strength:= 1500.
 @export var hp := 1
 
 @export_category("Dependencies")
@@ -47,8 +48,9 @@ func handle_animations():
 	else:
 		sprite.play("idle")
 
-func take_damage(dmg: int, _dir: Vector2) -> void:
+func take_damage(dmg: int, dir: Vector2) -> void:
 	hp -= dmg
+	velocity = Vector2(sign(dir.x) * knockback_strength, -knockback_strength/3.)
 	if hp <= 0:
 		queue_free()
 

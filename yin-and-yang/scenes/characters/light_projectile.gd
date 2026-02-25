@@ -1,6 +1,7 @@
 extends Area2D
 class_name LightProjectile
 
+@export var projectile_sprite: Node2D
 @export var explosion_light : PointLight2D
 @export var light_flash_time := 0.8
 @export var projectile_max_distance := 1200.
@@ -50,7 +51,7 @@ func hit(hit_obj: Node2D):
 func destroy():
 	collision_mask = 0
 	shot = false
-	$ColorRect.hide()
+	projectile_sprite.hide()
 	explosion_light.show()
 	var tween = get_tree().create_tween()
 	tween.tween_property(explosion_light, "energy", 0, light_flash_time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
