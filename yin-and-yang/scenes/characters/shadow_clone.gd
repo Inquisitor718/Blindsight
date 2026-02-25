@@ -15,6 +15,7 @@ class_name ShadowClone
 
 
 var direction := 1
+signal destroyed
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -52,7 +53,9 @@ func take_damage(dmg: int, dir: Vector2) -> void:
 	hp -= dmg
 	velocity = Vector2(sign(dir.x) * knockback_strength, -knockback_strength/3.)
 	if hp <= 0:
+		destroyed.emit()
 		queue_free()
+		
 
 #func _on_hurtbox_area_entered(area: Area2D) -> void:
 	#if area.is_in_group("projectile"):

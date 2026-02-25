@@ -3,10 +3,11 @@ class_name LightPlayer
 
 @export_category("Light Player Variables")
 @export var projectile_speed := 1750.
-@export var projectile_cooldown := 0.5
+@export var projectile_cooldown := 0.4
 @export var lantern_limit := 3
 var current_projectile_cooldown := 0.
 var lanterns: Array[LightLantern]
+var lanterns_count:= 0
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -26,9 +27,15 @@ func _physics_process(delta: float) -> void:
 	)
 
 func drop_ability():
+	if lanterns_count > lantern_limit:
+		return
 	var new_lantern : LightLantern = preload("res://scenes/characters/light_lantern.tscn").instantiate()
 	add_sibling(new_lantern)
 	new_lantern.global_position = global_position
+	lanterns_count += 1
+	var lantern_destroyed = func():
+		lanterns_count -= 1
+	new_lantern.destroyed.connect(lantern_destroyed)
 	
 
 func attack_ability():

@@ -3,10 +3,10 @@ class_name ShadowPlayer
 
 @export_category("Shadow Player Variables")
 @export var attack_range := 220.
-@export var attack_cooldown := 0.3
+@export var attack_cooldown := 0.4
 @export var shadow_clone_limit := 6
 var current_attack_cooldown := 0.
-var clones: Array[ShadowClone]
+var clones_count:= 0
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -31,15 +31,20 @@ func handle_visuals():
 	if walk_particles:
 		walk_particles.emitting = is_on_floor() and not is_equal_approx(abs(velocity.x), 0.)
 
-
 func drop_ability():
-	if clones.size() > shadow_clone_limit:
+	if clones_count > shadow_clone_limit:
 		return
+	
 	var new_clone: ShadowClone = preload("res://scenes/characters/shadow_clone.tscn").instantiate()
 	add_sibling(new_clone)
 	new_clone.global_position = global_position
 	new_clone.direction = direction
-	clones.append(new_clone)
+	new_clone.global_position = global_position
+	
+	clones_count += 1
+	var clone_destroyed = func():
+		clones_count -= 1
+	new_clone.destroyed.connect(clone_destroyed)
 
 func attack_ability():
 	if current_attack_cooldown > 0.:
