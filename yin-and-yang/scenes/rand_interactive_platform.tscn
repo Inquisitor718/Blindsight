@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmj2xna2pk52d"]
+[gd_scene load_steps=12 format=3 uid="uid://ooiwfm42dwan"]
 
-[ext_resource type="Script" uid="uid://f2aatxk07cfi" path="res://scenes/interactive_platform.gd" id="1_wue7d"]
+[ext_resource type="Script" uid="uid://ctsyxja0j8gi7" path="res://scenes/rand_interactive_platform.gd" id="1_47um4"]
+[ext_resource type="Script" uid="uid://c8tas1n446i5a" path="res://scenes/particles_path_follow.gd" id="2_inlc0"]
 
 [sub_resource type="Gradient" id="Gradient_wue7d"]
 offsets = PackedFloat32Array(0, 0.9731183, 1)
@@ -13,6 +14,12 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqmhq"]
 size = Vector2(20, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_47um4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -14, -1, 0, 0, 0, 0, -6, -1, 0, 0, 0, 0, -2, -1, 0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 4, -1, 0, 0, 0, 0, 6, -1, 0, 0, 0, 0, 8, -1, 0, 0, 0, 0, 10, -1, 0, 0, 0, 0, 12, -1, 0, 0, 0, 0, 14, -1, 0, 0, 0, 0, 17, -1)
+}
+point_count = 11
 
 [sub_resource type="Curve" id="Curve_0kmtm"]
 
@@ -43,7 +50,7 @@ linear_accel_curve = SubResource("CurveTexture_n41xs")
 scale_curve = SubResource("CurveTexture_xwary")
 
 [node name="platform" type="Node2D"]
-script = ExtResource("1_wue7d")
+script = ExtResource("1_47um4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -58,10 +65,18 @@ position = Vector2(0, 3)
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_vqmhq")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(0, -1)
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_47um4")
+script = ExtResource("2_inlc0")
+speed = 0.3
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-14, -1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Path2D/PathFollow2D"]
+position = Vector2(9.000001, 0)
+emitting = false
 amount = 5
-explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_pxhch")
 

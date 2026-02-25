@@ -120,9 +120,4 @@ position = Vector2(158, 103)
 [node name="platform5" parent="RandomizeIntPlatforms" instance=ExtResource("11_k4428")]
 position = Vector2(-142, -43)
 
-[node name="Timer" type="Timer" parent="RandomizeIntPlatforms"]
-wait_time = 2.0
-autostart = true
-
 [connection signal="timeout" from="LightningTimer" to="." method="_on_lightning_timer_timeout"]
-[connection signal="timeout" from="RandomizeIntPlatforms/Timer" to="RandomizeIntPlatforms" method="_on_timer_timeout"]
