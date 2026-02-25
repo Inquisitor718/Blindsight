@@ -5,8 +5,6 @@ var white_score = 0
 var round_end = false
 var round = 1
 
-
-
 func _process(_delta: float):
 	if round > 7:
 		black_score = 0

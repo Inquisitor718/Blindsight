@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=4 uid="uid://cdwqgupjj0wcf"]
+[gd_scene load_steps=6 format=4 uid="uid://cdwqgupjj0wcf"]
 
 [ext_resource type="TileSet" uid="uid://brwvtowhvx648" path="res://assets/Resources/test_tilemap_resource.tres" id="1_x1jpd"]
 [ext_resource type="PackedScene" uid="uid://bvewxacnb18fc" path="res://scenes/characters/shadow_player.tscn" id="2_mxhpf"]
 [ext_resource type="PackedScene" uid="uid://btukqyso1bmmr" path="res://scenes/characters/light_player.tscn" id="3_piwon"]
+[ext_resource type="PackedScene" uid="uid://cjjya58jjprns" path="res://scenes/Levels/lightning_flasher.tscn" id="4_6erab"]
+
+[sub_resource type="Environment" id="Environment_6erab"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 16.0
+glow_normalized = true
+glow_intensity = 2.18
+glow_strength = 0.61
+glow_bloom = 0.52
+glow_blend_mode = 1
 
 [node name="test_level_new" type="Node2D"]
 
@@ -21,4 +32,11 @@ position = Vector2(0, -74)
 zoom = Vector2(0.68, 0.68)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-1, 0)
 color = Color(0.32544088, 0.3254409, 0.32544088, 1)
+
+[node name="LightningFlasher" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("4_6erab")]
+tilemap = NodePath("../TileMapLayer")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6erab")

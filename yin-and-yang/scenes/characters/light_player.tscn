@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://btukqyso1bmmr"]
+[gd_scene load_steps=9 format=3 uid="uid://btukqyso1bmmr"]
 
 [ext_resource type="Script" uid="uid://dhldnvl0gkphe" path="res://scenes/characters/light_player.gd" id="1_23emd"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_1dlao"]
 [ext_resource type="Texture2D" uid="uid://blyr8xesasfnl" path="res://assets/Sprites/Random/gradient_circle.png" id="2_eqgl4"]
 [ext_resource type="PackedScene" uid="uid://c1rnhjswaoytv" path="res://scenes/characters/hurtbox.tscn" id="4_kgxcr"]
+[ext_resource type="Material" uid="uid://io11fj685dic" path="res://assets/Resources/player_particles.tres" id="4_shd2n"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eqgl4"]
 polygon = PackedVector2Array(-46, -3, 64, -32, 64, -128, -64, -128, -64, 128, 64, 128, 64, 32)
@@ -14,33 +15,46 @@ size = Vector2(112, 232)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgxcr"]
 size = Vector2(128, 232)
 
-[node name="LightPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="LightPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "walk_particles")]
 collision_layer = 2
 script = ExtResource("1_23emd")
 sprite = NodePath("ColorRect")
+walk_particles = NodePath("walk_particles")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
-light_mask = 0
+light_mask = 2
 texture = ExtResource("2_1dlao")
 
 [node name="PointLight2D" type="PointLight2D" parent="ColorRect"]
-energy = 2.0
+energy = 6.0
 shadow_enabled = true
+shadow_filter = 1
 texture = ExtResource("2_eqgl4")
-texture_scale = 5.0
+texture_scale = 6.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="ColorRect"]
 visibility_layer = 0
 occluder = SubResource("OccluderPolygon2D_eqgl4")
 
+[node name="PointLight2D2" type="PointLight2D" parent="ColorRect"]
+range_item_cull_mask = 2
+texture = ExtResource("2_1dlao")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_23emd")
+
+[node name="walk_particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 116)
+amount = 20
+process_material = ExtResource("4_shd2n")
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_kgxcr")]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 shape = SubResource("RectangleShape2D_kgxcr")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

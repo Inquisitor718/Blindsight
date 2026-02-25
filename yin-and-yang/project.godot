@@ -100,6 +100,7 @@ p1_dash={
 
 [layer_names]
 
+2d_render/layer_1="basic lights"
 2d_physics/layer_1="Walls"
 2d_physics/layer_2="Players"
 2d_physics/layer_3="Items"

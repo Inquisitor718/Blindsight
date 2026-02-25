@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjjya58jjprns"]
+
+[ext_resource type="Script" uid="uid://bfufrfp7yyaml" path="res://scenes/Levels/lightning_flasher.gd" id="1_xsg3t"]
+[ext_resource type="Material" uid="uid://dyw5idrgs2ypw" path="res://assets/Resources/lightning_mat.tres" id="2_bldyv"]
+
+[node name="LightningFlasher" type="CanvasLayer" node_paths=PackedStringArray("lightning_timer")]
+script = ExtResource("1_xsg3t")
+lightning_timer = NodePath("Timer")
+lightning_mat = ExtResource("2_bldyv")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_lightning_timer_timeout"]

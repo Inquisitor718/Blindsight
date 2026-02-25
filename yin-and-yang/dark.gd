@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
 @export var health = 30
-@export var clone_scene = preload("res://clone.tscn")
+#@export var clone_scene = preload("res://clone.tscn")
 @onready var hit_box: Area2D = $HitBox
 @onready var color_rect: ColorRect = $AnimatedSprite2D/ColorRect
 @onready var light: CharacterBody2D = $"../Light"

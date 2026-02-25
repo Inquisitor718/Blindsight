@@ -1,23 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://1c1nahjeeekb"]
+[gd_scene load_steps=5 format=3 uid="uid://1c1nahjeeekb"]
 
 [ext_resource type="Script" uid="uid://b6mqdgx01hfn7" path="res://scenes/characters/light_projectile.gd" id="1_ap1b5"]
+[ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_ax34t"]
 [ext_resource type="Texture2D" uid="uid://blyr8xesasfnl" path="res://assets/Sprites/Random/gradient_circle.png" id="2_i3lby"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmb1q"]
 radius = 64.49806
 
-[node name="LightProjectile" type="Area2D"]
+[node name="LightProjectile" type="Area2D" node_paths=PackedStringArray("explosion_light")]
 light_mask = 0
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_ap1b5")
+explosion_light = NodePath("explosion_light")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-mouse_filter = 2
+[node name="ColorRect" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.5565217)
+texture = ExtResource("2_ax34t")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,7 +28,7 @@ texture = ExtResource("2_i3lby")
 
 [node name="explosion_light" type="PointLight2D" parent="."]
 visible = false
-energy = 2.0
+energy = 4.0
 shadow_enabled = true
 texture = ExtResource("2_i3lby")
 texture_scale = 2.5

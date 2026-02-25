@@ -5,7 +5,8 @@ class_name ShadowClone
 @export var acceleration:= 4000.
 @export var gravity:= 3500.0
 @export var hp := 1
-@export var sprite : AnimatedSprite2D
+@export var sprite: AnimatedSprite2D
+@export var walk_particles: GPUParticles2D
 
 var direction := 1
 

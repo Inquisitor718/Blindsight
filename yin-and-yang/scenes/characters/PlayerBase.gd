@@ -6,8 +6,8 @@ class_name PlayerBase
 @export var move_speed := 700.
 @export var jump_height := 430.
 @export var gravity := 3500.
-@export var acceleration := 4000.
-@export var knockback_strength := 800.
+@export var acceleration := 5000.
+@export var knockback_strength := 1300.
 @export var hp := 2
 var direction: int = 1
 
