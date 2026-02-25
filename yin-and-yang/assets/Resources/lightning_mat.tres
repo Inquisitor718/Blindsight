@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dyw5idrgs2ypw"]
+
+[ext_resource type="Shader" uid="uid://btdnwwqfwt4r7" path="res://scenes/outline.gdshader" id="1_i2211"]
+
+[resource]
+shader = ExtResource("1_i2211")
+shader_parameter/glow_size = 2.0
+shader_parameter/glow_color = Color(0.719619, 0.9999998, 0.95385927, 1)
+shader_parameter/glow_strength = 1.0
+shader_parameter/glow_time = 0.0

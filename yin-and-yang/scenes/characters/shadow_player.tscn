@@ -1,8 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvewxacnb18fc"]
+[gd_scene load_steps=13 format=3 uid="uid://bvewxacnb18fc"]
 
 [ext_resource type="Script" uid="uid://cinrt8qsls30k" path="res://scenes/characters/shadow_player.gd" id="1_o1m36"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_2nipt"]
 [ext_resource type="PackedScene" uid="uid://c1rnhjswaoytv" path="res://scenes/characters/hurtbox.tscn" id="3_2ygob"]
+[ext_resource type="Material" uid="uid://6bi7kbt65rbu" path="res://assets/Resources/jump_particles.tres" id="4_16dj4"]
+[ext_resource type="Material" uid="uid://io11fj685dic" path="res://assets/Resources/player_particles.tres" id="4_sh6tl"]
+[ext_resource type="Material" uid="uid://cstrnjbkwbmwm" path="res://assets/Resources/death_particles.tres" id="5_67nkq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh6tl"]
+size = Vector2(448, 144)
 
 [sub_resource type="Animation" id="Animation_2ygob"]
 length = 0.001
@@ -42,26 +48,43 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1m36"]
-size = Vector2(112, 230)
+size = Vector2(128, 230)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ygob"]
 size = Vector2(128, 230)
 
-[node name="ShadowPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="ShadowPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "walk_particles", "jump_particles", "death_particles")]
 collision_layer = 2
 script = ExtResource("1_o1m36")
 sprite = NodePath("ColorRect")
+hitbox = NodePath("ColorRect/Hitbox")
+walk_particles = NodePath("walk_particles")
+jump_particles = NodePath("jump_particles")
+death_particles = NodePath("death_particles")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 self_modulate = Color(0.22745098, 0.22745098, 0.22745098, 1)
 light_mask = 0
 texture = ExtResource("2_2nipt")
 
+[node name="Hitbox" type="Area2D" parent="ColorRect"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/Hitbox"]
+shape = SubResource("RectangleShape2D_sh6tl")
+
 [node name="attack_sprite" type="Sprite2D" parent="ColorRect"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(111.87337, 1.6475212e-06)
+light_mask = 2
+position = Vector2(0.6720276, -3.2132436e-06)
 rotation = 1.5707964
-scale = Vector2(0.7672483, 0.97281176)
+scale = Vector2(1.0971125, 1.9397799)
+texture = ExtResource("2_2nipt")
+
+[node name="PointLight2D" type="PointLight2D" parent="ColorRect/attack_sprite"]
+energy = 2.0
+range_item_cull_mask = 2
 texture = ExtResource("2_2nipt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -71,6 +94,28 @@ libraries = {
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_o1m36")
+
+[node name="walk_particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 116)
+amount = 20
+process_material = ExtResource("4_sh6tl")
+
+[node name="jump_particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 116)
+emitting = false
+amount = 10
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("4_16dj4")
+
+[node name="death_particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("5_67nkq")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_2ygob")]
 collision_layer = 2

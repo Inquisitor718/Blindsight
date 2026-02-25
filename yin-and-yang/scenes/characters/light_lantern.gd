@@ -1,5 +1,11 @@
 extends Node2D
 class_name LightLantern
 
-func take_damage(dmg: int, dir: Vector2):
-	queue_free()
+@export var hp:= 1
+signal destroyed
+
+func take_damage(dmg: int, _dir: Vector2):
+	hp -= dmg
+	if hp <= 0:
+		destroyed.emit()
+		queue_free()

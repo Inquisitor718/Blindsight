@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_force : float = -400.0
 @export var gravity : float = 900.0
 @export var health = 30
-@export var clone_scene = preload("res://dark.tscn")
+#@export var clone_scene = preload("res://clone.tscn")
 @onready var hit_box: Area2D = $HitBox
 @onready var color_rect: ColorRect = $AnimatedSprite2D/ColorRect
 @onready var light: CharacterBody2D = $"../Light"
@@ -50,8 +50,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 
-	if Input.is_action_just_pressed("p1_down"):
-		spawn_clone(direction)
+	#if Input.is_action_just_pressed("p1_down"):
+		#spawn_clone(direction)
 
 	 # Flip sprite
 	if direction != 0:
@@ -140,10 +140,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
 		#print("goli lagi")
 		take_damage()
-
-func spawn_clone(direction):
-	var clone = clone_scene.instantiate()
-	clone.global_position = global_position
+#
+#func spawn_clone(direction):
+	#var clone = clone_scene.instantiate()
+	#clone.global_position = global_position
 	#clone.direction = direction
-
-	get_parent().add_child(clone)
+#
+	#get_parent().add_child(clone)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dacfgdl6v073r"]
+[gd_scene load_steps=41 format=3 uid="uid://dacfgdl6v073r"]
 
 [ext_resource type="Script" uid="uid://b445enxbo7wfs" path="res://scenes/characters/shadow_clone.gd" id="1_vaa15"]
 [ext_resource type="Texture2D" uid="uid://cwir63rwo0myb" path="res://assets/Sprites/02-King Pig/Dead (38x28).png" id="2_yor5d"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://csel2emvte4el" path="res://assets/Sprites/02-King Pig/Run (38x28).png" id="6_j8mku"]
 [ext_resource type="Script" uid="uid://4r7dc5je2iwv" path="res://scenes/characters/hurtbox.gd" id="7_j0gp7"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="8_775qs"]
+[ext_resource type="Material" uid="uid://io11fj685dic" path="res://assets/Resources/player_particles.tres" id="9_7w8bw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vui4k"]
 atlas = ExtResource("2_yor5d")
@@ -240,11 +241,14 @@ size = Vector2(112, 224)
 radius = 56.0
 height = 224.0
 
-[node name="Clone" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["PLAYER"]]
+[node name="Clone" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "walk_particles", "wall_ray_cast", "fall_ray_cast") groups=["PLAYER"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_vaa15")
 sprite = NodePath("AnimatedSprite2D")
+walk_particles = NodePath("walk_particles")
+wall_ray_cast = NodePath("WallRayCast")
+fall_ray_cast = NodePath("FallRayCast")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -273,10 +277,12 @@ shape = SubResource("RectangleShape2D_775qs")
 
 [node name="WallRayCast" type="RayCast2D" parent="."]
 target_position = Vector2(112, 0)
+collision_mask = 5
 
 [node name="FallRayCast" type="RayCast2D" parent="."]
 position = Vector2(0, 1)
 target_position = Vector2(112, 135)
+collision_mask = 5
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
@@ -298,5 +304,10 @@ position = Vector2(111.87337, 1.6475212e-06)
 rotation = 1.5707964
 scale = Vector2(0.7672483, 0.97281176)
 texture = ExtResource("8_775qs")
+
+[node name="walk_particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 116)
+amount = 20
+process_material = ExtResource("9_7w8bw")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]
