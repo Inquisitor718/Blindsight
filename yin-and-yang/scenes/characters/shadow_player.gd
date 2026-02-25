@@ -8,7 +8,6 @@ var current_attack_cooldown := 0.
 
 @export_category("Dependencies")
 @export var sprite: Node2D
-@export var walk_particles: GPUParticles2D
 @export var hitbox: Area2D
 
 func _process(delta: float) -> void:
@@ -31,9 +30,10 @@ func handle_visuals():
 
 
 func drop_ability():
-	var new_clone = preload("res://scenes/characters/shadow_clone.tscn").instantiate()
+	var new_clone: ShadowClone = preload("res://scenes/characters/shadow_clone.tscn").instantiate()
 	add_sibling(new_clone)
 	new_clone.global_position = global_position
+	new_clone.direction = direction
 
 func attack_ability():
 	if current_attack_cooldown > 0.:

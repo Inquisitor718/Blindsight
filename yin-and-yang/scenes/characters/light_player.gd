@@ -9,7 +9,6 @@ var current_projectile_cooldown := 0.
 
 @export_category("Dependencies")
 @export var sprite: Node2D
-@export var walk_particles: GPUParticles2D
 
 func _process(delta: float) -> void:
 	current_projectile_cooldown -= delta
@@ -23,11 +22,6 @@ func _physics_process(delta: float) -> void:
 	Input.is_action_just_pressed("p1_attack"),\
 	delta
 	)
-	handle_visuals()
-
-func handle_visuals():
-	if walk_particles:
-		walk_particles.emitting = is_on_floor() and not is_equal_approx(abs(velocity.x), 0.)
 
 func drop_ability():
 	var new_lantern : LightLantern = preload("res://scenes/characters/light_lantern.tscn").instantiate()

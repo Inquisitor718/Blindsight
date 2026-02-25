@@ -8,7 +8,7 @@
 [sub_resource type="Environment" id="Environment_6erab"]
 background_mode = 3
 glow_enabled = true
-glow_levels/1 = 16.0
+glow_levels/1 = 5.0
 glow_normalized = true
 glow_intensity = 2.18
 glow_strength = 0.61
@@ -33,7 +33,7 @@ zoom = Vector2(0.68, 0.68)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-1, 0)
-color = Color(0.32544088, 0.3254409, 0.32544088, 1)
+color = Color(0.5529556, 0.55295557, 0.55295557, 1)
 
 [node name="LightningFlasher" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("4_6erab")]
 tilemap = NodePath("../TileMapLayer")

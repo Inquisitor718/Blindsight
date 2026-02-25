@@ -2,25 +2,34 @@ extends CharacterBody2D
 class_name ShadowClone
 
 @export var speed:= 700.0
-@export var acceleration:= 4000.
+@export var acceleration:= 5000.
 @export var gravity:= 3500.0
 @export var hp := 1
+
+@export_category("Dependencies")
 @export var sprite: AnimatedSprite2D
 @export var walk_particles: GPUParticles2D
+@export var wall_ray_cast: RayCast2D
+@export var fall_ray_cast: RayCast2D
+
 
 var direction := 1
+
+func _ready() -> void:
+	await get_tree().process_frame
+	update_rays()
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
 	move_and_slide()
 	
-	$WallRayCast.force_raycast_update()
-	$FallRayCast.force_raycast_update()
+	wall_ray_cast.force_raycast_update()
+	fall_ray_cast.force_raycast_update()
 	
-	if $WallRayCast.is_colliding():
+	if wall_ray_cast.is_colliding():
 		reverse()
-	if not $FallRayCast.is_colliding():
+	if not fall_ray_cast.is_colliding():
 		reverse()
 
 func reverse():
@@ -29,8 +38,8 @@ func reverse():
 	update_rays()
 
 func update_rays():
-	$WallRayCast.target_position.x = abs($WallRayCast.target_position.x) * direction
-	$FallRayCast.target_position.x = abs($FallRayCast.target_position.x) * direction
+	wall_ray_cast.target_position.x = abs(wall_ray_cast.target_position.x) * direction
+	fall_ray_cast.target_position.x = abs(fall_ray_cast.target_position.x) * direction
 
 func handle_animations():
 	if direction != 0:
@@ -38,7 +47,7 @@ func handle_animations():
 	else:
 		sprite.play("idle")
 
-func take_damage(dmg: int, dir: Vector2) -> void:
+func take_damage(dmg: int, _dir: Vector2) -> void:
 	hp -= dmg
 	if hp <= 0:
 		queue_free()

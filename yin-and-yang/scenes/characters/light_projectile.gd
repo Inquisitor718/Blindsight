@@ -11,9 +11,6 @@ var projectile_speed: float
 var projectile_shooter: Node2D
 var shot:= false
 
-func _ready() -> void:
-	hide()
-
 func _physics_process(delta: float) -> void:
 	if not shot:
 		return
