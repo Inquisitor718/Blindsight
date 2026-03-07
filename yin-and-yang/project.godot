@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Yin and Yang"
-run/main_scene="uid://cvcbai5g17d2r"
+run/main_scene="uid://cdwqgupjj0wcf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 run/stretch/mode="viewport"
@@ -23,7 +23,7 @@ run/size/viewport_width=1920
 [autoload]
 
 DarkGlobals="*res://dark_globals.gd"
-Global_score="*res://global_score.gd"
+Round_manager="*res://round_manager.gd"
 
 [display]
 

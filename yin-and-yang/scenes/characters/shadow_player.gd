@@ -11,6 +11,7 @@ var clones_count:= 0
 @export_category("Dependencies")
 @export var sprite: Node2D
 @export var hitbox: Area2D
+var white_wins = preload("res://scenes/white_wins.tscn")
 
 func _process(delta: float) -> void:
 	current_attack_cooldown -= delta
@@ -91,6 +92,9 @@ func take_damage(dmg: int, dir: Vector2):
 		die()
 
 func die():
+	
+	Round_manager.white_win = true
+	Round_manager.round_concluded()
 	if death_particles: death_particles.emitting = true
 	var death_tween = create_tween()
 	death_tween.tween_property(self, "scale", Vector2.ZERO, .8)

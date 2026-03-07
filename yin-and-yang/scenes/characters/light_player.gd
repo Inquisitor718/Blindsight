@@ -3,14 +3,15 @@ class_name LightPlayer
 
 @export_category("Light Player Variables")
 @export var projectile_speed := 1750.
-@export var projectile_cooldown := 0.4
-@export var lantern_limit := 3
+@export var projectile_cooldown := 0.7
+@export var lantern_limit := 2
 var current_projectile_cooldown := 0.
 var lanterns: Array[LightLantern]
 var lanterns_count:= 0
 
 @export_category("Dependencies")
 @export var sprite: Node2D
+var black_wins = preload("res://scenes/black_wins.tscn")
 
 func _process(delta: float) -> void:
 	current_projectile_cooldown -= delta
@@ -57,6 +58,9 @@ func take_damage(dmg: int, dir: Vector2):
 		die()
 
 func die():
+	
+	Round_manager.black_win= true
+	Round_manager.round_concluded()
 	if death_particles: death_particles.emitting = true
 	var death_tween = create_tween()
 	death_tween.tween_property(self, "scale", Vector2.ZERO, .8)
