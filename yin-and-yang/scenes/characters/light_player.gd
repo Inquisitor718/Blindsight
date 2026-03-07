@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	if hp <= 0: return
 	move(\
 	int(Input.get_axis("p1_left", "p1_right")),\
-	is_on_floor() and Input.is_action_just_pressed("p1_jump"),\
+	Input.is_action_just_pressed("p1_jump"),\
 	Input.is_action_just_pressed("p1_down"),\
 	Input.is_action_just_pressed("p1_attack"),\
 	delta
