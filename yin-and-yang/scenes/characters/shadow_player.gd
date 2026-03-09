@@ -7,11 +7,18 @@ class_name ShadowPlayer
 @export var shadow_clone_limit := 6
 var current_attack_cooldown := 0.
 var clones_count:= 0
+var id = ""
 
 @export_category("Dependencies")
 @export var sprite: Node2D
 @export var hitbox: Area2D
 var white_wins = preload("res://scenes/white_wins.tscn")
+
+func _ready() -> void:
+	if GameManager.selection == 1:
+		id = "2"
+	else:
+		id = "1"
 
 func _process(delta: float) -> void:
 	current_attack_cooldown -= delta
@@ -20,10 +27,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if hp <= 0: return 
 	move(\
-	int(Input.get_axis("p2_left", "p2_right")),\
-	Input.is_action_pressed("p2_jump"),\
-	Input.is_action_just_pressed("p2_down"),\
-	Input.is_action_just_pressed("p2_attack"),\
+	int(Input.get_axis("p" + id + "_left", "p" + id + "_right")),\
+	Input.is_action_pressed("p" + id + "_jump"),\
+	Input.is_action_just_pressed("p" + id + "_down"),\
+	Input.is_action_just_pressed("p" + id + "_attack"),\
 	delta
 	)
 	handle_visuals()
@@ -93,8 +100,8 @@ func take_damage(dmg: int, dir: Vector2):
 
 func die():
 	
-	Round_manager.white_win = true
-	Round_manager.round_concluded()
+	GameManager.white_win = true
+	GameManager.round_concluded()
 	if death_particles: death_particles.emitting = true
 	var death_tween = create_tween()
 	death_tween.tween_property(self, "scale", Vector2.ZERO, .8)
