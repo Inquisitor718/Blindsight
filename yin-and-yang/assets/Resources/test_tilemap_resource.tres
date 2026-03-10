@@ -1,8 +1,11 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://brwvtowhvx648"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://brwvtowhvx648"]
 
 [ext_resource type="Texture2D" uid="uid://b53ujr87x0bvm" path="res://assets/Sprites/Spritesheets/test_tilemap.png" id="1_agp04"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_agp04"]
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lvrg6"]
 polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvrg6"]
@@ -10,6 +13,7 @@ texture = ExtResource("1_agp04")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_agp04")
+0:0/0/occlusion_layer_1/polygon_0/polygon = SubResource("OccluderPolygon2D_lvrg6")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0 = 0
 2:0/0 = 0
@@ -18,5 +22,6 @@ texture_region_size = Vector2i(128, 128)
 [resource]
 tile_size = Vector2i(128, 128)
 occlusion_layer_0/light_mask = 1
+occlusion_layer_1/light_mask = 2
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_lvrg6")

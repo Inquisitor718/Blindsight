@@ -6,7 +6,7 @@ class_name LightPlayer
 @export var projectile_cooldown := 0.7
 @export var lantern_limit := 2
 var current_projectile_cooldown := 0.
-var lanterns: Array[LightLantern]
+var lanterns: Array[LightLantern] 
 var lanterns_count:= 0
 var id = ""
 
