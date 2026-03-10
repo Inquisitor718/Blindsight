@@ -11,6 +11,9 @@ var black_win: bool = false
 var end_time = 1.5
 
 func start_round():
+	var score_display = get_tree().current_scene.get_node("Scores")
+	score_display.show()
+	
 	var select_screen = get_tree().current_scene.get_node("SelectScreen") 
 	if select_screen:
 		select_screen.hide()

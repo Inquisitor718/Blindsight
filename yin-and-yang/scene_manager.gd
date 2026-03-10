@@ -17,3 +17,6 @@ func load_random_scene():
 	scene_container.add_child(current_scene)
 	
 	return current_scene
+	
+	
+	
