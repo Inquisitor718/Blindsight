@@ -8,10 +8,17 @@ class_name LightPlayer
 var current_projectile_cooldown := 0.
 var lanterns: Array[LightLantern] 
 var lanterns_count:= 0
+var id = ""
 
 @export_category("Dependencies")
 @export var sprite: Node2D
 var black_wins = preload("res://scenes/black_wins.tscn")
+
+func _ready() -> void:
+	if GameManager.selection == 1:
+		id = "1"
+	else:
+		id = "2"
 
 func _process(delta: float) -> void:
 	current_projectile_cooldown -= delta
@@ -20,10 +27,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if hp <= 0: return
 	move(\
-	int(Input.get_axis("p1_left", "p1_right")),\
-	is_on_floor() and Input.is_action_just_pressed("p1_jump"),\
-	Input.is_action_just_pressed("p1_down"),\
-	Input.is_action_just_pressed("p1_attack"),\
+	int(Input.get_axis("p" + id + "_left", "p" + id + "_right")),\
+	Input.is_action_pressed("p" + id + "_jump"),\
+	Input.is_action_just_pressed("p" + id + "_down"),\
+	Input.is_action_just_pressed("p" + id + "_attack"),\
 	delta
 	)
 
@@ -59,8 +66,8 @@ func take_damage(dmg: int, dir: Vector2):
 
 func die():
 	
-	Round_manager.black_win= true
-	Round_manager.round_concluded()
+	GameManager.black_win= true
+	GameManager.round_concluded()
 	if death_particles: death_particles.emitting = true
 	var death_tween = create_tween()
 	death_tween.tween_property(self, "scale", Vector2.ZERO, .8)
