@@ -4,7 +4,7 @@ var black_score = 0
 var white_score = 0
 var winner = ""
 var selection: int
-@export var rounds = 3
+@export var rounds = 10
 var light_agayi: bool = false
 
 
