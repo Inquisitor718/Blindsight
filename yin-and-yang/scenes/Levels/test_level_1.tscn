@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://cdwqgupjj0wcf"]
+[gd_scene load_steps=8 format=4 uid="uid://cdwqgupjj0wcf"]
 
 [ext_resource type="TileSet" uid="uid://brwvtowhvx648" path="res://assets/Resources/test_tilemap_resource.tres" id="1_hhaul"]
+[ext_resource type="Texture2D" uid="uid://bbod8wmlgkxrr" path="res://assets/Tileset.png" id="4_0jxet"]
 [ext_resource type="PackedScene" uid="uid://cjjya58jjprns" path="res://scenes/Levels/lightning_flasher.tscn" id="4_hru2b"]
 [ext_resource type="PackedScene" uid="uid://cweemv11jodfq" path="res://scenes/Levels/level_manager.tscn" id="5_qxr6d"]
 
@@ -13,6 +14,25 @@ glow_intensity = 2.18
 glow_strength = 0.61
 glow_bloom = 0.52
 glow_blend_mode = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ajwo4"]
+texture = ExtResource("4_0jxet")
+texture_region_size = Vector2i(350, 350)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jyo0b"]
+sources/0 = SubResource("TileSetAtlasSource_ajwo4")
 
 [node name="test_level_new" type="Node2D"]
 
@@ -53,3 +73,6 @@ position = Vector2(-27, -447)
 
 [node name="P2" type="Marker2D" parent="SpawnPairs/Pair2"]
 position = Vector2(1516, -881)
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_jyo0b")

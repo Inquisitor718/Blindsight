@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpm6mu43w6320"]
+
+[ext_resource type="Texture2D" uid="uid://vcaf3sjpkpc1" path="res://assets/Blindsight_main menu.png" id="1_qe12f"]
+[ext_resource type="Texture2D" uid="uid://bllatli8w1iiq" path="res://assets/Play button.png" id="2_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://3u1l44j0b8n" path="res://assets/play button pressed.png" id="3_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://tuduj7ihx2gs" path="res://assets/play button hover.png" id="4_0o4t1"]
+[ext_resource type="Texture2D" uid="uid://ojnqkeq5i8s2" path="res://assets/Quit button.png" id="5_0k4wn"]
+[ext_resource type="Texture2D" uid="uid://c6yh5pb488swr" path="res://assets/quit button pressed.png" id="6_j5v2v"]
+[ext_resource type="Texture2D" uid="uid://dpclh4xp1qn7d" path="res://assets/quit button hover.png" id="7_iotk1"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="BlindsightMainMenu" type="Sprite2D" parent="."]
+position = Vector2(954, 535)
+scale = Vector2(1.0591627, 1.0591627)
+texture = ExtResource("1_qe12f")
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 235.0
+offset_top = 646.00006
+offset_right = 1607.0
+offset_bottom = 1302.0
+scale = Vector2(0.30378097, 0.30378097)
+texture_normal = ExtResource("2_8qtwp")
+texture_pressed = ExtResource("3_dy7ct")
+texture_hover = ExtResource("4_0o4t1")
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 235.0
+offset_top = 839.0
+offset_right = 1607.0
+offset_bottom = 1495.0
+scale = Vector2(0.30378097, 0.30378097)
+texture_normal = ExtResource("5_0k4wn")
+texture_pressed = ExtResource("6_j5v2v")
+texture_hover = ExtResource("7_iotk1")

@@ -1,20 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://g03n37rh63st"]
+[gd_scene load_steps=7 format=3 uid="uid://g03n37rh63st"]
 
 [ext_resource type="Script" uid="uid://qp4wq50wsk0u" path="res://scenes/characters/light_lantern.gd" id="1_mk86g"]
-[ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_13o3r"]
+[ext_resource type="Texture2D" uid="uid://rcmhsqttjxsx" path="res://assets/lantern.png" id="2_hpumw"]
 [ext_resource type="Texture2D" uid="uid://blyr8xesasfnl" path="res://assets/Sprites/Random/gradient_circle.png" id="3_13o3r"]
 [ext_resource type="Script" uid="uid://4r7dc5je2iwv" path="res://scenes/characters/hurtbox.gd" id="4_hpumw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13o3r"]
 size = Vector2(128, 128)
 
-[node name="LightLantern" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqoix"]
+radius = 68.359344
+
+[node name="LightLantern" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_mk86g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5.722046e-06, 3.8146973e-06)
-scale = Vector2(1, 0.5565218)
-texture = ExtResource("2_13o3r")
+texture = ExtResource("2_hpumw")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 1.5
@@ -30,5 +34,8 @@ metadata/_custom_type_script = "uid://4r7dc5je2iwv"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_13o3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qqoix")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

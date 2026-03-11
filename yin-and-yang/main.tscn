@@ -1,13 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://btnacv4xyn5lc"]
+[gd_scene load_steps=7 format=3 uid="uid://btnacv4xyn5lc"]
 
 [ext_resource type="Script" uid="uid://cvhv6e7mf2xoq" path="res://scene_manager.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://l1l28qc1ylnb" path="res://game_manager.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://vcaf3sjpkpc1" path="res://assets/Blindsight_main menu.png" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://cd27wwgaslxmv" path="res://player_manager.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://chlr3egak6a5f" path="res://select_screen.gd" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://bem5d83i0d6se" path="res://scores_display.gd" id="5_lquwl"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_h2yge")
+
+[node name="BlindsightMainMenu" type="Sprite2D" parent="."]
+position = Vector2(954, 535)
+scale = Vector2(1.0591627, 1.0591627)
+texture = ExtResource("2_7mycd")
 
 [node name="SceneManager" type="Node" parent="."]
 script = ExtResource("1_0xm2m")
@@ -17,54 +23,16 @@ script = ExtResource("2_h2yge")
 
 [node name="SceneContainer" type="Node" parent="."]
 
-[node name="SelectScreen" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_1bvp3")
-
-[node name="text" type="Label" parent="SelectScreen"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 728.0
-offset_top = 306.0
-offset_right = -641.0
-offset_bottom = -675.0
-theme_override_font_sizes/font_size = 50
-text = "Player 1 (WSAD) is...."
-
-[node name="light_button" type="Button" parent="SelectScreen"]
-layout_mode = 0
-offset_left = 706.0
-offset_top = 439.0
-offset_right = 858.0
-offset_bottom = 530.0
-theme_override_font_sizes/font_size = 60
-text = "Light"
-
-[node name="shadow_button" type="Button" parent="SelectScreen"]
-layout_mode = 0
-offset_left = 975.0
-offset_top = 441.0
-offset_right = 1212.0
-offset_bottom = 532.0
-theme_override_font_sizes/font_size = 60
-text = "Shadow"
-
 [node name="Scores" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -27.0
 offset_top = -20.0
-offset_right = 20.0
+offset_right = 13.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -88,6 +56,43 @@ offset_bottom = -304.0
 theme_override_font_sizes/font_size = 100
 text = "lmao"
 horizontal_alignment = 2
+
+[node name="SelectScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_1bvp3")
+
+[node name="text" type="Label" parent="SelectScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 728.0
+offset_top = 306.0
+offset_right = -641.0
+offset_bottom = -675.0
+theme_override_font_sizes/font_size = 50
+text = "Player 1 (WSAD) is...."
+
+[node name="light_button" type="Button" parent="SelectScreen"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 520.0
+offset_right = 520.0
+offset_bottom = 611.0
+theme_override_font_sizes/font_size = 60
+text = "Anora"
+
+[node name="shadow_button" type="Button" parent="SelectScreen"]
+layout_mode = 0
+offset_left = 1282.0
+offset_top = 772.0
+offset_right = 1519.0
+offset_bottom = 863.0
+theme_override_font_sizes/font_size = 60
+text = "Oni"
 
 [connection signal="pressed" from="SelectScreen/light_button" to="SelectScreen" method="_on_light_button_pressed"]
 [connection signal="pressed" from="SelectScreen/shadow_button" to="SelectScreen" method="_on_shadow_button_pressed"]

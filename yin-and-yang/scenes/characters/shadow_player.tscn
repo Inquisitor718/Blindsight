@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvewxacnb18fc"]
+[gd_scene load_steps=26 format=3 uid="uid://bvewxacnb18fc"]
 
 [ext_resource type="Script" uid="uid://cinrt8qsls30k" path="res://scenes/characters/shadow_player.gd" id="1_o1m36"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_2nipt"]
@@ -6,19 +6,17 @@
 [ext_resource type="Material" uid="uid://6bi7kbt65rbu" path="res://assets/Resources/jump_particles.tres" id="4_16dj4"]
 [ext_resource type="Material" uid="uid://io11fj685dic" path="res://assets/Resources/player_particles.tres" id="4_sh6tl"]
 [ext_resource type="Material" uid="uid://cstrnjbkwbmwm" path="res://assets/Resources/death_particles.tres" id="5_67nkq"]
+[ext_resource type="Texture2D" uid="uid://bc4pt5m80u7ob" path="res://assets/Blindsight_spritesheet.png" id="7_6wvit"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_67nkq"]
 light_mode = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh6tl"]
-size = Vector2(448, 144)
 
 [sub_resource type="Animation" id="Animation_2ygob"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/attack_sprite:modulate")
+tracks/0/path = NodePath("AnimatedSprite2D/attack_sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +32,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/attack_sprite:modulate")
+tracks/0/path = NodePath("AnimatedSprite2D/attack_sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,41 +54,117 @@ size = Vector2(128, 230)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ygob"]
 size = Vector2(128, 230)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6wvit"]
+light_mode = 2
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wvit"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1024, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4rxi"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1280, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7f1e"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1536, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wopoq"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1792, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4tk0"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyfsp"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37qkg"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1280, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc6fo"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1536, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46u2e"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1792, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4rxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wvit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4rxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7f1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wopoq")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4tk0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyfsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37qkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc6fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46u2e")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh6tl"]
+size = Vector2(448, 144)
+
 [node name="ShadowPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "walk_particles", "jump_particles", "death_particles")]
 collision_layer = 2
 script = ExtResource("1_o1m36")
 sprite = NodePath("ColorRect")
-hitbox = NodePath("ColorRect/Hitbox")
+hitbox = NodePath("AnimatedSprite2D/Hitbox")
 walk_particles = NodePath("walk_particles")
 jump_particles = NodePath("jump_particles")
 death_particles = NodePath("death_particles")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(0.22745098, 1, 0.22745098, 1)
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_67nkq")
-texture = ExtResource("2_2nipt")
-
-[node name="Hitbox" type="Area2D" parent="ColorRect"]
-collision_layer = 0
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/Hitbox"]
-shape = SubResource("RectangleShape2D_sh6tl")
-
-[node name="attack_sprite" type="Sprite2D" parent="ColorRect"]
-visible = false
-modulate = Color(1, 1, 1, 0)
-light_mask = 2
-position = Vector2(0.6720276, -3.2132436e-06)
-rotation = 1.5707964
-scale = Vector2(1.0971125, 1.9397799)
-texture = ExtResource("2_2nipt")
-
-[node name="PointLight2D" type="PointLight2D" parent="ColorRect/attack_sprite"]
-energy = 2.0
-range_item_cull_mask = 2
 texture = ExtResource("2_2nipt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -129,5 +203,38 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_2ygob")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_6wvit")
+scale = Vector2(1.8479263, 1.8479263)
+sprite_frames = SubResource("SpriteFrames_u4rxi")
+animation = &"Attack"
+autoplay = "Idle"
+frame = 3
+frame_progress = 1.0
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+scale = Vector2(0.5411471, 0.5411471)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
+shape = SubResource("RectangleShape2D_sh6tl")
+
+[node name="attack_sprite" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0)
+light_mask = 2
+position = Vector2(0.3636658, -1.7388376e-06)
+rotation = 1.5707964
+scale = Vector2(0.5936993, 1.0497063)
+texture = ExtResource("2_2nipt")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D/attack_sprite"]
+visible = false
+energy = 2.0
+range_item_cull_mask = 2
+texture = ExtResource("2_2nipt")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

@@ -6,6 +6,7 @@ var winner = ""
 var selection: int
 @export var rounds = 2
 
+
 var white_win: bool = false
 var black_win: bool = false
 var end_time = 1.5
@@ -16,6 +17,7 @@ func start_round():
 	
 	var select_screen = get_tree().current_scene.get_node("SelectScreen") 
 	if select_screen:
+		
 		select_screen.hide()
 	
 	var scene_manager = get_tree().current_scene.get_node("SceneManager")
