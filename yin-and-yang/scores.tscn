@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://cycpgqi1kj04d"]
+
+[ext_resource type="Script" uid="uid://bem5d83i0d6se" path="res://scores_display.gd" id="1_ef5k2"]
+
+[node name="Scores" type="Control"]
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 522.0
+offset_top = -412.0
+offset_right = 509.0
+offset_bottom = -412.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ef5k2")
+
+[node name="light_score" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1810.0
+offset_top = -1040.0
+offset_right = -1345.0
+offset_bottom = -883.0
+theme_override_font_sizes/font_size = 100
+text = "lmao"
+
+[node name="shadow_score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = -1023.0
+offset_right = 1681.0
+offset_bottom = -866.0
+theme_override_font_sizes/font_size = 100
+text = "lmao"
+horizontal_alignment = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvewxacnb18fc"]
+[gd_scene load_steps=14 format=3 uid="uid://bvewxacnb18fc"]
 
 [ext_resource type="Script" uid="uid://cinrt8qsls30k" path="res://scenes/characters/shadow_player.gd" id="1_o1m36"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_2nipt"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://6bi7kbt65rbu" path="res://assets/Resources/jump_particles.tres" id="4_16dj4"]
 [ext_resource type="Material" uid="uid://io11fj685dic" path="res://assets/Resources/player_particles.tres" id="4_sh6tl"]
 [ext_resource type="Material" uid="uid://cstrnjbkwbmwm" path="res://assets/Resources/death_particles.tres" id="5_67nkq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_67nkq"]
+light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh6tl"]
 size = Vector2(448, 144)
@@ -63,8 +66,10 @@ jump_particles = NodePath("jump_particles")
 death_particles = NodePath("death_particles")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
-self_modulate = Color(0.22745098, 0.22745098, 0.22745098, 1)
-light_mask = 0
+self_modulate = Color(0.22745098, 1, 0.22745098, 1)
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_67nkq")
 texture = ExtResource("2_2nipt")
 
 [node name="Hitbox" type="Area2D" parent="ColorRect"]
@@ -75,6 +80,7 @@ collision_mask = 6
 shape = SubResource("RectangleShape2D_sh6tl")
 
 [node name="attack_sprite" type="Sprite2D" parent="ColorRect"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 light_mask = 2
 position = Vector2(0.6720276, -3.2132436e-06)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1pocl76ly35b"]
+
+[ext_resource type="Script" uid="uid://blt2jj58leeai" path="res://end_screen.gd" id="1_my301"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_my301")
+
+[node name="WinnerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 392.0
+offset_right = 1296.0
+offset_bottom = 597.0
+theme_override_font_sizes/font_size = 150
+
+[node name="restart_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 672.0
+offset_right = 1152.0
+offset_bottom = 824.0
+theme_override_font_sizes/font_size = 100
+text = "Restart"
+
+[connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
