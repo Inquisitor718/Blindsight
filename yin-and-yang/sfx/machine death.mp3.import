@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sctdvb2cys2y"
+path="res://.godot/imported/machine death.mp3-19036170d5c30b15a9ea9e6e30064587.mp3str"
+
+[deps]
+
+source_file="res://sfx/machine death.mp3"
+dest_files=["res://.godot/imported/machine death.mp3-19036170d5c30b15a9ea9e6e30064587.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

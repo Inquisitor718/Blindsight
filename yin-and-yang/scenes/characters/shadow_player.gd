@@ -9,6 +9,10 @@ var current_attack_cooldown := 0.
 var clones_count:= 0
 var id = ""
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack: AudioStreamPlayer2D = $attack
+@onready var taking_damage: AudioStreamPlayer2D = $taking_damage
+@onready var death: AudioStreamPlayer2D = $death
+
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -27,6 +31,8 @@ func set_direction(value: int):
 
 func _process(delta: float) -> void:
 	current_attack_cooldown -= delta
+	
+	
 
 func _physics_process(delta: float) -> void:
 	if hp <= 0: return 
@@ -38,6 +44,8 @@ func _physics_process(delta: float) -> void:
 	delta
 	)
 	handle_visuals()
+	
+
 
 func handle_visuals():
 	if walk_particles:
@@ -62,7 +70,8 @@ func attack_ability():
 	if current_attack_cooldown > 0.:
 		return
 	current_attack_cooldown = attack_cooldown
-	$AnimationPlayer.play("attack")
+	anim_sprite.play("attack")
+	attack.play()
 
 	#var space_state = get_world_2d().direct_space_state
 	#var query := PhysicsRayQueryParameters2D.create(\
@@ -101,6 +110,8 @@ func take_damage(dmg: int, dir: Vector2):
 	prints("shadow takes damage", dmg, "current hp:", hp)
 	if hp <= 0:
 		die()
+	else:
+		taking_damage.play()
 
 func _enter_state(new_state: State, msg:={}):
 	super(new_state, msg)
@@ -115,7 +126,7 @@ func _enter_state(new_state: State, msg:={}):
 			anim_sprite.play("Walk")
 
 func die():
-	
+	death.play()
 	GameManager.white_win = true
 	GameManager.round_concluded()
 	if death_particles: death_particles.emitting = true

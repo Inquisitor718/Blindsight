@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://btukqyso1bmmr"]
+[gd_scene load_steps=37 format=3 uid="uid://btukqyso1bmmr"]
 
 [ext_resource type="Script" uid="uid://dhldnvl0gkphe" path="res://scenes/characters/light_player.gd" id="1_23emd"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_1dlao"]
@@ -9,6 +9,9 @@
 [ext_resource type="Material" uid="uid://cstrnjbkwbmwm" path="res://assets/Resources/death_particles.tres" id="6_2g08n"]
 [ext_resource type="Texture2D" uid="uid://bc4pt5m80u7ob" path="res://assets/Blindsight_spritesheet.png" id="8_2g08n"]
 [ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="9_c6r6e"]
+[ext_resource type="AudioStream" uid="uid://0dqpb1pgd8vp" path="res://sfx/machine attack.mp3" id="10_yf37d"]
+[ext_resource type="AudioStream" uid="uid://1okqng2o6qnl" path="res://sfx/taking damage machine.mp3" id="11_gwa3j"]
+[ext_resource type="AudioStream" uid="uid://sctdvb2cys2y" path="res://sfx/machine death.mp3" id="12_xxvif"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eqgl4"]
 polygon = PackedVector2Array(-46, -3, 64, -32, 64, -128, -64, -128, -64, 128, 64, 128, 64, 32)
@@ -67,10 +70,6 @@ region = Rect2(1792, 0, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_c61te"]
 atlas = ExtResource("8_2g08n")
 region = Rect2(0, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1a5o"]
-atlas = ExtResource("8_2g08n")
-region = Rect2(0, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hmqu"]
 atlas = ExtResource("8_2g08n")
@@ -158,9 +157,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g1a5o")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_1hmqu")
 }, {
 "duration": 1.0,
@@ -171,7 +167,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 8.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -256,7 +252,7 @@ clip_children = 2
 light_mask = 17
 scale = Vector2(1.3535805, 1.3535805)
 sprite_frames = SubResource("SpriteFrames_gwa3j")
-animation = &"walk"
+animation = &"death"
 autoplay = "idle"
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
@@ -279,5 +275,15 @@ shape = SubResource("RectangleShape2D_kgxcr")
 position = Vector2(4, 0)
 range_item_cull_mask = 16
 texture = ExtResource("9_c6r6e")
+
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_yf37d")
+volume_db = -10.0
+
+[node name="taking_damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_gwa3j")
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_xxvif")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

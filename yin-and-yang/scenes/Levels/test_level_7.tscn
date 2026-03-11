@@ -21,7 +21,9 @@ tile_map_data = PackedByteArray("AAAAAAQAAgAAAAAAAAABAAQAAgAAAAAAAAACAAQAAgAAAAA
 tile_set = ExtResource("1_yhk0h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2109, -345)
+visible = false
+position = Vector2(891, -506)
+zoom = Vector2(0.5, 0.4)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-1, 0)

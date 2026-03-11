@@ -4,7 +4,8 @@ var black_score = 0
 var white_score = 0
 var winner = ""
 var selection: int
-@export var rounds = 2
+@export var rounds = 3
+var light_agayi: bool = false
 
 
 var white_win: bool = false
@@ -17,7 +18,6 @@ func start_round():
 	
 	var select_screen = get_tree().current_scene.get_node("SelectScreen") 
 	if select_screen:
-		
 		select_screen.hide()
 	
 	var scene_manager = get_tree().current_scene.get_node("SceneManager")
@@ -50,3 +50,12 @@ func round_concluded():
 		get_tree().change_scene_to_file("res://end_screen.tscn")
 	else:
 		start_round()
+
+
+
+#func _bijli_aayi():
+	#light_agayi=true
+	#print("yay")
+	#await get_tree().create_timer(1.5).timeout
+	#light_agayi = false
+	#print("shit")

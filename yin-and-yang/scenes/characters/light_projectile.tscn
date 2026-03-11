@@ -32,7 +32,9 @@ shape = SubResource("CircleShape2D_hmb1q")
 [node name="x" type="PointLight2D" parent="."]
 visible = false
 energy = 4.0
+range_item_cull_mask = 3
 shadow_enabled = true
+shadow_item_cull_mask = 3
 texture = ExtResource("2_i3lby")
 texture_scale = 3.0
 

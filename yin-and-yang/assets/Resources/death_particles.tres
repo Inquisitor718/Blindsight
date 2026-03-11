@@ -9,6 +9,8 @@ curve = SubResource("Curve_bu806")
 
 [resource]
 particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
 direction = Vector3(0, -1, 0)
 spread = 180.0
 initial_velocity_max = 500.0

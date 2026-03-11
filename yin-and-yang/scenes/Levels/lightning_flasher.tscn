@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjjya58jjprns"]
+[gd_scene load_steps=4 format=3 uid="uid://cjjya58jjprns"]
 
 [ext_resource type="Script" uid="uid://bfufrfp7yyaml" path="res://scenes/Levels/lightning_flasher.gd" id="1_xsg3t"]
 [ext_resource type="Material" uid="uid://dyw5idrgs2ypw" path="res://assets/Resources/lightning_mat.tres" id="2_bldyv"]
+[ext_resource type="AudioStream" uid="uid://eoy7aflx6q6b" path="res://sfx/thunder.mp3" id="3_fy8rj"]
 
 [node name="LightningFlasher" type="CanvasLayer" node_paths=PackedStringArray("lightning_timer")]
 script = ExtResource("1_xsg3t")
@@ -9,5 +10,9 @@ lightning_timer = NodePath("Timer")
 lightning_mat = ExtResource("2_bldyv")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="thunder" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fy8rj")
+volume_db = 10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_lightning_timer_timeout"]

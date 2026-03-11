@@ -9,12 +9,12 @@ class_name LightningFlasher
 @export var min_lightning_time = 5.0
 @export var max_lightning_time = 10.0
 @export var lightning_mat: ShaderMaterial
+@onready var thunder: AudioStreamPlayer2D = $thunder
 
 var mat: ShaderMaterial 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	lightning()
 	set_random_wait_time()
 	lightning_timer.start()
 	
@@ -23,14 +23,17 @@ func _ready():
 		mat = tilemap.material
 	
 func lightning():
+	thunder.play()
+	
 	await trigger_glow(0.4, 4)
 	await trigger_glow(0.08, 3)
 	await trigger_glow(0.6, 1)
 
 func trigger_glow(time, intensity):
-	if not mat:
+	if mat == null:
 		return
-
+	
+	
 	var t = 0.0
 	while t < time:
 		t += get_process_delta_time()

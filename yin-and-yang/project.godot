@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Yin and Yang"
-run/main_scene="uid://btnacv4xyn5lc"
+run/main_scene="uid://bpm6mu43w6320"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 run/stretch/mode="viewport"
@@ -112,5 +112,5 @@ click={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_filter=3
 viewport/hdr_2d=true

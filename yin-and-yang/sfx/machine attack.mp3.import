@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0dqpb1pgd8vp"
+path="res://.godot/imported/machine attack.mp3-a94ea0015c56902a322c907bb69cf150.mp3str"
+
+[deps]
+
+source_file="res://sfx/machine attack.mp3"
+dest_files=["res://.godot/imported/machine attack.mp3-a94ea0015c56902a322c907bb69cf150.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1pocl76ly35b"]
+[gd_scene load_steps=9 format=3 uid="uid://d1pocl76ly35b"]
 
 [ext_resource type="Script" uid="uid://blt2jj58leeai" path="res://end_screen.gd" id="1_my301"]
+[ext_resource type="AudioStream" uid="uid://b6cva8et7gl7v" path="res://sfx/game end.mp3" id="2_abjgy"]
+[ext_resource type="Texture2D" uid="uid://vcaf3sjpkpc1" path="res://assets/Blindsight_main menu.png" id="2_d75mr"]
+[ext_resource type="Texture2D" uid="uid://cjwbr5ggcdj46" path="res://assets/Restart.png" id="3_2afhe"]
+[ext_resource type="Texture2D" uid="uid://b8pm5ibq26ahj" path="res://assets/restert pressed.png" id="4_nbj2a"]
+[ext_resource type="Texture2D" uid="uid://yynrvrj510vi" path="res://assets/restart hover.png" id="5_f33ud"]
+[ext_resource type="Texture2D" uid="uid://gdcqbyobg1fv" path="res://assets/Anora wins.png" id="6_kaxt3"]
+[ext_resource type="Texture2D" uid="uid://bem4blb1dh526" path="res://assets/Oni wins.png" id="7_2afhe"]
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -9,21 +16,34 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_my301")
 
-[node name="WinnerLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 392.0
-offset_right = 1296.0
-offset_bottom = 597.0
-theme_override_font_sizes/font_size = 150
+[node name="BlindsightMainMenu" type="Sprite2D" parent="."]
+self_modulate = Color(0.8295712, 0.6757652, 7.70092e-07, 1)
+position = Vector2(954, 535)
+scale = Vector2(1.0591627, 1.0591627)
+texture = ExtResource("2_d75mr")
 
-[node name="restart_button" type="Button" parent="."]
+[node name="restart_button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 648.0
-offset_top = 672.0
-offset_right = 1152.0
-offset_bottom = 824.0
-theme_override_font_sizes/font_size = 100
-text = "Restart"
+offset_left = 576.00006
+offset_top = 649.0
+offset_right = 2623.0
+offset_bottom = 1305.0
+scale = Vector2(0.36644575, 0.3788023)
+texture_normal = ExtResource("3_2afhe")
+texture_pressed = ExtResource("4_nbj2a")
+texture_hover = ExtResource("5_f33ud")
+
+[node name="end_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_abjgy")
+volume_db = 20.0
+
+[node name="AnoraWins" type="Sprite2D" parent="."]
+position = Vector2(948, 556)
+texture = ExtResource("6_kaxt3")
+
+[node name="OniWins" type="Sprite2D" parent="."]
+position = Vector2(948, 556)
+scale = Vector2(0.25137633, 0.25137633)
+texture = ExtResource("7_2afhe")
 
 [connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]

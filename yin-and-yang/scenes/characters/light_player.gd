@@ -10,6 +10,9 @@ var lanterns: Array[LightLantern]
 var lanterns_count := 0
 var id := ""
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack: AudioStreamPlayer2D = $attack
+@onready var taking_damage: AudioStreamPlayer2D = $taking_damage
+@onready var death: AudioStreamPlayer2D = $death
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -23,7 +26,7 @@ func _ready() -> void:
 
 func set_direction(value: int):
 	super(value)
-	anim_sprite.flip_h = true if value == 1 else false if value == -1 else anim_sprite.flip_h
+	anim_sprite.flip_h = true if value == -1 else false if value == +1 else anim_sprite.flip_h
 
 func _process(delta: float) -> void:
 	current_projectile_cooldown -= delta
@@ -47,6 +50,8 @@ func drop_ability():
 	add_sibling(new_lantern)
 	new_lantern.global_position = global_position
 	lanterns_count += 1
+	anim_sprite.play("jump")
+	attack.play()
 	var lantern_destroyed = func():
 		lanterns_count -= 1
 	new_lantern.destroyed.connect(lantern_destroyed)
@@ -71,6 +76,8 @@ func attack_ability():
 	var new_projectile : LightProjectile = preload("res://scenes/characters/light_projectile.tscn").instantiate()
 	add_sibling(new_projectile)
 	new_projectile.spawn(global_position, Vector2(float(direction), 0.), projectile_speed, self)
+	attack.play()
+	anim_sprite.play("attack")
 
 func take_damage(dmg: int, dir: Vector2):
 	if hp <= 0:
@@ -80,15 +87,21 @@ func take_damage(dmg: int, dir: Vector2):
 	prints("light takes damage", dmg, "current hp:", hp)
 	if hp <= 0:
 		die()
+	else:
+		taking_damage.play()
 
 func die():
-	
+	death.play()
 	GameManager.black_win= true
 	GameManager.round_concluded()
 	if death_particles: death_particles.emitting = true
-	var death_tween = create_tween()
-	death_tween.tween_property(self, "scale", Vector2.ZERO, .8)
-	death_tween.set_parallel(true).tween_property(self, "rotation", rotation + 2*PI, .8)
-	death_tween.set_parallel(false).tween_callback(func():
-		queue_free())
+	#var death_tween = create_tween()
+	#death_tween.tween_property(self, "scale", Vector2.ZERO, .8)
+	#death_tween.set_parallel(true).tween_property(self, "rotation", rotation + 2*PI, .8)
+	#death_tween.set_parallel(false).tween_callback(func():
+	anim_sprite.play("death")
+	await get_tree().create_timer(1.0).timeout
+	
+	queue_free()
+	
 		

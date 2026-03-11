@@ -37,9 +37,9 @@ func _physics_process(delta):
 
 func reverse():
 	direction *= -1
-	sprite.flip_h = direction < 0
+	oni_sprite.flip_h = true if direction > 0 else false if direction < 0 else oni_sprite.flip_h
 	update_rays()
-
+ 
 func update_rays():
 	wall_ray_cast.target_position.x = abs(wall_ray_cast.target_position.x) * direction
 	fall_ray_cast.target_position.x = abs(fall_ray_cast.target_position.x) * direction

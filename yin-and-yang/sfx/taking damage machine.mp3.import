@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1okqng2o6qnl"
+path="res://.godot/imported/taking damage machine.mp3-defd95c5c20a8cf90a823a0451a02cd7.mp3str"
+
+[deps]
+
+source_file="res://sfx/taking damage machine.mp3"
+dest_files=["res://.godot/imported/taking damage machine.mp3-defd95c5c20a8cf90a823a0451a02cd7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
