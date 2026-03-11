@@ -7,8 +7,9 @@ class_name LightPlayer
 @export var lantern_limit := 2
 var current_projectile_cooldown := 0.
 var lanterns: Array[LightLantern] 
-var lanterns_count:= 0
-var id = ""
+var lanterns_count := 0
+var id := ""
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -19,6 +20,10 @@ func _ready() -> void:
 		id = "1"
 	else:
 		id = "2"
+
+func set_direction(value: int):
+	super(value)
+	anim_sprite.flip_h = true if value == 1 else false if value == -1 else anim_sprite.flip_h
 
 func _process(delta: float) -> void:
 	current_projectile_cooldown -= delta
@@ -37,6 +42,7 @@ func _physics_process(delta: float) -> void:
 func drop_ability():
 	if lanterns_count > lantern_limit:
 		return
+
 	var new_lantern : LightLantern = preload("res://scenes/characters/light_lantern.tscn").instantiate()
 	add_sibling(new_lantern)
 	new_lantern.global_position = global_position
@@ -44,13 +50,24 @@ func drop_ability():
 	var lantern_destroyed = func():
 		lanterns_count -= 1
 	new_lantern.destroyed.connect(lantern_destroyed)
+
+func _enter_state(new_state: State, msg:={}):
+	super(new_state, msg)
 	
+	match new_state:
+		State.IN_AIR:
+			if msg.has("jump"):
+				anim_sprite.play("jump")
+		State.IDLE:
+			anim_sprite.play("idle")
+		State.RUN:
+			anim_sprite.play("walk")
 
 func attack_ability():
 	if current_projectile_cooldown > 0.:
 		return
 	current_projectile_cooldown = projectile_cooldown
-	
+
 	var new_projectile : LightProjectile = preload("res://scenes/characters/light_projectile.tscn").instantiate()
 	add_sibling(new_projectile)
 	new_projectile.spawn(global_position, Vector2(float(direction), 0.), projectile_speed, self)

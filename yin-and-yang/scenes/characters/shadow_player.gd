@@ -8,6 +8,7 @@ class_name ShadowPlayer
 var current_attack_cooldown := 0.
 var clones_count:= 0
 var id = ""
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -20,9 +21,12 @@ func _ready() -> void:
 	else:
 		id = "1"
 
+func set_direction(value: int):
+	super(value)
+	anim_sprite.flip_h = true if value == 1 else false if value == -1 else anim_sprite.flip_h
+
 func _process(delta: float) -> void:
 	current_attack_cooldown -= delta
-	sprite.scale.x = direction if direction != 0 else 1
 
 func _physics_process(delta: float) -> void:
 	if hp <= 0: return 
@@ -97,6 +101,18 @@ func take_damage(dmg: int, dir: Vector2):
 	prints("shadow takes damage", dmg, "current hp:", hp)
 	if hp <= 0:
 		die()
+
+func _enter_state(new_state: State, msg:={}):
+	super(new_state, msg)
+	
+	match new_state:
+		State.IN_AIR:
+			if msg.has("jump"):
+				anim_sprite.play("jump")
+		State.IDLE:
+			anim_sprite.play("Idle")
+		State.RUN:
+			anim_sprite.play("Walk")
 
 func die():
 	

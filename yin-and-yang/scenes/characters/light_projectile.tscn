@@ -20,7 +20,9 @@ texture = ExtResource("2_ax34t")
 metadata/_edit_use_anchors_ = true
 
 [node name="projectile_light" type="PointLight2D" parent="ColorRect"]
+visible = false
 scale = Vector2(1, 1.797)
+range_item_cull_mask = 3
 texture = ExtResource("2_i3lby")
 texture_scale = 0.25
 

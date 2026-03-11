@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://btukqyso1bmmr"]
+[gd_scene load_steps=35 format=3 uid="uid://btukqyso1bmmr"]
 
 [ext_resource type="Script" uid="uid://dhldnvl0gkphe" path="res://scenes/characters/light_player.gd" id="1_23emd"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_1dlao"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://6bi7kbt65rbu" path="res://assets/Resources/jump_particles.tres" id="5_8uquj"]
 [ext_resource type="Material" uid="uid://cstrnjbkwbmwm" path="res://assets/Resources/death_particles.tres" id="6_2g08n"]
 [ext_resource type="Texture2D" uid="uid://bc4pt5m80u7ob" path="res://assets/Blindsight_spritesheet.png" id="8_2g08n"]
+[ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="9_c6r6e"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eqgl4"]
 polygon = PackedVector2Array(-46, -3, 64, -32, 64, -128, -64, -128, -64, 128, 64, 128, 64, 32)
@@ -115,8 +116,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_c652f")
 }],
 "loop": false,
-"name": &"Attack",
-"speed": 8.0
+"name": &"attack",
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -144,7 +145,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_t1ghs")
 }],
 "loop": false,
-"name": &"Death",
+"name": &"death",
 "speed": 8.0
 }, {
 "frames": [{
@@ -251,12 +252,21 @@ explosiveness = 1.0
 process_material = ExtResource("6_2g08n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+light_mask = 17
 scale = Vector2(1.3535805, 1.3535805)
 sprite_frames = SubResource("SpriteFrames_gwa3j")
-animation = &"jump"
+animation = &"walk"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+visible = false
+light_mask = 17
+offset_left = -123.270676
+offset_top = -123.270676
+offset_right = 163.27068
+offset_bottom = 163.27068
+mouse_filter = 2
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_kgxcr")]
 collision_layer = 2
@@ -264,5 +274,10 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 visible = false
 shape = SubResource("RectangleShape2D_kgxcr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(4, 0)
+range_item_cull_mask = 16
+texture = ExtResource("9_c6r6e")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

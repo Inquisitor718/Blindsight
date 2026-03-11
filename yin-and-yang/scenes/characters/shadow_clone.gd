@@ -12,6 +12,7 @@ class_name ShadowClone
 @export var walk_particles: GPUParticles2D
 @export var wall_ray_cast: RayCast2D
 @export var fall_ray_cast: RayCast2D
+@onready var oni_sprite: AnimatedSprite2D = $AnimatedSprite2D2
 
 
 var direction := 1
@@ -54,6 +55,7 @@ func take_damage(dmg: int, dir: Vector2) -> void:
 	velocity = Vector2(sign(dir.x) * knockback_strength, -knockback_strength/3.)
 	if hp <= 0:
 		destroyed.emit()
+		
 		queue_free()
 		
 

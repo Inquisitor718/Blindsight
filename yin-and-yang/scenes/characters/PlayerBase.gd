@@ -5,7 +5,6 @@ class_name PlayerBase
 enum State { IDLE, RUN, IN_AIR }
 var state: State = State.IDLE
 
-
 @export_category("Player Variables")
 @export var move_speed := 700.
 @export var min_jump_height := 150.
@@ -13,12 +12,15 @@ var state: State = State.IDLE
 @export var max_jump_hold_time := 0.3
 @export var jump_hold_acc := 5200.
 @export var max_coyote_time := 0.1
-@export var gravity := 4500.
-@export var acceleration := 5000.
-@export var knockback_strength := 1500.
+@export var gravity := 4000.
+@export var acceleration := 6000.
+@export var knockback_strength := 2000.
 @export var hp := 2
 
-var direction: int = 1
+var direction: int = 1:
+	set(value):
+		set_direction(value)
+		direction = value
 var _jump_held_time := 0.
 var _coyote_time := 0.
 var _jump_on_last_frame := false
@@ -28,6 +30,8 @@ var _jump_on_last_frame := false
 @export var jump_particles: GPUParticles2D
 @export var death_particles: GPUParticles2D
 
+func set_direction(_value: int):
+	pass
 
 func move(dir: int, jump: bool, drop: bool, attack: bool, delta: float):
 	if dir != 0:
@@ -110,7 +114,6 @@ func _transition(new_state: State, msg:={}):
 
 
 func _enter_state(new_state: State, msg:={}):
-
 	match new_state:
 
 		State.IDLE:

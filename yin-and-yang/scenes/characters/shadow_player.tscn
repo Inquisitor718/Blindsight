@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bvewxacnb18fc"]
+[gd_scene load_steps=30 format=3 uid="uid://bvewxacnb18fc"]
 
 [ext_resource type="Script" uid="uid://cinrt8qsls30k" path="res://scenes/characters/shadow_player.gd" id="1_o1m36"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_2nipt"]
@@ -97,6 +97,22 @@ region = Rect2(1536, 256, 256, 256)
 atlas = ExtResource("7_6wvit")
 region = Rect2(1792, 256, 256, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_71ih8"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1024, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68fi0"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1280, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15doc"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1536, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_257cp"]
+atlas = ExtResource("7_6wvit")
+region = Rect2(1792, 768, 256, 256)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_u4rxi"]
 animations = [{
 "frames": [{
@@ -141,8 +157,20 @@ animations = [{
 "name": &"Walk",
 "speed": 8.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71ih8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68fi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15doc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_257cp")
+}],
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }]
@@ -205,15 +233,14 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_2ygob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 light_mask = 2
-visibility_layer = 2
+visibility_layer = 8194
 material = SubResource("CanvasItemMaterial_6wvit")
 scale = Vector2(1.8479263, 1.8479263)
 sprite_frames = SubResource("SpriteFrames_u4rxi")
 animation = &"Attack"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.5411471, 0.5411471)

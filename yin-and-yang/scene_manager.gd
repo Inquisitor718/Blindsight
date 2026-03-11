@@ -2,7 +2,11 @@ extends Node
 
 var scenes = [
 	preload("res://scenes/Levels/test_level_1.tscn"),
-	preload("res://scenes/Levels/test_level_2.tscn")
+	preload("res://scenes/Levels/test_level_3.tscn"),
+	preload("res://scenes/Levels/test_level_5.tscn"),
+	preload("res://scenes/Levels/test_level_6.tscn"),
+	preload("res://scenes/Levels/test_level_7.tscn"),
+	preload("res://scenes/Levels/test_level_8.tscn"),
 ]
 
 var current_scene: Node
