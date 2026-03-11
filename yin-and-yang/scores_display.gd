@@ -4,6 +4,6 @@ extends CanvasLayer
 @onready var shadow_score = $shadow_score
 
 func _process(_delta) -> void:
-	light_score.text = "Anora:" + str(GameManager.white_score)
-	shadow_score.text = "Oni:" + str(GameManager.black_score)
+	light_score.text = "Anora : " + str(GameManager.white_score)
+	shadow_score.text = "Oni : " + str(GameManager.black_score)
 	

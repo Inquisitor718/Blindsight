@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://ckhxgfeh4wddl" path="res://assets/anora pressed.png" id="8_vivmo"]
 [ext_resource type="Texture2D" uid="uid://oxudpfldbsx3" path="res://assets/anora hover.png" id="9_2cqfq"]
 [ext_resource type="AudioStream" uid="uid://c8ov4ci0t7jv1" path="res://sfx/gamezzzzsountrack .mp3" id="9_kek77"]
-[ext_resource type="AudioStream" uid="uid://clr8qn3qed4p7" path="res://sfx/menu selection.mp3" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://bangl6l8hljqm" path="res://assets/oni pressed.png" id="11_yaehf"]
 [ext_resource type="Texture2D" uid="uid://d0jiylvf87n0n" path="res://assets/oni hover.png" id="12_074og"]
+[ext_resource type="AudioStream" uid="uid://b8ylh5pjky1xa" path="res://sfx/mixkit-cool-interface-click-tone-2568.wav" id="14_w48qg"]
 
 [node name="Main" type="Node2D"]
 
@@ -27,6 +27,7 @@ script = ExtResource("2_h2yge")
 
 [node name="Scores" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 script = ExtResource("5_lquwl")
 
 [node name="light_score" type="Label" parent="Scores"]
@@ -93,7 +94,7 @@ volume_db = 12.0
 parameters/looping = true
 
 [node name="button" type="AudioStreamPlayer2D" parent="SelectScreen"]
-stream = ExtResource("10_4c57u")
+stream = ExtResource("14_w48qg")
 volume_db = 20.0
 
 [connection signal="pressed" from="SelectScreen/light_button" to="SelectScreen" method="_on_light_button_pressed"]
