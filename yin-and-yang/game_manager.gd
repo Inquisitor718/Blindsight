@@ -53,9 +53,9 @@ func round_concluded():
 
 
 
-#func _bijli_aayi():
-	#light_agayi=true
-	#print("yay")
-	#await get_tree().create_timer(1.5).timeout
-	#light_agayi = false
-	#print("shit")
+func _bijli_aayi():
+	light_agayi=true
+	print("yay")
+	await get_tree().create_timer(1.5).timeout
+	light_agayi = false
+	print("shit")

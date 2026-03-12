@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bvewxacnb18fc"]
+[gd_scene load_steps=34 format=3 uid="uid://bvewxacnb18fc"]
 
 [ext_resource type="Script" uid="uid://cinrt8qsls30k" path="res://scenes/characters/shadow_player.gd" id="1_o1m36"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_2nipt"]
@@ -174,6 +174,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh6tl"]
 size = Vector2(448, 144)
 
+[sub_resource type="Gradient" id="Gradient_37qkg"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oc6fo"]
+gradient = SubResource("Gradient_37qkg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.82051283, 0.16239317)
+
 [node name="ShadowPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "walk_particles", "jump_particles", "death_particles")]
 collision_layer = 2
 script = ExtResource("1_o1m36")
@@ -263,7 +272,7 @@ texture = ExtResource("2_2nipt")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_37qkg")
-volume_db = -2.0
+volume_db = 7.0
 
 [node name="taking_damage" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_oc6fo")
@@ -272,5 +281,13 @@ volume_db = 5.0
 [node name="death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_46u2e")
 volume_db = 8.0
+
+[node name="bulab" type="PointLight2D" parent="."]
+visible = false
+enabled = false
+energy = 4.0
+range_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_oc6fo")
+texture_scale = 4.0
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

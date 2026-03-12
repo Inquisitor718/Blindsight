@@ -12,7 +12,7 @@ var id = ""
 @onready var attack: AudioStreamPlayer2D = $attack
 @onready var taking_damage: AudioStreamPlayer2D = $taking_damage
 @onready var death: AudioStreamPlayer2D = $death
-
+@onready var bulab: PointLight2D = $bulab
 
 @export_category("Dependencies")
 @export var sprite: Node2D
@@ -32,6 +32,11 @@ func set_direction(value: int):
 func _process(delta: float) -> void:
 	current_attack_cooldown -= delta
 	
+	if GameManager.light_agayi:
+		bulab.enabled = true
+		print("lund")
+	else:
+		bulab.enabled = false
 	
 
 func _physics_process(delta: float) -> void:
