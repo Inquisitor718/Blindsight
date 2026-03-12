@@ -5,6 +5,7 @@ class_name LightProjectile
 @export var explosion_light : PointLight2D
 @export var light_flash_time := 0.8
 @export var projectile_max_distance := 1200.
+@onready var sfx: AudioStreamPlayer2D = $break
 
 var projectile_lifetime: float
 var projectile_direction: Vector2
@@ -42,6 +43,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent() is LightPlayer or area.get_parent() is LightLantern:
 		return
 	hit(area)
+	
 	destroy()
 
 func hit(hit_obj: Node2D):
@@ -49,6 +51,7 @@ func hit(hit_obj: Node2D):
 		hit_obj.take_damage(1, global_position.direction_to(hit_obj.global_position))
 
 func destroy():
+	sfx.playing = true
 	collision_mask = 0
 	shot = false
 	projectile_sprite.hide()
