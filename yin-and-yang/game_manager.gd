@@ -6,13 +6,15 @@ var winner = ""
 var selection: int
 @export var rounds = 4
 var light_agayi: bool = false
-
+var lightning_enabled: bool = false
 
 var white_win: bool = false
 var black_win: bool = false
 var end_time = 1.5
 
+
 func start_round():
+	lightning_enabled = true
 	var score_display = get_tree().current_scene.get_node("Scores")
 	score_display.show()
 	
@@ -27,6 +29,7 @@ func start_round():
 	player_manager.spawn_players(scene)
 
 func round_concluded():
+	lightning_enabled = false
 	if white_win:
 		white_score += 1
 		print("light won")
