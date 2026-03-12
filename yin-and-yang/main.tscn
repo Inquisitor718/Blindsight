@@ -48,12 +48,13 @@ shader_parameter/warble_speed = 3.0870001466325
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
 shader = ExtResource("24_1u8w0")
 shader_parameter/level1 = Color(0, 0, 0, 1)
-shader_parameter/level2 = Color(0.34686014, 0.420888, 0.6322199, 1)
-shader_parameter/level3 = Color(0.71103495, 0.8119307, 0.7345655, 1)
-shader_parameter/level4 = Color(1, 1, 1, 1)
+shader_parameter/level2 = Color(0.2757476, 0.34006336, 0.75317264, 1)
+shader_parameter/level3 = Color(0.6268152, 0.8017888, 0.69947857, 1)
+shader_parameter/level4 = Color(0.89625466, 0.90011066, 0.84448963, 1)
 shader_parameter/threshold1 = 0.06000000285
 shader_parameter/threshold2 = 0.16800000798
 shader_parameter/threshold3 = 0.52800002508
+shader_parameter/shader_alpha = 0.73
 
 [node name="Main" type="Node2D"]
 
@@ -76,7 +77,7 @@ position = Vector2(194, 64)
 texture = ExtResource("4_yaehf")
 
 [node name="Panel3" type="Sprite2D" parent="Scores"]
-visible = false
+modulate = Color(0.8666667, 0.8666667, 0.8666667, 1)
 position = Vector2(322, 64)
 texture = ExtResource("4_yaehf")
 
@@ -111,6 +112,7 @@ horizontal_alignment = 2
 script = ExtResource("4_1bvp3")
 
 [node name="BlindsightMainMenu" type="Sprite2D" parent="SelectScreen"]
+modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 position = Vector2(954, 535)
 scale = Vector2(1.0591627, 1.0591627)
 texture = ExtResource("6_w48qg")
@@ -157,6 +159,7 @@ scale = Vector2(0.41519395, 0.41519395)
 texture_normal = ExtResource("11_yaehf")
 
 [node name="ijkl" type="Sprite2D" parent="SelectScreen"]
+modulate = Color(1.5589281, 1.5589281, 1.5589281, 1)
 position = Vector2(903, 881)
 texture = ExtResource("13_2cqfq")
 
@@ -170,6 +173,7 @@ stream = ExtResource("14_w48qg")
 volume_db = 20.0
 
 [node name="wasd" type="Sprite2D" parent="SelectScreen"]
+modulate = Color(1.5589281, 1.5589281, 1.5589281, 1)
 position = Vector2(904, 242)
 texture = ExtResource("16_yaehf")
 

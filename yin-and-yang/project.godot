@@ -14,7 +14,7 @@ config/name="Blindsight"
 config/version="1.0"
 run/main_scene="uid://bpm6mu43w6320"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/image="uid://dmgr26l2twdfr"
+boot_splash/image="uid://dff82bjgkglga"
 config/icon="uid://dmg3ut5kduyeb"
 run/stretch/mode="viewport"
 run/size/window_height_override=720
@@ -31,6 +31,7 @@ GameManager="*res://game_manager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"

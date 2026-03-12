@@ -1,8 +1,8 @@
 [gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://io11fj685dic"]
 
 [sub_resource type="Curve" id="Curve_bu806"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), -0.026484603, -0.026484603, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), -0.026484603, -0.026484603, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_vdcjr"]
 curve = SubResource("Curve_bu806")
@@ -18,3 +18,4 @@ gravity = Vector3(0, 98, 0)
 scale_min = 0.01
 scale_max = 0.07
 scale_curve = SubResource("CurveTexture_vdcjr")
+color = Color(2.1168277, 2.1168277, 2.1168277, 1)

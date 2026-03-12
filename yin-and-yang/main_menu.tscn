@@ -21,6 +21,7 @@ shader_parameter/level4 = Color(1, 1, 1, 1)
 shader_parameter/threshold1 = 0.0530000025175
 shader_parameter/threshold2 = 0.16800000798
 shader_parameter/threshold3 = 0.3450000163875
+shader_parameter/shader_alpha = 0.605
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_8qtwp")
