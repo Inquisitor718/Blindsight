@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://btukqyso1bmmr"]
+[gd_scene load_steps=38 format=3 uid="uid://btukqyso1bmmr"]
 
 [ext_resource type="Script" uid="uid://dhldnvl0gkphe" path="res://scenes/characters/light_player.gd" id="1_23emd"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_1dlao"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://0dqpb1pgd8vp" path="res://sfx/machine attack.mp3" id="10_yf37d"]
 [ext_resource type="AudioStream" uid="uid://1okqng2o6qnl" path="res://sfx/taking damage machine.mp3" id="11_gwa3j"]
 [ext_resource type="AudioStream" uid="uid://sctdvb2cys2y" path="res://sfx/machine death.mp3" id="12_xxvif"]
+[ext_resource type="AudioStream" uid="uid://bey78r6furav7" path="res://sfx/walk cycle machine.mp3" id="13_gwa3j"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eqgl4"]
 polygon = PackedVector2Array(-46, -3, 64, -32, 64, -128, -64, -128, -64, 128, 64, 128, 64, 32)
@@ -294,5 +295,8 @@ stream = ExtResource("12_xxvif")
 scale = Vector2(1.1319227, 1.1319227)
 range_item_cull_mask = 3
 texture = ExtResource("9_c6r6e")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_gwa3j")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

@@ -13,7 +13,6 @@ class_name LightningFlasher
 @onready var lightning_light: PointLight2D = $PointLight2D
 
 
-
 var mat: ShaderMaterial 
 var rng = RandomNumberGenerator.new()
 
@@ -28,11 +27,16 @@ func _ready():
 	
 	
 func lightning():
+	if !GameManager.lightning_enabled:
+		return
 	thunder.play()
 	GameManager._bijli_aayi()
 	await trigger_glow(0.4, 4)
+	if !GameManager.lightning_enabled: return
 	await trigger_glow(0.08, 3)
+	if !GameManager.lightning_enabled: return
 	await trigger_glow(0.6, 1)
+	if !GameManager.lightning_enabled: return
 
 func trigger_glow(time, intensity):
 	if mat == null:
@@ -58,6 +62,7 @@ func set_random_wait_time() -> void:
 	rng.randomize()
 	var random_time = rng.randf_range(min_lightning_time, max_lightning_time)
 	lightning_timer.set_wait_time(random_time)
+	print(random_time)
 
 func _on_lightning_timer_timeout() -> void:
 	lightning()
