@@ -4,16 +4,7 @@
 [ext_resource type="TileSet" uid="uid://brwvtowhvx648" path="res://assets/Resources/test_tilemap_resource.tres" id="1_3rkr3"]
 [ext_resource type="Texture2D" uid="uid://dff82bjgkglga" path="res://assets/level_background.png" id="1_mjkvn"]
 [ext_resource type="PackedScene" uid="uid://cjjya58jjprns" path="res://scenes/Levels/lightning_flasher.tscn" id="4_ho0fr"]
-
-[sub_resource type="Environment" id="Environment_6erab"]
-background_mode = 3
-glow_enabled = true
-glow_levels/1 = 5.0
-glow_normalized = true
-glow_intensity = 2.18
-glow_strength = 0.61
-glow_bloom = 0.52
-glow_blend_mode = 1
+[ext_resource type="Environment" uid="uid://cxtxu27tqwyxi" path="res://assets/Resources/world_environment.tres" id="5_3rkr3"]
 
 [node name="test_level_new" type="Node2D"]
 
@@ -39,7 +30,7 @@ color = Color(0.552956, 0.552956, 0.552956, 1)
 tilemap = NodePath("../TileMapLayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6erab")
+environment = ExtResource("5_3rkr3")
 
 [node name="SpawnPairs" type="Node" parent="."]
 

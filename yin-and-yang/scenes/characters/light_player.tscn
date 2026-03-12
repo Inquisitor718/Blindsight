@@ -255,6 +255,7 @@ process_material = ExtResource("6_2g08n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 clip_children = 2
 light_mask = 17
+position = Vector2(0, 7)
 scale = Vector2(1.3535805, 1.3535805)
 sprite_frames = SubResource("SpriteFrames_gwa3j")
 animation = &"walk"

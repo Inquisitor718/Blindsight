@@ -38,12 +38,12 @@ shader_parameter/scanline_intensity = 0.1910000090725
 shader_parameter/barrel_distortion = 0.05400000256499999
 shader_parameter/chromatic_aberration = 0.0
 shader_parameter/crt_vignette_power = 0.65200003097
-shader_parameter/pixel_resolution_x = 1536
-shader_parameter/pixel_resolution_y = 864
+shader_parameter/pixel_resolution_x = 1920
+shader_parameter/pixel_resolution_y = 1080
 shader_parameter/enable_color_quantization = true
 shader_parameter/color_quant_steps = 32.0
 shader_parameter/warble_amount = 0.0010000000475
-shader_parameter/warble_speed = 3.0870001466325
+shader_parameter/warble_speed = 0.10000000475
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
 shader = ExtResource("24_1u8w0")
@@ -54,7 +54,7 @@ shader_parameter/level4 = Color(0.89625466, 0.90011066, 0.84448963, 1)
 shader_parameter/threshold1 = 0.06000000285
 shader_parameter/threshold2 = 0.16800000798
 shader_parameter/threshold3 = 0.52800002508
-shader_parameter/shader_alpha = 0.73
+shader_parameter/shader_alpha = 0.8
 
 [node name="Main" type="Node2D"]
 
@@ -112,7 +112,7 @@ horizontal_alignment = 2
 script = ExtResource("4_1bvp3")
 
 [node name="BlindsightMainMenu" type="Sprite2D" parent="SelectScreen"]
-modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
+modulate = Color(0.18359056, 0.18359041, 0.18359044, 1)
 position = Vector2(954, 535)
 scale = Vector2(1.0591627, 1.0591627)
 texture = ExtResource("6_w48qg")
