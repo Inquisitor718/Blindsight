@@ -212,6 +212,7 @@ range_item_cull_mask = 2
 texture = ExtResource("2_1dlao")
 
 [node name="PointLight2D" type="PointLight2D" parent="ColorRect"]
+position = Vector2(42, 0)
 energy = 6.0
 range_item_cull_mask = 3
 shadow_enabled = true
