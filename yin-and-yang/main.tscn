@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://btnacv4xyn5lc"]
+[gd_scene load_steps=63 format=3 uid="uid://btnacv4xyn5lc"]
 
 [ext_resource type="Script" uid="uid://cvhv6e7mf2xoq" path="res://scene_manager.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cd27wwgaslxmv" path="res://player_manager.gd" id="2_h2yge"]
@@ -24,6 +24,284 @@
 [ext_resource type="Shader" uid="uid://bo30g2cc38mvx" path="res://assets/Resources/post_process2.gdshader" id="23_d13ii"]
 [ext_resource type="Texture2D" uid="uid://jvcw1qq8dgj8" path="res://assets/arrow right hover.png" id="23_xuqvo"]
 [ext_resource type="Shader" uid="uid://y1m85ebhblcv" path="res://assets/Resources/post_process1.gdshader" id="24_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://bc4pt5m80u7ob" path="res://assets/Blindsight_spritesheet.png" id="25_0odxb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g08n"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwa3j"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxvif"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c652f"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw47d"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkqky"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udajf"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tcmk"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujhp1"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbo7t"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78g0t"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ghs"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c61te"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hmqu"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flltj"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77emk"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(768, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6r6e"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2kbb"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py71q"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf37d"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lswn8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g08n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwa3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxvif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c652f")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw47d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkqky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udajf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tcmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujhp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbo7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78g0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ghs")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c61te")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hmqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flltj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77emk")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6r6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2kbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py71q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf37d")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4tk0"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyfsp"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37qkg"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1280, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc6fo"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1536, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46u2e"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1792, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wvit"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1024, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4rxi"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1280, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7f1e"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1536, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wopoq"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1792, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68fi0"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1280, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15doc"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1536, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_257cp"]
+atlas = ExtResource("25_0odxb")
+region = Rect2(1792, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xuqvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4tk0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyfsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37qkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc6fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46u2e")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wvit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4rxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7f1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wopoq")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68fi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15doc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_257cp")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 16.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0odxb"]
 shader = ExtResource("23_d13ii")
@@ -48,7 +326,7 @@ shader_parameter/warble_speed = 3.0870001466325
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
 shader = ExtResource("24_1u8w0")
 shader_parameter/level1 = Color(0, 0, 0, 1)
-shader_parameter/level2 = Color(0.2757476, 0.34006336, 0.75317264, 1)
+shader_parameter/level2 = Color(0.11706426, 0.06967667, 0.34982383, 1)
 shader_parameter/level3 = Color(0.6268152, 0.8017888, 0.69947857, 1)
 shader_parameter/level4 = Color(0.89625466, 0.90011066, 0.84448963, 1)
 shader_parameter/threshold1 = 0.06000000285
@@ -112,34 +390,21 @@ horizontal_alignment = 2
 script = ExtResource("4_1bvp3")
 
 [node name="BlindsightMainMenu" type="Sprite2D" parent="SelectScreen"]
+visible = false
 modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 position = Vector2(954, 535)
 scale = Vector2(1.0591627, 1.0591627)
 texture = ExtResource("6_w48qg")
 
 [node name="Play" type="TextureButton" parent="SelectScreen"]
-offset_left = 825.0
-offset_top = 505.0
-offset_right = 2197.0
-offset_bottom = 1161.0
-scale = Vector2(0.19845231, 0.19845231)
-disabled = true
+offset_left = 736.0
+offset_top = 464.99997
+offset_right = 2108.0
+offset_bottom = 1121.0
+scale = Vector2(0.32671845, 0.32671845)
 texture_normal = ExtResource("8_ryguw")
 texture_pressed = ExtResource("9_d13ii")
 texture_hover = ExtResource("10_1u8w0")
-
-[node name="text" type="Label" parent="SelectScreen"]
-visible = false
-anchors_preset = -1
-anchor_right = 49.27
-anchor_bottom = 27.674002
-offset_left = -1833.0
-offset_top = -89.0
-offset_right = -5132.797
-offset_bottom = -2136.961
-theme_override_fonts/font = ExtResource("7_kek77")
-theme_override_font_sizes/font_size = 50
-text = "Player 1 (WSAD) is...."
 
 [node name="light_button" type="TextureButton" parent="SelectScreen"]
 offset_left = 2.0
@@ -160,7 +425,7 @@ texture_normal = ExtResource("11_yaehf")
 
 [node name="ijkl" type="Sprite2D" parent="SelectScreen"]
 modulate = Color(1.5589281, 1.5589281, 1.5589281, 1)
-position = Vector2(903, 881)
+position = Vector2(1600, 881)
 texture = ExtResource("13_2cqfq")
 
 [node name="main_bgm" type="AudioStreamPlayer2D" parent="SelectScreen"]
@@ -174,28 +439,64 @@ volume_db = 20.0
 
 [node name="wasd" type="Sprite2D" parent="SelectScreen"]
 modulate = Color(1.5589281, 1.5589281, 1.5589281, 1)
-position = Vector2(904, 242)
+position = Vector2(300, 881)
 texture = ExtResource("16_yaehf")
 
 [node name="Left" type="TextureButton" parent="SelectScreen"]
-offset_left = 576.0
-offset_top = 470.0
-offset_right = 1248.0
-offset_bottom = 1126.0
+offset_left = 733.0
+offset_top = 707.0
+offset_right = 1405.0
+offset_bottom = 1363.0
 scale = Vector2(0.3019476, 0.3019476)
 texture_normal = ExtResource("18_d13ii")
 texture_pressed = ExtResource("19_1u8w0")
 texture_hover = ExtResource("20_0odxb")
 
 [node name="Right" type="TextureButton" parent="SelectScreen"]
-offset_left = 1136.0
-offset_top = 470.0
-offset_right = 1808.0
-offset_bottom = 1126.0
+offset_left = 977.0
+offset_top = 710.0
+offset_right = 1649.0
+offset_bottom = 1366.0
 scale = Vector2(0.3019476, 0.3019476)
 texture_normal = ExtResource("21_lswn8")
 texture_pressed = ExtResource("22_a6jrf")
 texture_hover = ExtResource("23_xuqvo")
+
+[node name="anora_sprite" type="AnimatedSprite2D" parent="SelectScreen"]
+clip_children = 2
+light_mask = 17
+position = Vector2(274.99997, 322.99997)
+scale = Vector2(1.4578421, 1.4578421)
+sprite_frames = SubResource("SpriteFrames_lswn8")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.76251805
+
+[node name="oni_sprite" type="AnimatedSprite2D" parent="SelectScreen"]
+self_modulate = Color(0.4862745, 0.4862745, 0.4862745, 1)
+light_mask = 2
+visibility_layer = 8194
+texture_repeat = 1
+material = SubResource("ShaderMaterial_a6jrf")
+position = Vector2(1636, 346.00003)
+scale = Vector2(1.4963014, 1.4963014)
+sprite_frames = SubResource("SpriteFrames_xuqvo")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.07597232
+
+[node name="select_player_label" type="Label" parent="SelectScreen"]
+offset_left = 521.0
+offset_top = 192.0
+offset_right = 1394.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(0.6509367, 1, 0.6220355, 1)
+theme_override_colors/font_shadow_color = Color(0.27752772, 0.27752772, 0.27752772, 0)
+theme_override_colors/font_outline_color = Color(0.90212804, 0.9999998, 0.89148897, 1)
+theme_override_fonts/font = ExtResource("7_kek77")
+theme_override_font_sizes/font_size = 120
+text = "SELECT PLAYER"
+horizontal_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4

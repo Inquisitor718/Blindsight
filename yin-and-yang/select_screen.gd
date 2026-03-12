@@ -9,6 +9,7 @@ extends Node2D
 @onready var play: TextureButton = $Play
 
 func _ready() -> void:
+	GameManager.selection = 1
 	main_bgm.play()
 
 
