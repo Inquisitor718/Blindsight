@@ -184,7 +184,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgxcr"]
@@ -253,7 +253,7 @@ clip_children = 2
 light_mask = 17
 scale = Vector2(1.3535805, 1.3535805)
 sprite_frames = SubResource("SpriteFrames_gwa3j")
-animation = &"death"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]

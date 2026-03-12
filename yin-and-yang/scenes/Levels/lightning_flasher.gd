@@ -24,6 +24,7 @@ func _ready():
 		tilemap.set_material(lightning_mat)
 		mat = tilemap.material
 	
+	
 func lightning():
 	thunder.play()
 	GameManager._bijli_aayi()

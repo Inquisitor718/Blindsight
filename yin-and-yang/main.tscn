@@ -1,19 +1,27 @@
-[gd_scene load_steps=15 format=3 uid="uid://btnacv4xyn5lc"]
+[gd_scene load_steps=23 format=3 uid="uid://btnacv4xyn5lc"]
 
 [ext_resource type="Script" uid="uid://cvhv6e7mf2xoq" path="res://scene_manager.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cd27wwgaslxmv" path="res://player_manager.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://chlr3egak6a5f" path="res://select_screen.gd" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://d0lrmnphhw7re" path="res://assets/Panel.png" id="4_yaehf"]
 [ext_resource type="Script" uid="uid://bem5d83i0d6se" path="res://scores_display.gd" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://dmgr26l2twdfr" path="res://assets/Main_menu_glass.png" id="6_w48qg"]
-[ext_resource type="Texture2D" uid="uid://chkh1iluwyukw" path="res://assets/anora.png" id="7_5vw27"]
 [ext_resource type="FontFile" uid="uid://di5lbs3su1f2c" path="res://assets/OSerif-Regular.otf" id="7_kek77"]
-[ext_resource type="Texture2D" uid="uid://4xhlj3manufn" path="res://assets/Oni.png" id="8_kek77"]
-[ext_resource type="Texture2D" uid="uid://ckhxgfeh4wddl" path="res://assets/anora pressed.png" id="8_vivmo"]
+[ext_resource type="Texture2D" uid="uid://bllatli8w1iiq" path="res://assets/Play button.png" id="8_ryguw"]
 [ext_resource type="Texture2D" uid="uid://oxudpfldbsx3" path="res://assets/anora hover.png" id="9_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://3u1l44j0b8n" path="res://assets/play button pressed.png" id="9_d13ii"]
 [ext_resource type="AudioStream" uid="uid://c8ov4ci0t7jv1" path="res://sfx/gamezzzzsountrack .mp3" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://tuduj7ihx2gs" path="res://assets/play button hover.png" id="10_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://bangl6l8hljqm" path="res://assets/oni pressed.png" id="11_yaehf"]
-[ext_resource type="Texture2D" uid="uid://d0jiylvf87n0n" path="res://assets/oni hover.png" id="12_074og"]
+[ext_resource type="Texture2D" uid="uid://cx6b3ugalo2fi" path="res://assets/Group 1321315067.png" id="13_2cqfq"]
 [ext_resource type="AudioStream" uid="uid://b8ylh5pjky1xa" path="res://sfx/mixkit-cool-interface-click-tone-2568.wav" id="14_w48qg"]
+[ext_resource type="Texture2D" uid="uid://cpcjlcdo8qbnd" path="res://assets/Group 1321315068.png" id="16_yaehf"]
+[ext_resource type="Texture2D" uid="uid://cyh2kl17od1i" path="res://assets/arrow left.png" id="18_d13ii"]
+[ext_resource type="Texture2D" uid="uid://b7ig665bb1ey" path="res://assets/arrow left select.png" id="19_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://crkwq6ohaf5v6" path="res://assets/arrow left hover.png" id="20_0odxb"]
+[ext_resource type="Texture2D" uid="uid://gme6247dpg44" path="res://assets/arrow right.png" id="21_lswn8"]
+[ext_resource type="Texture2D" uid="uid://biubedff4xhkp" path="res://assets/arrow right select.png" id="22_a6jrf"]
+[ext_resource type="Texture2D" uid="uid://jvcw1qq8dgj8" path="res://assets/arrow right hover.png" id="23_xuqvo"]
 
 [node name="Main" type="Node2D"]
 
@@ -30,18 +38,35 @@ layer = 2
 visible = false
 script = ExtResource("5_lquwl")
 
+[node name="Panel" type="Sprite2D" parent="Scores"]
+position = Vector2(194, 64)
+texture = ExtResource("4_yaehf")
+
+[node name="Panel3" type="Sprite2D" parent="Scores"]
+position = Vector2(322, 64)
+texture = ExtResource("4_yaehf")
+
+[node name="Panel2" type="Sprite2D" parent="Scores"]
+position = Vector2(1732, 64)
+texture = ExtResource("4_yaehf")
+
 [node name="light_score" type="Label" parent="Scores"]
-offset_right = 263.0
+offset_left = 24.0
+offset_right = 287.0
 offset_bottom = 137.0
+theme_override_colors/font_color = Color(0.61960787, 0.84313726, 0.09019608, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_kek77")
 theme_override_font_sizes/font_size = 100
 text = "lmao"
 metadata/_edit_use_anchors_ = true
 
 [node name="shadow_score" type="Label" parent="Scores"]
-offset_left = 1451.0
-offset_right = 1916.0
+offset_left = 1420.0
+offset_right = 1885.0
 offset_bottom = 157.0
+theme_override_colors/font_color = Color(0.61960787, 0.84313726, 0.09019608, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_kek77")
 theme_override_font_sizes/font_size = 100
 text = "lmao"
@@ -54,6 +79,17 @@ script = ExtResource("4_1bvp3")
 position = Vector2(954, 535)
 scale = Vector2(1.0591627, 1.0591627)
 texture = ExtResource("6_w48qg")
+
+[node name="Play" type="TextureButton" parent="SelectScreen"]
+offset_left = 825.0
+offset_top = 505.0
+offset_right = 2197.0
+offset_bottom = 1161.0
+scale = Vector2(0.19845231, 0.19845231)
+disabled = true
+texture_normal = ExtResource("8_ryguw")
+texture_pressed = ExtResource("9_d13ii")
+texture_hover = ExtResource("10_1u8w0")
 
 [node name="text" type="Label" parent="SelectScreen"]
 visible = false
@@ -69,24 +105,25 @@ theme_override_font_sizes/font_size = 50
 text = "Player 1 (WSAD) is...."
 
 [node name="light_button" type="TextureButton" parent="SelectScreen"]
-offset_left = 96.0
+offset_left = 2.0
 offset_top = 445.0
-offset_right = 1468.0
+offset_right = 1374.0
 offset_bottom = 1101.0
 scale = Vector2(0.39832106, 0.39832106)
-texture_normal = ExtResource("7_5vw27")
-texture_pressed = ExtResource("8_vivmo")
+texture_normal = ExtResource("9_2cqfq")
 texture_hover = ExtResource("9_2cqfq")
 
 [node name="shadow_button" type="TextureButton" parent="SelectScreen"]
-offset_left = 1162.0
+offset_left = 1348.0
 offset_top = 445.0
-offset_right = 2534.0
+offset_right = 2720.0
 offset_bottom = 1101.0
 scale = Vector2(0.41519395, 0.41519395)
-texture_normal = ExtResource("8_kek77")
-texture_pressed = ExtResource("11_yaehf")
-texture_hover = ExtResource("12_074og")
+texture_normal = ExtResource("11_yaehf")
+
+[node name="ijkl" type="Sprite2D" parent="SelectScreen"]
+position = Vector2(903, 881)
+texture = ExtResource("13_2cqfq")
 
 [node name="main_bgm" type="AudioStreamPlayer2D" parent="SelectScreen"]
 stream = ExtResource("9_kek77")
@@ -97,5 +134,30 @@ parameters/looping = true
 stream = ExtResource("14_w48qg")
 volume_db = 20.0
 
-[connection signal="pressed" from="SelectScreen/light_button" to="SelectScreen" method="_on_light_button_pressed"]
-[connection signal="pressed" from="SelectScreen/shadow_button" to="SelectScreen" method="_on_shadow_button_pressed"]
+[node name="wasd" type="Sprite2D" parent="SelectScreen"]
+position = Vector2(904, 242)
+texture = ExtResource("16_yaehf")
+
+[node name="Left" type="TextureButton" parent="SelectScreen"]
+offset_left = 576.0
+offset_top = 470.0
+offset_right = 1248.0
+offset_bottom = 1126.0
+scale = Vector2(0.3019476, 0.3019476)
+texture_normal = ExtResource("18_d13ii")
+texture_pressed = ExtResource("19_1u8w0")
+texture_hover = ExtResource("20_0odxb")
+
+[node name="Right" type="TextureButton" parent="SelectScreen"]
+offset_left = 1136.0
+offset_top = 470.0
+offset_right = 1808.0
+offset_bottom = 1126.0
+scale = Vector2(0.3019476, 0.3019476)
+texture_normal = ExtResource("21_lswn8")
+texture_pressed = ExtResource("22_a6jrf")
+texture_hover = ExtResource("23_xuqvo")
+
+[connection signal="pressed" from="SelectScreen/Play" to="SelectScreen" method="_on_play_pressed"]
+[connection signal="pressed" from="SelectScreen/Left" to="SelectScreen" method="_on_left_pressed"]
+[connection signal="pressed" from="SelectScreen/Right" to="SelectScreen" method="_on_right_pressed"]
