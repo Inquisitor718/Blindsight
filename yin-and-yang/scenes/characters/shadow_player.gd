@@ -71,7 +71,7 @@ func attack_ability():
 		return
 	current_attack_cooldown = attack_cooldown
 	anim_sprite.play("attack")
-	atk_particles.emitting = true
+	atk_particles.restart()
 	attack.play()
 
 	#var space_state = get_world_2d().direct_space_state

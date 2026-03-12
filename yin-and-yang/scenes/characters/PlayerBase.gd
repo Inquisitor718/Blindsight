@@ -106,6 +106,8 @@ func _transition(new_state: State, msg:={}):
 		State.RUN:
 			pass
 		State.IN_AIR:
+			if jump_particles:
+				jump_particles.restart()
 			pass
 	
 	state = new_state

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 @onready var main_bgm: AudioStreamPlayer2D = $main_bgm
 @onready var button: AudioStreamPlayer2D = $button

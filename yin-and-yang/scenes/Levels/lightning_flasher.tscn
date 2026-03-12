@@ -1,8 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjjya58jjprns"]
+[gd_scene load_steps=8 format=3 uid="uid://cjjya58jjprns"]
 
 [ext_resource type="Script" uid="uid://bfufrfp7yyaml" path="res://scenes/Levels/lightning_flasher.gd" id="1_xsg3t"]
 [ext_resource type="Material" uid="uid://dyw5idrgs2ypw" path="res://assets/Resources/lightning_mat.tres" id="2_bldyv"]
 [ext_resource type="AudioStream" uid="uid://eoy7aflx6q6b" path="res://sfx/thunder.mp3" id="3_fy8rj"]
+[ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="4_eynxl"]
+[ext_resource type="Shader" uid="uid://bo30g2cc38mvx" path="res://assets/Resources/post_process2.gdshader" id="5_jlwnx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dwo1a"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 500, 1)
+spread = 180.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eynxl"]
+shader = ExtResource("5_jlwnx")
+shader_parameter/grain_intensity = 0.0650000030875
+shader_parameter/min_lum = 0.0
+shader_parameter/max_lum = 1.0
+shader_parameter/time_scale = 0.5
+shader_parameter/vignette_darkness = 0.370000017575
+shader_parameter/vignette_outer_radius = 0.7
+shader_parameter/vignette_inner_radius = 0.2
+shader_parameter/scanline_intensity = 0.1910000090725
+shader_parameter/barrel_distortion = 0.054000002564999997
+shader_parameter/chromatic_aberration = 0.0
+shader_parameter/crt_vignette_power = 0.65200003097
+shader_parameter/pixel_resolution_x = 1536
+shader_parameter/pixel_resolution_y = 864
+shader_parameter/enable_color_quantization = true
+shader_parameter/color_quant_steps = 32.0
+shader_parameter/warble_amount = 0.0010000000475
+shader_parameter/warble_speed = 3.0870001466325
 
 [node name="LightningFlasher" type="CanvasLayer" node_paths=PackedStringArray("lightning_timer")]
 script = ExtResource("1_xsg3t")
@@ -14,5 +46,28 @@ lightning_mat = ExtResource("2_bldyv")
 [node name="thunder" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_fy8rj")
 volume_db = 10.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1019, 514)
+amount = 40
+texture = ExtResource("4_eynxl")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_dwo1a")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1018.25, 514.75)
+scale = Vector2(5.769321, 3.411007)
+energy = 5.0
+range_item_cull_mask = 2
+texture = ExtResource("4_eynxl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_eynxl")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_lightning_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bvewxacnb18fc"]
+[gd_scene load_steps=41 format=3 uid="uid://bvewxacnb18fc"]
 
 [ext_resource type="Script" uid="uid://cinrt8qsls30k" path="res://scenes/characters/shadow_player.gd" id="1_o1m36"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_2nipt"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dwci0wo228w5e" path="res://sfx/spider attack.mp3" id="8_37qkg"]
 [ext_resource type="AudioStream" uid="uid://chjfbrrmbhkyq" path="res://sfx/taking damage spider.mp3" id="9_oc6fo"]
 [ext_resource type="AudioStream" uid="uid://ddllpmsg3rdcu" path="res://sfx/spider death.mp3" id="10_46u2e"]
+[ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="11_oc6fo"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_67nkq"]
 light_mode = 2
@@ -171,8 +172,8 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh6tl"]
-size = Vector2(448, 144)
+[sub_resource type="CircleShape2D" id="CircleShape2D_oc6fo"]
+radius = 199.57204
 
 [sub_resource type="Gradient" id="Gradient_37qkg"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
@@ -196,6 +197,13 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8034188, 0.16239317)
 
+[sub_resource type="Curve" id="Curve_oc6fo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.57614213, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_46u2e"]
+curve = SubResource("Curve_oc6fo")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u4rxi"]
 particle_flag_disable_z = true
 emission_shape = 6
@@ -217,6 +225,9 @@ radial_velocity_max = 352.10995
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -2.2351742e-06
 radial_accel_max = 4.9999976
+scale_min = 0.79999995
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_46u2e")
 
 [node name="ShadowPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "walk_particles", "jump_particles", "death_particles")]
 collision_layer = 2
@@ -246,12 +257,14 @@ shape = SubResource("RectangleShape2D_o1m36")
 [node name="walk_particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 116)
 amount = 20
+texture = ExtResource("11_oc6fo")
 process_material = ExtResource("4_sh6tl")
 
 [node name="jump_particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 116)
 emitting = false
 amount = 10
+texture = ExtResource("11_oc6fo")
 lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
@@ -260,6 +273,7 @@ process_material = ExtResource("4_16dj4")
 [node name="death_particles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 500
+texture = ExtResource("11_oc6fo")
 lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
@@ -288,7 +302,7 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
-shape = SubResource("RectangleShape2D_sh6tl")
+shape = SubResource("CircleShape2D_oc6fo")
 
 [node name="attack_sprite" type="Sprite2D" parent="AnimatedSprite2D"]
 modulate = Color(1, 1, 1, 0)
@@ -325,13 +339,20 @@ texture = SubResource("GradientTexture2D_oc6fo")
 texture_scale = 4.0
 
 [node name="atk_particles" type="GPUParticles2D" parent="."]
+light_mask = 17
 material = SubResource("CanvasItemMaterial_37qkg")
 emitting = false
 amount = 30
 texture = SubResource("GradientTexture2D_46u2e")
-lifetime = 0.25
+lifetime = 0.35000000000000003
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_u4rxi")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.3245552, 1.3245552)
+energy = 2.0
+range_item_cull_mask = 16
+texture = ExtResource("11_oc6fo")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

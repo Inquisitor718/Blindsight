@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://btnacv4xyn5lc"]
+[gd_scene load_steps=27 format=3 uid="uid://btnacv4xyn5lc"]
 
 [ext_resource type="Script" uid="uid://cvhv6e7mf2xoq" path="res://scene_manager.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cd27wwgaslxmv" path="res://player_manager.gd" id="2_h2yge"]
@@ -21,7 +21,39 @@
 [ext_resource type="Texture2D" uid="uid://crkwq6ohaf5v6" path="res://assets/arrow left hover.png" id="20_0odxb"]
 [ext_resource type="Texture2D" uid="uid://gme6247dpg44" path="res://assets/arrow right.png" id="21_lswn8"]
 [ext_resource type="Texture2D" uid="uid://biubedff4xhkp" path="res://assets/arrow right select.png" id="22_a6jrf"]
+[ext_resource type="Shader" uid="uid://bo30g2cc38mvx" path="res://assets/Resources/post_process2.gdshader" id="23_d13ii"]
 [ext_resource type="Texture2D" uid="uid://jvcw1qq8dgj8" path="res://assets/arrow right hover.png" id="23_xuqvo"]
+[ext_resource type="Shader" uid="uid://y1m85ebhblcv" path="res://assets/Resources/post_process1.gdshader" id="24_1u8w0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0odxb"]
+shader = ExtResource("23_d13ii")
+shader_parameter/grain_intensity = 0.0650000030875
+shader_parameter/min_lum = 0.0
+shader_parameter/max_lum = 1.0
+shader_parameter/time_scale = 0.5
+shader_parameter/vignette_darkness = 0.370000017575
+shader_parameter/vignette_outer_radius = 0.7
+shader_parameter/vignette_inner_radius = 0.2
+shader_parameter/scanline_intensity = 0.1910000090725
+shader_parameter/barrel_distortion = 0.054000002564999997
+shader_parameter/chromatic_aberration = 0.0
+shader_parameter/crt_vignette_power = 0.65200003097
+shader_parameter/pixel_resolution_x = 1536
+shader_parameter/pixel_resolution_y = 864
+shader_parameter/enable_color_quantization = true
+shader_parameter/color_quant_steps = 32.0
+shader_parameter/warble_amount = 0.0010000000475
+shader_parameter/warble_speed = 3.0870001466325
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
+shader = ExtResource("24_1u8w0")
+shader_parameter/level1 = Color(0, 0, 0, 1)
+shader_parameter/level2 = Color(0.34686014, 0.420888, 0.6322199, 1)
+shader_parameter/level3 = Color(0.71103495, 0.8119307, 0.7345655, 1)
+shader_parameter/level4 = Color(1, 1, 1, 1)
+shader_parameter/threshold1 = 0.06000000285
+shader_parameter/threshold2 = 0.16800000798
+shader_parameter/threshold3 = 0.52800002508
 
 [node name="Main" type="Node2D"]
 
@@ -39,14 +71,17 @@ visible = false
 script = ExtResource("5_lquwl")
 
 [node name="Panel" type="Sprite2D" parent="Scores"]
+modulate = Color(0.8666667, 0.8666667, 0.8666667, 1)
 position = Vector2(194, 64)
 texture = ExtResource("4_yaehf")
 
 [node name="Panel3" type="Sprite2D" parent="Scores"]
+visible = false
 position = Vector2(322, 64)
 texture = ExtResource("4_yaehf")
 
 [node name="Panel2" type="Sprite2D" parent="Scores"]
+modulate = Color(0.8661112, 0.86611134, 0.86611134, 1)
 position = Vector2(1732, 64)
 texture = ExtResource("4_yaehf")
 
@@ -62,8 +97,8 @@ text = "lmao"
 metadata/_edit_use_anchors_ = true
 
 [node name="shadow_score" type="Label" parent="Scores"]
-offset_left = 1420.0
-offset_right = 1885.0
+offset_left = 1438.0
+offset_right = 1903.0
 offset_bottom = 157.0
 theme_override_colors/font_color = Color(0.61960787, 0.84313726, 0.09019608, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -72,7 +107,7 @@ theme_override_font_sizes/font_size = 100
 text = "lmao"
 horizontal_alignment = 2
 
-[node name="SelectScreen" type="CanvasLayer" parent="."]
+[node name="SelectScreen" type="Node2D" parent="."]
 script = ExtResource("4_1bvp3")
 
 [node name="BlindsightMainMenu" type="Sprite2D" parent="SelectScreen"]
@@ -157,6 +192,21 @@ scale = Vector2(0.3019476, 0.3019476)
 texture_normal = ExtResource("21_lswn8")
 texture_pressed = ExtResource("22_a6jrf")
 texture_hover = ExtResource("23_xuqvo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_0odxb")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_lswn8")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [connection signal="pressed" from="SelectScreen/Play" to="SelectScreen" method="_on_play_pressed"]
 [connection signal="pressed" from="SelectScreen/Left" to="SelectScreen" method="_on_left_pressed"]

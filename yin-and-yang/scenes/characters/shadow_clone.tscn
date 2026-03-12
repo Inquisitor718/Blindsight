@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dacfgdl6v073r"]
+[gd_scene load_steps=20 format=3 uid="uid://dacfgdl6v073r"]
 
 [ext_resource type="Script" uid="uid://b445enxbo7wfs" path="res://scenes/characters/shadow_clone.gd" id="1_vaa15"]
+[ext_resource type="Texture2D" uid="uid://bxymo8anvj3yq" path="res://scenes/Ellipse 279.png" id="4_sx8wo"]
 [ext_resource type="Script" uid="uid://4r7dc5je2iwv" path="res://scenes/characters/hurtbox.gd" id="7_j0gp7"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="8_775qs"]
 [ext_resource type="Material" uid="uid://io11fj685dic" path="res://assets/Resources/player_particles.tres" id="9_7w8bw"]
@@ -108,7 +109,6 @@ animations = [{
 
 [node name="Clone" type="CharacterBody2D" node_paths=PackedStringArray("walk_particles", "wall_ray_cast", "fall_ray_cast") groups=["PLAYER", "clone"]]
 collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_vaa15")
 walk_particles = NodePath("walk_particles")
 wall_ray_cast = NodePath("WallRayCast")
@@ -119,7 +119,6 @@ shape = SubResource("RectangleShape2D_775qs")
 
 [node name="WallRayCast" type="RayCast2D" parent="."]
 target_position = Vector2(112, 0)
-collision_mask = 5
 
 [node name="FallRayCast" type="RayCast2D" parent="."]
 position = Vector2(0, 1)
@@ -151,6 +150,7 @@ texture = ExtResource("8_775qs")
 [node name="walk_particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 116)
 amount = 20
+texture = ExtResource("4_sx8wo")
 process_material = ExtResource("9_7w8bw")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]

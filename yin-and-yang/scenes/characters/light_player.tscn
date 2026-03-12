@@ -229,12 +229,14 @@ shape = SubResource("RectangleShape2D_23emd")
 position = Vector2(0, 116)
 emitting = false
 amount = 20
+texture = ExtResource("9_c6r6e")
 process_material = ExtResource("4_shd2n")
 
 [node name="jump_particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 116)
 emitting = false
 amount = 10
+texture = ExtResource("9_c6r6e")
 lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
@@ -243,6 +245,7 @@ process_material = ExtResource("5_8uquj")
 [node name="death_particles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 500
+texture = ExtResource("9_c6r6e")
 lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
@@ -286,5 +289,10 @@ stream = ExtResource("11_gwa3j")
 
 [node name="death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_xxvif")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+scale = Vector2(1.1319227, 1.1319227)
+range_item_cull_mask = 3
+texture = ExtResource("9_c6r6e")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

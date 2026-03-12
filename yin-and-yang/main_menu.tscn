@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpm6mu43w6320"]
+[gd_scene load_steps=13 format=3 uid="uid://bpm6mu43w6320"]
 
 [ext_resource type="Script" uid="uid://bs0ycqq3q0he2" path="res://main_menu.gd" id="1_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://vcaf3sjpkpc1" path="res://assets/Blindsight_main menu.png" id="1_qe12f"]
@@ -10,6 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://dpclh4xp1qn7d" path="res://assets/quit button hover.png" id="7_iotk1"]
 [ext_resource type="AudioStream" uid="uid://c8ov4ci0t7jv1" path="res://sfx/gamezzzzsountrack .mp3" id="9_dy7ct"]
 [ext_resource type="AudioStream" uid="uid://b8ylh5pjky1xa" path="res://sfx/mixkit-cool-interface-click-tone-2568.wav" id="10_0o4t1"]
+[ext_resource type="Shader" uid="uid://y1m85ebhblcv" path="res://assets/Resources/post_process1.gdshader" id="12_iotk1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cm266"]
+shader = ExtResource("12_iotk1")
+shader_parameter/level1 = Color(0, 0, 0, 1)
+shader_parameter/level2 = Color(0.42682502, 0.3465, 0.63, 1)
+shader_parameter/level3 = Color(0.4446, 0.54521996, 0.78, 1)
+shader_parameter/level4 = Color(1, 1, 1, 1)
+shader_parameter/threshold1 = 0.0530000025175
+shader_parameter/threshold2 = 0.16800000798
+shader_parameter/threshold3 = 0.3450000163875
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_8qtwp")
@@ -48,6 +59,15 @@ autoplay = true
 [node name="button" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_0o4t1")
 volume_db = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_cm266")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
