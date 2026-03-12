@@ -11,6 +11,8 @@ class_name LightningFlasher
 @export var lightning_mat: ShaderMaterial
 @onready var thunder: AudioStreamPlayer2D = $thunder
 
+
+
 var mat: ShaderMaterial 
 var rng = RandomNumberGenerator.new()
 
@@ -24,7 +26,7 @@ func _ready():
 	
 func lightning():
 	thunder.play()
-	
+	GameManager._bijli_aayi()
 	await trigger_glow(0.4, 4)
 	await trigger_glow(0.08, 3)
 	await trigger_glow(0.6, 1)
