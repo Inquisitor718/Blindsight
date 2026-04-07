@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3tvo43251hqf"]
+
+[ext_resource type="Script" uid="uid://bvb5dnotngjxr" path="res://fractal_script.gd" id="1_kj8rq"]
+[ext_resource type="Shader" uid="uid://scwxj2wy8b6" path="res://scenes/Levels/fractal_shader.gdshader" id="2_t8ky8"]
+[ext_resource type="Script" uid="uid://bibfxasei04a7" path="res://color_rect.gd" id="3_6ucld"]
+[ext_resource type="Shader" uid="uid://y1m85ebhblcv" path="res://assets/Resources/post_process1.gdshader" id="4_t8ky8"]
+[ext_resource type="Texture2D" uid="uid://dmg3ut5kduyeb" path="res://assets/Blindsight_icon.png" id="5_6ucld"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q4ob"]
+shader = ExtResource("2_t8ky8")
+shader_parameter/u_resolution = Vector2(1920, 1080)
+shader_parameter/u_time = 30.0
+shader_parameter/u_base_color = Vector3(10, -3.14, 0)
+shader_parameter/u_inner_color = Vector3(0.02, 0, 0.05)
+shader_parameter/u_inner_glow = 0.3
+shader_parameter/u_c = Vector2(-0.8, 0.156)
+shader_parameter/u_c_mix = 0.0
+shader_parameter/u_center = Vector2(-0.7436439, 0.13182591)
+shader_parameter/u_zoom_speed = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ucld"]
+shader = ExtResource("4_t8ky8")
+shader_parameter/level1 = Color(0, 0, 0, 1)
+shader_parameter/level2 = Color(0.42682502, 0.3465, 0.63, 1)
+shader_parameter/level3 = Color(0.4446, 0.54521996, 0.78, 1)
+shader_parameter/level4 = Color(1, 1, 1, 1)
+shader_parameter/threshold1 = 0.0530000025175
+shader_parameter/threshold2 = 0.16800000798
+shader_parameter/threshold3 = 0.3450000163875
+shader_parameter/shader_alpha = 0.605
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kj8rq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_0q4ob")
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(1, 0, 0, 1)
+script = ExtResource("3_6ucld")
+ip = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_6ucld")
+offset_right = 3045.0
+offset_bottom = 2554.0
+mouse_filter = 2
+
+[node name="BlindsightIcon" type="Sprite2D" parent="."]
+position = Vector2(1072, 548)
+texture = ExtResource("5_6ucld")
