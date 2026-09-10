@@ -10,7 +10,7 @@ uniform float threshold1 	: hint_range(0.0,1.0) = .4;
 uniform float threshold2 	: hint_range(0.0,1.0) = .52;
 uniform float threshold3	: hint_range(0.0,1.0) = .8;
 uniform float shader_alpha = 0.8;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
 
 void fragment() {
 	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV).rgba;

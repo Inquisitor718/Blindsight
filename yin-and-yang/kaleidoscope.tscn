@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c12f2lbn6spr8"]
+
+[ext_resource type="Shader" uid="uid://1wlbqoc4srwj" path="res://assets/kaleidoscope.gdshader" id="1_6omdr"]
+[ext_resource type="Script" uid="uid://chna2li6dpbh2" path="res://assets/KaleidoscopeController.gd" id="2_8mtxw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a86eo"]
+shader = ExtResource("1_6omdr")
+shader_parameter/inner_color = Color(0.7529412, 1, 1, 1)
+shader_parameter/outer_color = Color(0.5294118, 1, 0.14901961, 1)
+shader_parameter/wedges = 3.0
+shader_parameter/inner_radius = 0.35200001509006
+shader_parameter/edge_softness = 0.06800000323
+shader_parameter/density = 40.0
+shader_parameter/stick_length = 0.89999997615814
+shader_parameter/stick_width = 0.08300000324398
+shader_parameter/swarm_speed = 0.3790000180025
+shader_parameter/swirl_speed = 0.478000022705
+shader_parameter/use_particle_texture = true
+
+[node name="kaleidoscope" type="Node2D" unique_id=170995244]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=235899427]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1573312951]
+material = SubResource("ShaderMaterial_a86eo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 107.0
+offset_right = -857.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_8mtxw")

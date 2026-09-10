@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://tbnfs5pc1coo"]
+[gd_scene format=3 uid="uid://tbnfs5pc1coo"]
 
 [ext_resource type="Script" uid="uid://bw5eof4dg88wf" path="res://dark.gd" id="1_886jb"]
 [ext_resource type="Texture2D" uid="uid://cwir63rwo0myb" path="res://assets/Sprites/02-King Pig/Dead (38x28).png" id="2_886jb"]
@@ -240,10 +240,10 @@ radius = 15.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_886jb"]
 size = Vector2(48.000004, 40)
 
-[node name="Dark" type="CharacterBody2D" groups=["PLAYER"]]
+[node name="Dark" type="CharacterBody2D" unique_id=954669926 groups=["PLAYER"]]
 script = ExtResource("1_886jb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1099265661]
 clip_children = 1
 light_mask = 0
 position = Vector2(-1, -3)
@@ -254,7 +254,7 @@ autoplay = "idle"
 frame = 10
 frame_progress = 0.105589256
 
-[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D" unique_id=866207313]
 light_mask = 0
 offset_left = -18.728828
 offset_top = -16.481369
@@ -263,30 +263,30 @@ offset_bottom = 23.518631
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=113418109]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_s5alm")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=72969991]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=920532620]
 position = Vector2(-3.496911e-07, 2)
 shape = SubResource("CapsuleShape2D_886jb")
 
-[node name="HitBox" type="Area2D" parent="." groups=["attack"]]
+[node name="HitBox" type="Area2D" parent="." unique_id=817686836 groups=["attack"]]
 rotation = -6.2831855
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1367800621]
 position = Vector2(1.000002, 1.9999996)
 shape = SubResource("RectangleShape2D_886jb")
 
-[node name="DashCooldown" type="Timer" parent="."]
+[node name="DashCooldown" type="Timer" parent="." unique_id=647996648]
 one_shot = true
 autostart = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1719893109]
 visible = false
 light_mask = 0
 offset_left = -11.0

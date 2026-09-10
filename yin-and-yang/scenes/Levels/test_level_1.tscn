@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://cdwqgupjj0wcf"]
+[gd_scene format=4 uid="uid://cdwqgupjj0wcf"]
 
 [ext_resource type="Material" uid="uid://dyw5idrgs2ypw" path="res://assets/Resources/lightning_mat.tres" id="1_0jxet"]
 [ext_resource type="TileSet" uid="uid://brwvtowhvx648" path="res://assets/Resources/test_tilemap_resource.tres" id="1_hhaul"]
@@ -6,46 +6,46 @@
 [ext_resource type="PackedScene" uid="uid://cjjya58jjprns" path="res://scenes/Levels/lightning_flasher.tscn" id="4_hru2b"]
 [ext_resource type="Environment" uid="uid://cxtxu27tqwyxi" path="res://assets/Resources/world_environment.tres" id="5_ajwo4"]
 
-[node name="test_level_new" type="Node2D"]
+[node name="test_level_new" type="Node2D" unique_id=950850311]
 
-[node name="Lighthouse" type="Sprite2D" parent="."]
+[node name="Lighthouse" type="Sprite2D" parent="." unique_id=1974247417]
 material = ExtResource("1_0jxet")
 position = Vector2(596, -446)
 scale = Vector2(2.1248655, 2.1248655)
 texture = ExtResource("1_jyo0b")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1238530909]
 tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAMAAgACAAAAAAAAAAQAAgACAAAAAAABAP//AgAAAAAAAAABAAQAAgACAAAAAAACAP//AgAAAAAAAAACAAQAAgACAAAAAAADAP//AgAAAAAAAAADAAQAAgACAAAAAAAEAP//AgAAAAAAAAAEAAQAAgACAAAAAAAFAP//AgAAAAAAAAAFAAQAAgACAAAAAAAGAP//AgAAAAAAAAAGAAQAAgACAAAAAAAHAP//AgAAAAAAAAAHAAQAAgACAAAAAAD4//z/AgADAAAAAAD4/wQAAgAAAAAAAAD5/wQAAgAAAAAAAAD6/wQAAgAAAAAAAAD7/wQAAgAAAAAAAAD8/wQAAgAAAAAAAAD9/wMAAgADAAAAAAD9/wQAAgAAAAAAAAD+/wIAAgACAAAAAAD+/wMAAgACAAAAAAD+/wQAAgACAAAAAAD/////AgAAAAAAAAD//wIAAgACAAAAAAD//wMAAgACAAAAAAD//wQAAgACAAAAAAABAPz/AgACAAAAAAACAPz/AgAAAAAAAAADAPz/AgAAAAAAAAAEAPz/AgAAAAAAAAAFAPz/AgAAAAAAAAAGAPz/AgAAAAAAAAAIAAMAAgACAAAAAAAJAAMAAgACAAAAAAAKAAMAAgACAAAAAAALAAMAAgADAAAAAAAIAPn/AgACAAAAAAAHAPn/AgAAAAAAAAAGAPn/AgAAAAAAAAACAPn/AgAAAAAAAAABAPn/AgAAAAAAAAAAAPn/AgACAAAAAAALAPz/AgADAAAAAAALAPv/AgACAAAAAAAMAPz/AgADAAAAAAANAPz/AgADAAAAAAAOAPz/AgADAAAAAAAPAPz/AgADAAAAAAAIAP//AgAAAAAAAAAJAAIAAgACAAAAAAAKAAIAAgACAAAAAAACAPX/AgAAAAAAAAADAPX/AgAAAAAAAAAEAPX/AgAAAAAAAAAFAPX/AgAAAAAAAAAGAPX/AgAAAAAAAAAIAAQAAgACAAAAAAAJAAQAAgACAAAAAAAKAAQAAgACAAAAAAALAAQAAgAAAAAAAAAMAAQAAgAAAAAAAAANAAQAAgAAAAAAAAAOAAQAAgAAAAAAAAAPAAQAAgAAAAAAAAAHAPz/AgACAAAAAAD4//T/AgAAAAAAAAD5//T/AgAAAAAAAAD6//T/AgAAAAAAAAD7//T/AgAAAAAAAAD8//T/AgAAAAAAAAD9//T/AgAAAAAAAAD+//T/AgAAAAAAAAD///T/AgAAAAAAAAAAAPT/AgAAAAAAAAABAPT/AgAAAAAAAAACAPT/AgAAAAAAAAADAPT/AgAAAAAAAAAEAPT/AgAAAAAAAAAFAPT/AgAAAAAAAAAGAPT/AgAAAAAAAAAHAPT/AgAAAAAAAAAIAPT/AgAAAAAAAAAJAPT/AgAAAAAAAAAKAPT/AgAAAAAAAAALAPT/AgAAAAAAAAAMAPT/AgAAAAAAAAANAPT/AgAAAAAAAAAOAPT/AgAAAAAAAAAPAPT/AgAAAAAAAAD5//z/AgADAAAAAAD6//z/AgADAAAAAAD7//z/AgADAAAAAAD8//z/AgADAAAAAAD9//v/AgACAAAAAAD9//z/AgADAAAAAAALAAIAAgADAAAAAAD9/wIAAgADAAAAAAAQAPT/AgAAAAAAAAAQAPz/AgADAAAAAAAQAAQAAgAAAAAAAAD3//T/AgAAAAAAAAD3//X/AgADAAAAAAD3//b/AgADAAAAAAD3//f/AgADAAAAAAD3//j/AgADAAAAAAD3//n/AgADAAAAAAD3//r/AgADAAAAAAD3//v/AgADAAAAAAD3//z/AgADAAAAAAD3//3/AgAAAAAAAAD3//7/AgAAAAAAAAD3////AgAAAAAAAAD3/wAAAgAAAAAAAAD3/wEAAgAAAAAAAAD3/wIAAgAAAAAAAAD3/wMAAgAAAAAAAAD3/wQAAgAAAAAAAAAJAP//AgAAAAAAAAARAPT/AgAAAAAAAAARAPX/AgADAAAAAAARAPb/AgADAAAAAAARAPr/AgADAAAAAAARAPv/AgADAAAAAAARAPz/AgADAAAAAAARAP3/AgAAAAAAAAARAP7/AgAAAAAAAAARAP//AgAAAAAAAAARAAAAAgAAAAAAAAARAAEAAgAAAAAAAAARAAIAAgAAAAAAAAARAAMAAgAAAAAAAAARAAQAAgAAAAAAAAARAPf/AgADAAAAAAARAPj/AgADAAAAAAARAPn/AgADAAAAAAASAPT/AgAAAAAAAAATAPT/AgAAAAAAAAATAPX/AgAAAAAAAAATAPb/AgAAAAAAAAASAPb/AgAAAAAAAAASAPX/AgAAAAAAAAASAPf/AgAAAAAAAAASAPj/AgAAAAAAAAASAPn/AgAAAAAAAAASAPr/AgAAAAAAAAASAPv/AgAAAAAAAAASAPz/AgAAAAAAAAASAP3/AgACAAAAAAASAP7/AgACAAAAAAASAP//AgACAAAAAAASAAMAAgACAAAAAAASAAQAAgACAAAAAAATAAMAAgAAAAAAAAATAAIAAgAAAAAAAAATAAQAAgAAAAAAAAATAAEAAgAAAAAAAAATAAAAAgAAAAAAAAATAP//AgAAAAAAAAATAPr/AgAAAAAAAAATAPn/AgAAAAAAAAATAPj/AgAAAAAAAAATAPf/AgAAAAAAAAATAPv/AgAAAAAAAAASAAAAAgACAAAAAAASAAEAAgACAAAAAAASAAIAAgACAAAAAAATAP7/AgAAAAAAAAATAP3/AgAAAAAAAAATAPz/AgAAAAAAAAD2//T/AgAAAAAAAAD2//X/AgAAAAAAAAD2//b/AgAAAAAAAAD2//f/AgAAAAAAAAD2//j/AgAAAAAAAAD2//n/AgAAAAAAAAD2//r/AgAAAAAAAAD2//v/AgAAAAAAAAD1//v/AgAAAAAAAAD1//z/AgAAAAAAAAD1//3/AgAAAAAAAAD1//7/AgAAAAAAAAD1////AgAAAAAAAAD1/wAAAgAAAAAAAAD1/wEAAgAAAAAAAAD1/wIAAgAAAAAAAAD1/wMAAgAAAAAAAAD1/wQAAgAAAAAAAAD2//z/AgAAAAAAAAD2//3/AgAAAAAAAAD2//7/AgACAAAAAAD2////AgACAAAAAAD2/wAAAgACAAAAAAD2/wEAAgACAAAAAAD2/wIAAgACAAAAAAD2/wMAAgACAAAAAAD2/wQAAgACAAAAAAD1//T/AgAAAAAAAAD1//X/AgAAAAAAAAD1//b/AgAAAAAAAAD1//f/AgAAAAAAAAD1//j/AgAAAAAAAAD1//n/AgAAAAAAAAD1//r/AgAAAAAAAAA=")
 tile_set = ExtResource("1_hhaul")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1730652510]
 position = Vector2(596, -446)
 zoom = Vector2(0.5, 0.5)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1284559522]
 position = Vector2(-1, 0)
 color = Color(0.5529556, 0.55295557, 0.55295557, 1)
 
-[node name="LightningFlasher" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("4_hru2b")]
+[node name="LightningFlasher" parent="." unique_id=1830903890 node_paths=PackedStringArray("tilemap") instance=ExtResource("4_hru2b")]
 tilemap = NodePath("../TileMapLayer")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1830468256]
 environment = ExtResource("5_ajwo4")
 
-[node name="SpawnPairs" type="Node" parent="."]
+[node name="SpawnPairs" type="Node" parent="." unique_id=609042751]
 
-[node name="Pair1" type="Node" parent="SpawnPairs"]
+[node name="Pair1" type="Node" parent="SpawnPairs" unique_id=1051842006]
 
-[node name="P1" type="Marker2D" parent="SpawnPairs/Pair1"]
+[node name="P1" type="Marker2D" parent="SpawnPairs/Pair1" unique_id=1555627072]
 position = Vector2(-556, -756)
 
-[node name="P2" type="Marker2D" parent="SpawnPairs/Pair1"]
+[node name="P2" type="Marker2D" parent="SpawnPairs/Pair1" unique_id=474343174]
 position = Vector2(1134, -426)
 
-[node name="Pair2" type="Node" parent="SpawnPairs"]
+[node name="Pair2" type="Node" parent="SpawnPairs" unique_id=1978422453]
 
-[node name="P1" type="Marker2D" parent="SpawnPairs/Pair2"]
+[node name="P1" type="Marker2D" parent="SpawnPairs/Pair2" unique_id=1726354920]
 position = Vector2(-27, -447)
 
-[node name="P2" type="Marker2D" parent="SpawnPairs/Pair2"]
+[node name="P2" type="Marker2D" parent="SpawnPairs/Pair2" unique_id=1056964486]
 position = Vector2(1656, -753)
