@@ -7,7 +7,7 @@ extends Node2D
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		
-		body.update_spawn_width()
+l		body.update_spawn_width()
 		
 		mat.emission_box_extents.x = body.width / 2.0
 		
