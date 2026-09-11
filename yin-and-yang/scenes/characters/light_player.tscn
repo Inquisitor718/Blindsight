@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://btukqyso1bmmr"]
+[gd_scene format=3 uid="uid://btukqyso1bmmr"]
 
 [ext_resource type="Script" uid="uid://dhldnvl0gkphe" path="res://scenes/characters/light_player.gd" id="1_23emd"]
 [ext_resource type="Texture2D" uid="uid://cja11oxhexr7d" path="res://assets/Sprites/Random/test_player_sprite.png" id="2_1dlao"]
@@ -191,7 +191,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgxcr"]
 size = Vector2(128, 232)
 
-[node name="LightPlayer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "walk_particles", "jump_particles", "death_particles")]
+[node name="LightPlayer" type="CharacterBody2D" unique_id=1178979546 node_paths=PackedStringArray("sprite", "walk_particles", "jump_particles", "death_particles")]
 collision_layer = 2
 script = ExtResource("1_23emd")
 sprite = NodePath("ColorRect")
@@ -199,20 +199,20 @@ walk_particles = NodePath("walk_particles")
 jump_particles = NodePath("jump_particles")
 death_particles = NodePath("death_particles")
 
-[node name="ColorRect" type="Sprite2D" parent="."]
+[node name="ColorRect" type="Sprite2D" parent="." unique_id=526343698]
 light_mask = 2
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="ColorRect"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ColorRect" unique_id=1274019877]
 visible = false
 visibility_layer = 0
 occluder = SubResource("OccluderPolygon2D_eqgl4")
 
-[node name="PointLight2D2" type="PointLight2D" parent="ColorRect"]
+[node name="PointLight2D2" type="PointLight2D" parent="ColorRect" unique_id=1721427808]
 visible = false
 range_item_cull_mask = 2
 texture = ExtResource("2_1dlao")
 
-[node name="PointLight2D" type="PointLight2D" parent="ColorRect"]
+[node name="PointLight2D" type="PointLight2D" parent="ColorRect" unique_id=540090404]
 position = Vector2(42, 0)
 energy = 6.0
 range_item_cull_mask = 3
@@ -221,19 +221,19 @@ shadow_filter = 2
 shadow_item_cull_mask = 3
 texture = ExtResource("3_8uquj")
 offset = Vector2(700, 0)
-texture_scale = 6.0
+texture_scale = 5.0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1039619429]
 shape = SubResource("RectangleShape2D_23emd")
 
-[node name="walk_particles" type="GPUParticles2D" parent="."]
+[node name="walk_particles" type="GPUParticles2D" parent="." unique_id=1093881874]
 position = Vector2(0, 116)
 emitting = false
 amount = 20
 texture = ExtResource("9_c6r6e")
 process_material = ExtResource("4_shd2n")
 
-[node name="jump_particles" type="GPUParticles2D" parent="."]
+[node name="jump_particles" type="GPUParticles2D" parent="." unique_id=1967971190]
 position = Vector2(0, 116)
 emitting = false
 amount = 10
@@ -243,7 +243,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = ExtResource("5_8uquj")
 
-[node name="death_particles" type="GPUParticles2D" parent="."]
+[node name="death_particles" type="GPUParticles2D" parent="." unique_id=1563055538]
 emitting = false
 amount = 500
 texture = ExtResource("9_c6r6e")
@@ -252,7 +252,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = ExtResource("6_2g08n")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1962700350]
 clip_children = 2
 light_mask = 17
 position = Vector2(0, 7)
@@ -261,7 +261,7 @@ sprite_frames = SubResource("SpriteFrames_gwa3j")
 animation = &"walk"
 autoplay = "idle"
 
-[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D" unique_id=1138225236]
 visible = false
 light_mask = 17
 offset_left = -123.270676
@@ -270,34 +270,34 @@ offset_right = 163.27068
 offset_bottom = 163.27068
 mouse_filter = 2
 
-[node name="Hurtbox" parent="." instance=ExtResource("4_kgxcr")]
+[node name="Hurtbox" parent="." unique_id=1747938256 instance=ExtResource("4_kgxcr")]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2082327725]
 visible = false
 shape = SubResource("RectangleShape2D_kgxcr")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=949276430]
 position = Vector2(4, 0)
 range_item_cull_mask = 16
 texture = ExtResource("9_c6r6e")
 
-[node name="attack" type="AudioStreamPlayer2D" parent="."]
+[node name="attack" type="AudioStreamPlayer2D" parent="." unique_id=1906286218]
 stream = ExtResource("10_yf37d")
 volume_db = -5.0
 
-[node name="taking_damage" type="AudioStreamPlayer2D" parent="."]
+[node name="taking_damage" type="AudioStreamPlayer2D" parent="." unique_id=696928841]
 stream = ExtResource("11_gwa3j")
 
-[node name="death" type="AudioStreamPlayer2D" parent="."]
+[node name="death" type="AudioStreamPlayer2D" parent="." unique_id=498969654]
 stream = ExtResource("12_xxvif")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=587018225]
 scale = Vector2(1.1319227, 1.1319227)
 range_item_cull_mask = 3
 texture = ExtResource("9_c6r6e")
 
-[node name="walk" type="AudioStreamPlayer2D" parent="."]
+[node name="walk" type="AudioStreamPlayer2D" parent="." unique_id=601586983]
 stream = ExtResource("13_gwa3j")
 
 [connection signal="dmg_taken" from="Hurtbox" to="." method="take_damage"]

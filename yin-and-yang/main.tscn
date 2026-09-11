@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvhv6e7mf2xoq" path="res://scene_manager.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cd27wwgaslxmv" path="res://player_manager.gd" id="2_h2yge"]
+[ext_resource type="Environment" uid="uid://cxtxu27tqwyxi" path="res://assets/Resources/world_environment.tres" id="3_0odxb"]
 [ext_resource type="Script" uid="uid://chlr3egak6a5f" path="res://select_screen.gd" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://d0lrmnphhw7re" path="res://assets/Panel.png" id="4_yaehf"]
 [ext_resource type="Script" uid="uid://bem5d83i0d6se" path="res://scores_display.gd" id="5_lquwl"]
@@ -51,9 +52,9 @@ shader_parameter/level1 = Color(0, 0, 0, 1)
 shader_parameter/level2 = Color(0.2757476, 0.34006336, 0.75317264, 1)
 shader_parameter/level3 = Color(0.6268152, 0.8017888, 0.69947857, 1)
 shader_parameter/level4 = Color(0.89625466, 0.90011066, 0.84448963, 1)
-shader_parameter/threshold1 = 0.06000000285
-shader_parameter/threshold2 = 0.16800000798
-shader_parameter/threshold3 = 0.52800002508
+shader_parameter/threshold1 = 0.198000009405
+shader_parameter/threshold2 = 0.3370000160075
+shader_parameter/threshold3 = 0.48400002299
 shader_parameter/shader_alpha = 0.8
 
 [node name="Main" type="Node2D" unique_id=163780883]
@@ -65,6 +66,9 @@ script = ExtResource("1_0xm2m")
 script = ExtResource("2_h2yge")
 
 [node name="SceneContainer" type="Node" parent="." unique_id=1550429014]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=196450388]
+environment = ExtResource("3_0odxb")
 
 [node name="Scores" type="CanvasLayer" parent="." unique_id=164078986]
 layer = 2
